@@ -5,4 +5,8 @@ class Incident < ApplicationRecord
   belongs_to :collection
   belongs_to :place
   belongs_to :user
+
+  validates :description, presence: true
+  
+
 end
