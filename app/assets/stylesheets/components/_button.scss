@@ -8,18 +8,13 @@
   font-size: larger;
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  transition: all 2s ease-in-out;
-  width: 85%;
 
-  :active {
-    transform: scale(1.1);
-    transition: .1s;
-  }
   a {
     text-decoration: none;
     color: white;
   }
 }
+
 .button-small {
   display: inline-block;
   color: white;
