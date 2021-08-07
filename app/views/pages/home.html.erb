@@ -1,13 +1,23 @@
 <div class="welcome">
   <h1 class="">Don't be silent. Stop the harassment.</h1>
   <p class="mt-3">This application helps you to organize the evidents for incidents and share it to the trusted person.</p>
-  <div id="welcome-btn">
-    <button class="button-small mr-4">
-      <%= link_to "Sign-up", new_user_session_path %>
-    </button>
-    <button class="button-small">
-      <%= link_to "Log-in", user_session_path %>
-    </button>
-  </div>
+  <% if user_signed_in? %>
+    <div id="welcome-btn">
+      <button class="button-small mr-4">
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      </button>
+      <button class="button-small">
+        <%= link_to "Home", incidents_path %>
+      </button>
+    </div>
+  <% else %>
+    <div id="welcome-btn">
+      <button class="button-small mr-4">
+        <%= link_to "Sign up", new_user_session_path %>
+      </button>
+      <button class="button-small">
+        <%= link_to "Log in", user_session_path %>
+      </button>
+    </div>
+  <% end %>
 </div>
-
