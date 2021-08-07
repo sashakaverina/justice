@@ -45,40 +45,15 @@ ActiveRecord::Schema.define(version: 2021_08_06_113911) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "antagonizers", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "collections", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "incidents", force: :cascade do |t|
     t.datetime "date"
     t.text "description"
     t.string "media"
-    t.bigint "antagonizer_id", null: false
-    t.bigint "collection_id", null: false
-    t.bigint "place_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
-    t.index ["antagonizer_id"], name: "index_incidents_on_antagonizer_id"
-    t.index ["collection_id"], name: "index_incidents_on_collection_id"
-    t.index ["place_id"], name: "index_incidents_on_place_id"
     t.index ["user_id"], name: "index_incidents_on_user_id"
-  end
-
-  create_table "places", force: :cascade do |t|
-    t.string "address"
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tags", force: :cascade do |t|
@@ -107,9 +82,6 @@ ActiveRecord::Schema.define(version: 2021_08_06_113911) do
   add_foreign_key "accesses", "incidents"
   add_foreign_key "accesses", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "incidents", "antagonizers"
-  add_foreign_key "incidents", "collections"
-  add_foreign_key "incidents", "places"
   add_foreign_key "incidents", "users"
   add_foreign_key "tags", "incidents"
 end
