@@ -12,13 +12,10 @@
   </head>
 
   <body>
-
-    <div class="page-layout">
+    <% unless Rails.application.routes.url_helpers.root_path%>
       <%= render 'shared/navbar' %>
-      <%= render 'shared/flashes' %>
-
-      <%= yield %>
-    </div>
-
+    <% end %>
+    <%= render 'shared/flashes' %>
+    <%= yield %>
   </body>
 </html>
