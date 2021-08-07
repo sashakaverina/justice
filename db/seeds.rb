@@ -29,39 +29,38 @@ shogo = User.create!(
   nickname: "Shogo",
 )
 
-mrX = Antagonizer.create!(
-  name: "Mr. X"
-)
+# mrX = Antagonizer.create!(
+#   name: "Mr. X"
+# )
 
-bowser = Antagonizer.create!(
-  name: "Bowser"
-)
+# bowser = Antagonizer.create!(
+#   name: "Bowser"
+# )
 
-work = Collection.create!(
-  name: "Work"
-)
+# work = Collection.create!(
+#   name: "Work"
+# )
 
-gym = Collection.create!(
-  name: "Gym"
-)
+# gym = Collection.create!(
+#   name: "Gym"
+# )
 
-tokyo = Place.create(
-  name: "Tokyo",
-  address: "Shibuya-ku"
-)
+# tokyo = Place.create(
+#   name: "Tokyo",
+#   address: "Shibuya-ku"
+# )
 
-osaka = Place.create(
-  name: "Osaka",
-  address: "Dotonburi"
-)
+# osaka = Place.create(
+#   name: "Osaka",
+#   address: "Dotonburi"
+# )
 
-incident1 = Incident.create!(
+incident1 = Incident.new(
   date: Date.parse('1/8/2021'),
   description: "Boss yelled at me",
-  antagonizer_id: 3,
-  collection_id: 3,
-  user_id: 1,
-  place_id: 3
 )
+
+incident1.user = shogo
+incident1.save!
 
 puts "Data generation completed"
