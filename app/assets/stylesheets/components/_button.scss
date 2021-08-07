@@ -8,19 +8,27 @@
   font-size: larger;
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
- }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
 
 .button-small {
   display: inline-block;
   color: white;
   background-color: $purple;
   border-radius: 5px;
-  padding: 8px 40px;
+  padding: 8px 30px;
   border: none;
   font-size: smaller;
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  width: 35%;
+  a {
+    text-decoration: none;
+    color: white;
+  }
 }
 
 .button-white {
@@ -34,4 +42,8 @@
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
   box-shadow: 0 3px 10px $purple;
   width: 85%;
+  a {
+    text-decoration: none;
+    color: $purple;
+  }
 }
