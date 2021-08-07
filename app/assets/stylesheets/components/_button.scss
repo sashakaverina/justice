@@ -1,7 +1,7 @@
 .button-large {
   display: inline-block;
   color: white;
-  background-color: #7879F1;
+  background-color: $purple;
   border-radius: 5px;
   padding: 12px 80px;
   border: none;
@@ -9,9 +9,35 @@
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   transition: all 2s ease-in-out;
+  width: 85%;
 
   :active {
     transform: scale(1.1);
     transition: .1s;
   }
+}
+.button-small {
+  display: inline-block;
+  color: white;
+  background-color: $purple;
+  border-radius: 5px;
+  padding: 8px 40px;
+  border: none;
+  font-size: smaller;
+  text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  width: 35%;
+}
+
+.button-white {
+  display: inline-block;
+  color: $purple;
+  background-color: white;
+  border-radius: 5px;
+  padding: 12px 80px;
+  border: none;
+  font-size: larger;
+  text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
+  box-shadow: 0 3px 10px $purple;
+  width: 85%;
 }
