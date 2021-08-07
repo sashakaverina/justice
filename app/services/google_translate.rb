@@ -14,7 +14,7 @@ class GoogleTranslate
 
     request = Net::HTTP::Post.new(url)
     request["content-type"] = 'application/x-www-form-urlencoded'
-    request["x-rapidapi-key"] = '61a3cab27bmsh821e3c62b747becp15c0f8jsn57b7809f20f8'
+    request["x-rapidapi-key"] = ENV['API_KEY']
     request["x-rapidapi-host"] = 'google-translate20.p.rapidapi.com'
     request.body = "text=#{incident.description}&tl=ja&sl=en"
 
