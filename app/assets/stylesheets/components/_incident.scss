@@ -1,0 +1,16 @@
+.incident-card {
+
+  .incident-thumbnail {
+  height: 70px;
+  width: 70px;
+  // background-image: cover;
+  object-fit: cover;
+  }
+
+}
+
+.incidents {
+ overflow-y: scroll;
+}
+
+

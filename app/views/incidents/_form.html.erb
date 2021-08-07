@@ -1,6 +1,7 @@
 <%= simple_form_for incident do |f| %>
   <%= f.input :title %>
-  <%= f.input :description %>
+  <%= f.input :attachment, as: :file, label: "Upload an attachment" %>
   <%= f.input :date %>
+  <%= f.input :description %>
   <%= f.submit "Create a new incident", class: 'btn btn-primary' %>
 <% end %>

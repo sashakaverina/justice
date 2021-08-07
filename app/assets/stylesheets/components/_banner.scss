@@ -1,7 +1,7 @@
-.banner{
+.banner {
   transition: background-color 200ms linear;
   background-color: $purple;
-  height: 64px;
+  height: auto;
   color: white;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
