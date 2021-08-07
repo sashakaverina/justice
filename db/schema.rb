@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 2021_08_06_113911) do
     t.datetime "date"
     t.text "description"
     t.string "media"
-    t.bigint "antagonizer_id", null: false
-    t.bigint "collection_id", null: false
-    t.bigint "place_id", null: false
+    t.bigint "antagonizer_id"
+    t.bigint "collection_id"
+    t.bigint "place_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2021_08_06_113911) do
   end
 
   create_table "places", force: :cascade do |t|
-    t.string "address"
     t.string "name"
+    t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,1 +1,6 @@
-<%= render 'incident-card', incidents: @incidents %>
+<h1>All incidents</h1>
+<% @incidents.each do |incident| %>
+<p><%= incident.title %>: <%= incident.date.to_date %><p>
+<%= incident.description %>
+<% end %>
+<%= link_to "Create a new incident", new_incident_path, class: "btn btn-primary" %>
