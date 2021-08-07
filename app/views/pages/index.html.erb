@@ -1,6 +1,10 @@
 <h1>All incidents</h1>
 <% @incidents.each do |incident| %>
-<p><%= incident.title %>: <%= incident.date.to_date %><p>
-<%= incident.description %>
+  <%= link_to incident_path(incident) do %>
+    <p> What: <%= incident.title %></p>
+    <p>When: <%= incident.date.to_date %></p>
+    <p>Description: <%= incident.description %></p>
+    <hr>
+  <% end %>
 <% end %>
 <%= link_to "Create a new incident", new_incident_path, class: "btn btn-primary" %>

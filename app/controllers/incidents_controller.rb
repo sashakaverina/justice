@@ -2,7 +2,6 @@ class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :report]
 
   def show
-    @jp = GoogleTranslate.translate(@incident)
   end
 
   def new
@@ -25,14 +24,16 @@ class IncidentsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "#{@jp}",
-        page_size: 'A4',
-        # template: "trips/report.html.erb",
+        render pdf: "Incident No. #{@incident.id}",
+        page_size: "Letter",
+        encoding: 'UTF-8',
+        template: "incidents/report.html.erb",
         layout: "pdf.html",
-        orientation: "Landscape",
+        orientation: 'Portrait',
         lowquality: true,
-        zoom: 1,
-        dpi: 75
+        print_media_type: true,
+        dpi: 75,
+        disposition: 'attachment'
       end
     end
   end
