@@ -3,4 +3,9 @@ class PagesController < ApplicationController
 
   def home
   end
+
+   def index
+    @user = current_user
+    @incidents = Incident.where(user: @user)
+  end
 end
