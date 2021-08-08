@@ -24,7 +24,7 @@ sasha = User.create!(
 )
 
 shogo = User.create!(
-  email: "shogo@gmail.com",
+  email: "shogomiyagi94@gmail.com",
   password: "111111",
   nickname: "Shogo",
 )
