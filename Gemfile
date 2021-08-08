@@ -22,6 +22,7 @@ gem 'redis', '~> 4.0'
 gem 'cloudinary', '~> 1.16.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'letter_opener', group: :development
 
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
