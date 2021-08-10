@@ -31,11 +31,13 @@
 .button-small {
   display: inline-block;
   color: white;
+  height: 48px;
   background-color: $purple;
   border-radius: 5px;
-  padding: 8px 30px;
+  text-align: center;
+  padding: 10px;
   border: none;
-  font-size: smaller;
+  font-size: larger;
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   a {
@@ -49,7 +51,9 @@
   color: $purple;
   background-color: white;
   border-radius: 5px;
-  padding: 12px 80px;
+  height: 48px;
+  padding: 10px;
+  text-align: center;
   border: none;
   font-size: larger;
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
