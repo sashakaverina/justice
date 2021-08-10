@@ -6,6 +6,7 @@ class IncidentsController < ApplicationController
 
   def new
     @incident = Incident.new
+    authorize @incident
   end
 
   def create
@@ -17,6 +18,7 @@ class IncidentsController < ApplicationController
     else
       render 'new'
     end
+    authorize @incident
   end
 
   def report
