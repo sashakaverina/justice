@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :collections
   get '/index', to: "pages#index"
 
+  #pdf generating routes
+  get '/incidents/:id/report', to: 'incidents#report', as: :report
+
 end

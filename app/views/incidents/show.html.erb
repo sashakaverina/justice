@@ -1,3 +1,4 @@
 <h1><%= @incident.title %></h1>
 <h2>When: <%= @incident.date.to_date %></h2>
 <p> What: <%= @incident.description %></p>
+<%= link_to "Create a report", report_path(format: :pdf), class: "btn btn-primary" %>
