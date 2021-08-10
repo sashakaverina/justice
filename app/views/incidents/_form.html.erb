@@ -2,6 +2,7 @@
   <%= f.input :title %>
   <%= f.input :attachment, as: :file, label: "Upload an attachment" %>
   <%= f.input :date %>
+  <%= f.input :place_id %>
   <%= f.input :description %>
-  <%= f.submit "Create a new incident", class: 'btn btn-primary' %>
+  <%= f.submit "Create a new incident", class: 'button-small w-100' %>
 <% end %>

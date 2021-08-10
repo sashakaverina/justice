@@ -1,0 +1,21 @@
+.product-form {
+  background-color: white;
+  padding: 24px;
+  width: 80%;
+  border: 2px solid #F8F9FA;
+  border-radius: 5px;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  label, h1 {
+    color: black;
+  }
+}
+
+.form-control, .form-control-file {
+  padding:10px;
+  border: 0.5px solid $purple;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius: 5px;
+  #incident_attachment {
+    color: $purple;
+  }
+}
