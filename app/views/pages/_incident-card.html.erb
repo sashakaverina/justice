@@ -1,6 +1,28 @@
 <div class="incidents">
-  <%= incidents.each do |incident| %>
-  <div class="incidents-card">
-  </div>
+  <% incidents.each do |incident| %>
+    <div class="incident-card mx-3 mt-5 shadow d-flex">
+
+        <div>
+          <% if incident.attachment.attached? %>
+            <%= cl_image_tag incident.attachment.key, class: 'incident-thumbnail' %>
+          <%# else %>
+
+          <% end %>
+        </div>
+
+        <div class="incident-title-date">
+          <h3 class="title"> <%= incident.title %> </h3>
+          <div class="date d-flex">
+            <%= image_tag "calendar_today.svg", alt: "calendar icon" %>
+            <p> <%= incident.date.strftime('%a. %B %d, %Y') %> </p>
+          </div>
+        </div>
+
+        <p> 1 attach. </p>
+
+    </div>
   <% end %>
+
+    <%= link_to "+", new_incident_path, class: "button-add" %>
+
 </div>

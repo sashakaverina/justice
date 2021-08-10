@@ -12,11 +12,10 @@
   </head>
 
   <body>
-    <% unless Rails.application.routes.url_helpers.root_path%>
+    <% if request.path != Rails.application.routes.url_helpers.root_path %>
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
-
     <%= yield %>
   </body>
 </html>
