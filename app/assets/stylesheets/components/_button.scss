@@ -1,3 +1,12 @@
+.button-add {
+  // border-radius: 50%;
+  // height: 30px;
+  // width: 30px;
+  position: fixed;
+  right: 30px;
+  bottom: 150px;
+}
+
 .button-large {
   display: inline-block;
   color: white;
@@ -8,7 +17,11 @@
   font-size: larger;
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+ }
   a {
     text-decoration: none;
     color: white;
