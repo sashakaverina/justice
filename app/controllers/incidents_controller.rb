@@ -2,6 +2,7 @@ class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :report]
 
   def show
+    authorize @incident
   end
 
   def new
@@ -13,16 +14,17 @@ class IncidentsController < ApplicationController
     @incident = Incident.new(incident_params)
     @user = current_user
     @incident.user = @user
+    authorize @incident
     if @incident.save
       redirect_to incident_path(@incident)
     else
       render 'new'
     end
-    authorize @incident
   end
 
   def report
     @jp = GoogleTranslate.translate(@incident)
+    authorize @incident
     respond_to do |format|
       format.html
       format.pdf do
@@ -49,5 +51,4 @@ class IncidentsController < ApplicationController
   def incident_params
     params.require(:incident).permit(:title, :description, :attachment, :date)
   end
-
 end

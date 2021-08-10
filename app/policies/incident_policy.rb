@@ -9,6 +9,10 @@ class IncidentPolicy < ApplicationPolicy
     return true
   end
 
+  def show?
+    return true
+  end
+
   def report
     record.user == user
   end
