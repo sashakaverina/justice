@@ -1,28 +1,40 @@
 <div class="incidents">
   <% incidents.each do |incident| %>
-    <div class="incident-card mx-3 mt-5 shadow d-flex">
+    <%= link_to incident_path(incident) do %>
+      <div class="incident-card mx-3 mt-4 d-flex">
 
-        <div>
-          <% if incident.attachment.attached? %>
-            <%= cl_image_tag incident.attachment.key, class: 'incident-thumbnail' %>
-          <%# else %>
-
-          <% end %>
-        </div>
-
-        <div class="incident-title-date">
-          <h3 class="title"> <%= incident.title %> </h3>
-          <div class="date d-flex">
-            <%= image_tag "calendar_today.svg", alt: "calendar icon" %>
-            <p> <%= incident.date.strftime('%a. %B %d, %Y') %> </p>
+          <div>
+            <% if incident.attachment.attached? %>
+              <div class= "incident-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url( <%= cl_image_path incident.attachment.key, width: 80, height: 80, crop: :fill %> )">
+                <i class="far fa-images"></i>
+              </div>
+            <% else %>
+              <div class="empty-thumbnail">
+                <i class="far fa-images"></i>
+              </div>
+            <% end %>
           </div>
-        </div>
 
-        <p> 1 attach. </p>
+          <div class="incident-title-date mx-3 d-flex flex-column justify-content-around">
+            <h3 class="title pt-2 pb-1"> <%= incident.title %> </h3>
+            <div class="date d-flex pb-2">
+              <%= image_tag "calendar_today.svg", alt: "calendar icon", width: "18px", class: "mr-1" %>
+              <p> <%= incident.date.strftime('%a. %B %d, %Y') %> </p>
+            </div>
+          </div>
 
-    </div>
+  <!--         <p class=""> 1 attach. </p> -->
+
+      </div>
+    <% end %>
   <% end %>
 
-    <%= link_to "+", new_incident_path, class: "button-add" %>
+    <%= link_to new_incident_path do %>
+      <i class="fas fa-plus button-add"></i>
+    <% end %>
+
+    <%= link_to new_incident_path do %>
+      <i class="fas fa-share-alt button-share"></i>
+    <% end %>
 
 </div>
