@@ -9,4 +9,5 @@ class Incident < ApplicationRecord
   validates :description, presence: true
 
   has_one_attached :attachment
+  acts_as_taggable_on :tags
 end

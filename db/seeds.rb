@@ -62,6 +62,7 @@ incident1 = Incident.new(
 )
 
 incident1.user = shogo
+incident1.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
 incident1.save!
 
 incident2 = Incident.new(
@@ -71,6 +72,7 @@ incident2 = Incident.new(
 )
 
 incident2.user = sasha
+incident2.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
 incident2.save!
 
 incident3 = Incident.new(
@@ -80,6 +82,7 @@ incident3 = Incident.new(
 )
 
 incident3.user = aidan
+incident3.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
 incident3.save!
 
 incident4 = Incident.new(
@@ -89,6 +92,7 @@ incident4 = Incident.new(
 )
 
 incident4.user = nomin
+incident4.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
 incident4.save!
 
 puts "Data generation completed"
