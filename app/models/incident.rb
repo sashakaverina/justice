@@ -3,7 +3,6 @@ class Incident < ApplicationRecord
   has_many :tags
   belongs_to :antagonizer, optional: true
   belongs_to :collection, optional: true
-  belongs_to :place, optional: true
   belongs_to :user
 
   validates :description, presence: true

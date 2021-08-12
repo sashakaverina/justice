@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_113550) do
+ActiveRecord::Schema.define(version: 2021_08_06_113911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,23 +61,16 @@ ActiveRecord::Schema.define(version: 2021_08_12_113550) do
     t.datetime "date"
     t.text "description"
     t.string "media"
+    t.string "place"
     t.bigint "antagonizer_id"
     t.bigint "collection_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
-    t.string "place"
     t.index ["antagonizer_id"], name: "index_incidents_on_antagonizer_id"
     t.index ["collection_id"], name: "index_incidents_on_collection_id"
     t.index ["user_id"], name: "index_incidents_on_user_id"
-  end
-
-  create_table "places", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tags", force: :cascade do |t|

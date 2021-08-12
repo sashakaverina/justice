@@ -45,16 +45,6 @@ gym = Collection.create!(
   name: "Gym"
 )
 
-tokyo = Place.create(
-  name: "Tokyo",
-  address: "Shibuya-ku"
-)
-
-osaka = Place.create(
-  name: "Osaka",
-  address: "Dotonburi"
-)
-
 incident1 = Incident.new(
   date: Date.parse('1/8/2021'),
   title: "Boss yelled at me",
