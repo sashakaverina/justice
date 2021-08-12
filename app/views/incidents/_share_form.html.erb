@@ -1,0 +1,5 @@
+<%= simple_form_for user do |f| %>
+  <%= f.input :email, label: "Email address:" %>
+  <%= f.input :encrypted_password, label: "Passcode:" %>
+  <%= f.submit "Share now", class: 'button-small box-shadow w-100', id: 'show-bottom' %>
+<% end %>
