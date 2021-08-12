@@ -27,7 +27,12 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { tagsSearch } from '../components/tags';
+import { initAutocomplete } from '../plugins/init_autocomplete';
+import { buttonPress } from '../components/button_press';
 
 document.addEventListener('turbolinks:load', () => {
+  // Call your functions here, e.g:
+  buttonPress();
+  initAutocomplete();
   tagsSearch();
 });
