@@ -13,7 +13,7 @@ class IncidentPolicy < ApplicationPolicy
     return true
   end
 
-  def report
+  def report?
     record.user == user
   end
 end
