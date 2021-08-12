@@ -1,8 +1,9 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :report]
+  before_action :set_incident, only: [:show, :share, :report]
 
   def show
     authorize @incident
+    @user = User.new
   end
 
   def new
@@ -21,6 +22,23 @@ class IncidentsController < ApplicationController
       render 'new'
     end
   end
+
+  def share
+    authorize @incident
+    # check if user already exists; if so, use that user, if not, create user
+    @user = User.new(user_params)
+    @user.nickname = @user.email
+    if @user.save
+      # To-DO - send email to trusted contact & associate with access
+      @access = Access.new
+      @access.user = @user
+      @access.incident = @incident
+      @access.save!
+      redirect_to incident_path(@incident)
+    end
+  end
+
+  #share_many
 
   def report
     @jp = GoogleTranslate.translate(@incident)
@@ -50,5 +68,9 @@ class IncidentsController < ApplicationController
 
   def incident_params
     params.require(:incident).permit(:title, :description, :attachment, :date)
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 end

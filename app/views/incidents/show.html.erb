@@ -17,6 +17,10 @@
       <%= cl_image_tag @incident.attachment.key, style: "height: 100%; width: 100%; object-fit: contain; margin-top: 16px;" %>
     <% end %>
     <%= link_to "Create a report", report_path(format: :pdf), class: "button-white w-100 mt-4" %>
-    <%= link_to "Share", index_path, class: "button-small w-100 mt-4", id: 'show-bottom' %>
+
+    <button type="button" class="button-small w-100 mt-4" id="show-bottom" data-toggle="modal" data-target="#exampleModal">
+      Share
+    </button>
+    <%= render 'share_modal', user: @user, class: "button-small box-shadow w-100 mt-4", id: 'show-bottom' %>
   </div>
 </div>
