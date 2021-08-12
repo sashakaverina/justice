@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   #pdf generating routes
   get '/incidents/:id/report', to: 'incidents#report', as: :report
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :tags, only: [ :create ]
+    end
+  end
+
 end
