@@ -23,7 +23,7 @@ class IncidentsController < ApplicationController
   end
 
   def report
-    # @jp = GoogleTranslate.translate(@incident)
+    @jp = GoogleTranslate.translate(@incident)
     authorize @incident
     respond_to do |format|
       format.html
