@@ -1,7 +1,7 @@
 .button-add {
   border-radius: 50%;
   border: solid;
-  border-width: 5px;
+  border-width: 3px;
   height: 50px;
   width: 50px;
   font-size: 24px;
@@ -11,15 +11,15 @@
   color: $purple;
   padding: 10px;
   position: fixed;
-  right: 30px;
-  bottom: 155px;
+  right: 20px;
+  bottom: 45%;
   backdrop-filter: blur(2px);
 }
 
 .button-share {
   border-radius: 50%;
   border: solid;
-  border-width: 5px;
+  border-width: 3px;
   height: 50px;
   width: 50px;
   font-size: 24px;
@@ -29,8 +29,8 @@
   color: $purple;
   padding: 10px;
   position: fixed;
-  right: 30px;
-  bottom: 95px;
+  right: 20px;
+  bottom: 35%;
   backdrop-filter: blur(2px);
 }
 
