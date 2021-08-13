@@ -90,8 +90,8 @@
 
 .button-white {
   display: inline-block;
-  color: $purple;
-  background-color: white;
+  color: white;
+  background-color: #788b9d;
   border-radius: 5px;
   height: 48px;
   padding: 10px;
@@ -99,7 +99,7 @@
   border: none;
   font-size: larger;
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
-  box-shadow: 0 3px 10px $purple;
+  // box-shadow: 0 3px 10px $purple;
   width: 85%;
   a {
     text-decoration: none;
