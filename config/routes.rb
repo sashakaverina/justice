@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   get '/incidents/:id/report', to: 'incidents#report', as: :report
   post '/incidents/:id/share', to: 'incidents#share', as: :share
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :tags, only: [ :create ]
+    end
+  end
+
 end

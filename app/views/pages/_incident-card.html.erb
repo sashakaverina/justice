@@ -1,11 +1,11 @@
 <div class="incidents">
   <% incidents.each do |incident| %>
-    <%= link_to incident_path(incident) do %>
+    <%= link_to incident_path(incident), class: "incident-card-size" do %>
       <div class="incident-card mx-3 mt-4 d-flex">
 
           <div>
             <% if incident.attachment.attached? %>
-              <div class= "incident-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url( <%= cl_image_path incident.attachment.key, width: 80, height: 80, crop: :fill %> )">
+              <div class= "incident-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url( <%= cl_image_path incident.attachment.key, crop: :scale, width: 80 %> )">
                 <i class="far fa-images"></i>
               </div>
             <% else %>
