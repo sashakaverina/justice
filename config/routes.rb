@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   #pdf generating routes
   get '/incidents/:id/report', to: 'incidents#report', as: :report
+  post '/incidents/:id/share', to: 'incidents#share', as: :share
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

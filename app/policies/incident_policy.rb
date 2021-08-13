@@ -16,4 +16,8 @@ class IncidentPolicy < ApplicationPolicy
   def report?
     record.user == user
   end
+
+  def share?
+    report?
+  end
 end
