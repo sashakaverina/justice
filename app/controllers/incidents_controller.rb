@@ -47,14 +47,16 @@ class IncidentsController < ApplicationController
       format.html
       format.pdf do
         render pdf: "Incident No. #{@incident.id}",
-        page_size: "Letter",
+        page_size: "A4",
         encoding: 'UTF-8',
+        :disable_smart_shrinking => true,
         template: "incidents/report.html.erb",
         layout: "pdf.html",
         orientation: 'Portrait',
         lowquality: true,
         print_media_type: true,
         dpi: 75,
+        viewport_size: '1280x1024',
         disposition: 'attachment'
       end
     end

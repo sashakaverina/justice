@@ -22,9 +22,11 @@ gem 'redis', '~> 4.0'
 gem 'cloudinary', '~> 1.16.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary-edge'
 gem 'pundit'
 gem 'acts-as-taggable-on', '~> 7.0'
 gem 'geocoder'
+gem 'wkhtmltopdf-heroku'
 
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
