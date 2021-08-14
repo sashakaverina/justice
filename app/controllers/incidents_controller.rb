@@ -2,7 +2,6 @@ class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :share, :report]
 
   def show
-    authorize @incident
     @user = User.new
   end
 
@@ -24,9 +23,9 @@ class IncidentsController < ApplicationController
   end
 
   def share
-    authorize @incident
     # check if user already exists; if so, use that user, if not, create user
-    @user = User.new(user_params)
+    @user = User.find_or_initialize_by(email: user_params[:email])
+    @user.password ||= user_params[:password]
     @user.nickname = @user.email
     if @user.save
       # To-DO - send email to trusted contact & associate with access
@@ -34,6 +33,7 @@ class IncidentsController < ApplicationController
       @access.user = @user
       @access.incident = @incident
       @access.save!
+      flash[:notice] = "Shared to #{@access.user.email}"
       redirect_to incident_path(@incident)
     end
   end
@@ -42,7 +42,6 @@ class IncidentsController < ApplicationController
 
   def report
     @jp = GoogleTranslate.translate(@incident)
-    authorize @incident
     respond_to do |format|
       format.html
       format.pdf do
@@ -66,6 +65,7 @@ class IncidentsController < ApplicationController
 
   def set_incident
     @incident = Incident.find(params[:id])
+    authorize @incident
   end
 
   def incident_params
