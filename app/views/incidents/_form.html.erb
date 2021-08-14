@@ -4,5 +4,8 @@
   <%= f.input :date, as: :date, html5: true%>
   <%= f.input :place %>
   <%= f.input :description %>
-  <%= f.submit "Create a new incident", class: 'button-small box-shadow w-100', id: 'show-bottom' %>
+  <%= f.input :tag_list, as: :hidden %>
+  <%= f.submit "Create", class: 'button-small box-shadow w-100 mt-3', id: 'show-bottom' %>
 <% end %>
+
+

@@ -1,29 +1,5 @@
-// .navbar-lewagon {
-//   justify-content: space-between;
-//   background: white;
-// }
-
-// .navbar-lewagon .navbar-collapse {
-//   flex-grow: 0;
-// }
-
-// .navbar-lewagon .navbar-brand img {
-//   width: 40px;
-// }
-
-// .nav-container {
-//   .far, .fas {
-//     font-size: 32px;
-//     color: #788B9D;
-//   }
-// }
-
-// .active > i {
-//   color: #7879F1!important;
-// }
-
 .navbar-bottom {
-  background-color: #f8f9fa;
+  background-color: rgba(248, 249, 250, 0.8);
   overflow: hidden;
   position: fixed;
   bottom: 0;
@@ -32,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  backdrop-filter: blur(2px)
 }
 
 /* Style the links inside the navigation bar */
@@ -39,8 +16,8 @@
   // display: block;
   color: #788b9d;
   text-align: center;
-  padding: 14px 16px;
-  font-size: 38px;
+  padding: 10px 16px 12px 16px;
+  font-size: 24px;
 }
 
 /* Add a color to the active/current link */
