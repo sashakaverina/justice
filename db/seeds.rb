@@ -48,7 +48,7 @@ incident1 = Incident.new(
   place: "Takeda HQ"
 )
 incident1.user = shogo
-incident1.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
+incident1.tag_list.add("work", "boss", "hurt")
 incident1.save!
 
 
@@ -62,7 +62,7 @@ incident2 = Incident.new(
   place: "Yamanote line"
 )
 incident2.user = shogo
-incident2.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
+incident2.tag_list.add("home", "shame", "train")
 incident2.save!
 
 
@@ -73,7 +73,7 @@ incident3 = Incident.new(
   place: "491-1186, Akasaka Akasakaakuhiruzu.akumoribiru(1-kai), Minato-ku, Tokyo"
 )
 incident3.user = shogo
-incident3.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
+incident3.tag_list.add("fight", "home", "hurt")
 incident3.save!
 
 ############################################
@@ -90,7 +90,7 @@ incident4 = Incident.new(
   place: "Takeda HQ"
 )
 incident4.user = nomin
-incident4.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
+incident4.tag_list.add("work", "boss", "hurt")
 incident4.save!
 
 
@@ -104,7 +104,7 @@ incident5 = Incident.new(
   place: "Yamanote line"
 )
 incident5.user = nomin
-incident5.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
+incident5.tag_list.add("home", "shame", "train")
 incident5.save!
 
 
@@ -115,16 +115,16 @@ incident6 = Incident.new(
   place: "491-1186, Akasaka Akasakaakuhiruzu.akumoribiru(1-kai), Minato-ku, Tokyo"
 )
 incident6.user = nomin
-incident6.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
+incident6.tag_list.add("fight", "home", "hurt")
 incident6.save!
 
 ############################################
 ############ Aidan's incidents #############
 ############################################
 
-bruise = URI.open('https://starkvilleurgentcareclinic.com/wp-content/uploads/2021/05/MVR_State_Blog_April_SeriousBruise_d2-scaled.jpeg')
-swollen_lips = URI.open('https://cdn.shopify.com/s/files/1/2028/2057/articles/Swollen-Lips_1024x1024.jpg?v=1588938679')
-yamanote = URI.open('https://live.staticflickr.com/91/214857943_533b578daa_c.jpg')
+bruise = URI.open('https://i.pinimg.com/originals/d2/cc/20/d2cc202fabeea4b92371ebe404e2d69c.jpg')
+swollen_lips = URI.open('https://static.wixstatic.com/media/c72fb9_05948554de824c9ab44c4f1706997963.jpg')
+yamanote = URI.open('https://c4.wallpaperflare.com/wallpaper/231/881/296/train-station-railroad-tokyo-japan-hd-wallpaper-preview.jpg')
 
 incident7 = Incident.new(
   title: "Boss said vicious things to me",
@@ -133,8 +133,7 @@ incident7 = Incident.new(
   As he was informing me, I felt they were unjust as they were not true. As I rebuttal, my boss
   started saying vicious things to me, such as 'You are a whiny worker', 'Why are you not like your other colleagues'. These 
   statements really hurt me.",
-  place: "Takeda HQ",
-  attachment: "https://source.unsplash.com/640x400/?sleepingbag",
+  place: "Takeda HQ"
 )
 incident7.attachment.attach(io: bruise, filename: 'bruise.png', content_type: 'image/png')
 incident7.user = aidan
@@ -182,7 +181,7 @@ incident10 = Incident.new(
   place: "Takeda HQ"
 )
 incident10.user = sasha
-incident10.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
+incident10.tag_list.add("work", "boss", "hurt")
 incident10.save!
 
 
@@ -196,7 +195,7 @@ incident11 = Incident.new(
   place: "Yamanote line"
 )
 incident11.user = sasha
-incident11.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
+incident11.tag_list.add("home", "shame", "train")
 incident11.save!
 
 
@@ -207,7 +206,7 @@ incident12 = Incident.new(
   place: "491-1186, Akasaka Akasakaakuhiruzu.akumoribiru(1-kai), Minato-ku, Tokyo"
 )
 incident12.user = sasha
-incident12.tag_list.add("work", "fight", "home", "hurt", "boss", "police", "boyfriend", "violence", "LGBT", "doctor", "hospital")
+incident12.tag_list.add("fight", "home", "hurt")
 incident12.save!
 
 
