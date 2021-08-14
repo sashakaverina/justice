@@ -41,7 +41,7 @@ class IncidentsController < ApplicationController
   #share_many
 
   def report
-    @jp = GoogleTranslate.translate(@incident)
+    # @jp = GoogleTranslate.translate(@incident)
     authorize @incident
     respond_to do |format|
       format.html

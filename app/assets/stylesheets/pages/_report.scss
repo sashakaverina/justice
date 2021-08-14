@@ -5,9 +5,14 @@
   border: 2px solid black;
   // width: 595px;
   // height: 842px;
-  margin: auto;
   max-width: 80%;
   max-height: 100%;
+  display: block;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  // align: center;
 
 
   h1 {
@@ -28,25 +33,31 @@
 .pdf-info {
   width: 200px;
   border-right: 2px solid black;
+  display: table-cell !important;
   p, small {
     padding: 15px 5px;
   }
 }
 
 .pdf-info-div {
-  display: -webkit-box; /* wkhtmltopdf uses this one */
-  display: -webkit-flex;
+  // display: -webkit-box; /* wkhtmltopdf uses this one */
+  // display: -webkit-flex;
   border-bottom: 2px solid black;
+  display: table !important;
+  width: 100% !important;
   p, small {
     padding: 15px 5px;
   }
 }
 
 .pdf-desc-div {
-  display: -webkit-box; /* wkhtmltopdf uses this one */
-  display: -webkit-flex;
-  height: 300px;
-  border-bottom: 2px solid black;
+  // display: -webkit-box; /* wkhtmltopdf uses this one */
+  // display: -webkit-flex;
+  // height: 300px;
+  // border-bottom: 2px solid black;
+  display: table !important;
+  width: 100% !important;
+
   p, small {
     padding: 15px 5px;
   }
@@ -56,4 +67,18 @@
 .page {
     width: 210mm;
     height: 297mm;
+}
+
+// .pdf-flex-box{
+
+// }
+// .pdf-cell{
+
+// }
+.pdf-sm-4{
+    width: 30% !important;
+}
+
+.pdf-sm-8{
+    width: 70% !important;
 }

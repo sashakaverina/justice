@@ -7,35 +7,36 @@
     <p>次のとおり被害がありましたからお届けします</p>
   </div>
 
-  <div class="d-flex pdf-info-div">
-    <div class="pdf-info">
+  <div class="pdf-info-div">
+    <div class="pdf-sm-4 pdf-info">
       <p>被害者の住居、 氏名</p>
       <small>Your address, name</small>
     </div>
-    <div>
+    <div class="pdf-sm-8">
     </div>
   </div>
-  <div class="d-flex pdf-info-div">
-    <div class="pdf-info">
+  <div class="pdf-info-div">
+    <div class="pdf-sm-4 pdf-info">
       <p>被害の年月日時</p>
     </div>
-    <div>
+    <div class="pdf-sm-8">
       <p> <%= @incident.date %> </p>
     </div>
   </div>
-  <div class="d-flex pdf-info-div">
-    <div class="pdf-info">
+  <div class="pdf-info-div">
+    <div class="pdf-sm-4 pdf-info">
       <p>被害の場所</p>
     </div>
-    <div>
+    <div class="pdf-sm-8">
       <p> <%= @incident.place %> </p>
     </div>
   </div>
-  <div class="d-flex pdf-desc-div">
-    <div class="pdf-info">
+  <div class="pdf-desc-div">
+    <div class="pdf-sm-4 pdf-info">
       <p>被害の模様</p>
     </div>
-    <div>
-      <p> <%= @jp %> </p>
+    <div class="pdf-sm-8">
+      <p> <%= @incident.description %> </p>
     </div>
   </div>
+</div>
