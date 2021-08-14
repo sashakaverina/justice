@@ -105,6 +105,9 @@
     text-decoration: none;
     color: $purple;
   }
+  :focus {
+    text-decoration: none;
+  }
 }
 
 .box-shadow {
