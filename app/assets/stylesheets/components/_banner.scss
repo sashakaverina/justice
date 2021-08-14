@@ -4,19 +4,27 @@
   height: auto;
   color: white;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  font-size: 24px;
   font-weight: border;
-  padding: 14px;
+  padding: 18px 10px 4px 10px;
+  h4 {
+    font-size: 20px;
+  }
 
   #back {
-    margin-top: 6px;
+    margin-top: 10px;
     margin-left: 8px;
     color: white;
+    .fas {
+      font-size: 22px;
+    }
   }
   #edit {
-    margin-top: 6px;
+    margin-top: 10px;
     margin-right: 8px;
     color: white;
+    .fas {
+      font-size: 20px;
+    }
   }
   #title {
     margin-top: 10px;
