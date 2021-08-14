@@ -1,6 +1,7 @@
 require 'open-uri'
 
 puts "Destroying previous seeds"
+Access.destroy_all
 Incident.destroy_all
 User.destroy_all
 puts "Generating new seeds"
