@@ -3,7 +3,7 @@
   <%= f.input :attachment, as: :file, label: "Upload an attachment" %>
   <%= f.input :date, as: :date, html5: true %>
   <%= f.input :place %>
-  <%= f.input :description %>
+  <%= f.input :description, label: "What happened", placeholder: "Yesterday I was at work..." %>
   <%= f.input :tag_list, as: :hidden %>
   <%= f.submit "Create", class: 'button-small box-shadow w-100 mt-3', id: 'show-bottom' %>
 <% end %>
