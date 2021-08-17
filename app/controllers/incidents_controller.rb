@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :share, :report]
+  before_action :set_incident, only: [:show, :share, :report, :edit, :update]
 
   def show
     @user = User.new
@@ -22,6 +22,19 @@ class IncidentsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    authorize @incident
+    if @incident.update(incident_params)
+      flash[:notice] = "This incident has been updated."
+      redirect_to incident_path(@incident)
+    else
+      render "new"
+    end
+  end
+
   def share
     # check if user already exists; if so, use that user, if not, create user
     @user = User.find_or_initialize_by(email: user_params[:email])
@@ -33,7 +46,7 @@ class IncidentsController < ApplicationController
       @access.user = @user
       @access.incident = @incident
       @access.save!
-      flash[:notice] = "Shared to #{@access.user.email}"
+      flash[:notice] = "Shared to #{@access.user.email}."
       redirect_to incident_path(@incident)
     end
   end
