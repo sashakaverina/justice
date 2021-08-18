@@ -15,7 +15,7 @@ class FaceDetection
 
     request = Net::HTTP::Post.new(url)
     request["content-type"] = 'application/x-www-form-urlencoded'
-    request["x-rapidapi-key"] = '61a3cab27bmsh821e3c62b747becp15c0f8jsn57b7809f20f8'
+    request["x-rapidapi-key"] = ENV['API_KEY']
     request["x-rapidapi-host"] = 'face-verification2.p.rapidapi.com'
     request.body = "linkFile1=#{photo1}&linkFile2=#{photo2}"
 
