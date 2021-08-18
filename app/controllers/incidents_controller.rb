@@ -7,6 +7,7 @@ class IncidentsController < ApplicationController
 
   def new
     @incident = Incident.new
+    @incident.build_antagonizer
     authorize @incident
   end
 
@@ -14,8 +15,27 @@ class IncidentsController < ApplicationController
     @incident = Incident.new(incident_params)
     @user = current_user
     @incident.user = @user
+
     authorize @incident
     if @incident.save
+      if @incident.antagonizer
+        @id = FacesFinding.new(@incident.antagonizer).call
+        if @id
+          # @incident.antagonizer.delete
+          @incident.antagonizer_id = @id
+          @incident.save
+          @match = Incident.where(antagonizer_id: @id).where.not(user: !current_user).take
+          if @match
+          flash[:alert] = "You have been matched with #{@match.user.nickname}"
+          end
+        #create an instance of Match (create model of Match) - check activerecode_advanced
+        #html
+        end
+
+      # else
+      #   #ask for name
+      #   #create new antagonizer
+      end
       redirect_to incident_path(@incident)
     else
       render 'new'
@@ -61,6 +81,7 @@ class IncidentsController < ApplicationController
     end
   end
 
+
   private
 
   def set_incident
@@ -69,7 +90,7 @@ class IncidentsController < ApplicationController
   end
 
   def incident_params
-    params.require(:incident).permit(:title, :description, :attachment, :date, :place, :tag_list)
+    params.require(:incident).permit(:title, :description, :attachment, :date, :place, :tag_list, antagonizer_attributes: [:photos])
   end
 
   def user_params
