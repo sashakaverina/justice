@@ -1,0 +1,21 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">You have been matched with <%= match.user.nickname %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Your antagonizer has been found in our database. Would you like to connect with <%= match.user.nickname %> and discuss it?
+
+
+      <div class="btn btn-primary">Yes</div>
+<!--       <div class="modal-footer">
+        <button type="button" class="button-small-white box-shadow" data-dismiss="modal">Close</button>
+        <button type="button" class="button-small box-shadow">Share now</button>
+      </div> -->
+    </div>
+  </div>
+</div>
