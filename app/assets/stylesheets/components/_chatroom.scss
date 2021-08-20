@@ -1,0 +1,33 @@
+.chat-container{
+    margin-bottom: 5rem;
+    height: 55vh;
+    overflow: scroll;
+}
+
+.chat-title{
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.chat-bubble{
+    line-height: 2rem;
+    margin-top: 2rem;
+}
+
+.message-container{
+    .author{
+        font-weight: bold;
+    }
+    p{
+        color: blue;
+    }
+}
+
+#message_content{
+    width: 14rem;
+}
+
+#new_message{
+    display: flex;
+    gap: 2rem;
+}

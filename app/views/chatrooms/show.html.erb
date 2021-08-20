@@ -19,6 +19,8 @@
   </div>
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
       <%= f.input :content, label: false %>
-      <%= f.submit placeholder: "+" %>
+      <%= button_tag(type: 'submit', class: "chat-button") do %>
+        <i class="far fa-paper-plane"></i>
+      <% end %>
     <% end %>
 </div>
