@@ -4,10 +4,6 @@
     overflow: scroll;
 }
 
-.chat-title{
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
-}
 
 .chat-bubble{
     line-height: 2rem;
@@ -16,6 +12,13 @@
 
 .title{
     display: inline-flex;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    gap: 2rem;
+    i{
+        margin-top: 1rem;
+    }
+
 }
 
 .message-container{

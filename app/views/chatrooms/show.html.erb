@@ -1,7 +1,12 @@
 <%= render 'shared/index_banner', text: "Documentation", class: "d-flex justify-content-center" %>
 
 <div class="container">
-  <h1 class="chat-title"><%= @chatroom.name %></h1>
+  <div class="title">
+    <%# <%= link_to url_for(:back), id: "back" do %>
+      <%# <i class="fas fa-arrow-alt-circle-left"></i> %>
+    <%# end %>
+    <h1 class="chat-title"><%= @chatroom.name %></h1>
+  </div>
   <div class="chat-container mb-3">
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
       <% @chatroom.messages.each do |message| %>
