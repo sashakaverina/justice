@@ -1,12 +1,5 @@
 <h1>#<%= @chatroom.name %></h1>
 
-<style>
-  .chat-container{
-    height: auto;
-  }
-
-</style>
-
 <div class="chat-container mb-3">
   <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
     <% @chatroom.messages.each do |message| %>
