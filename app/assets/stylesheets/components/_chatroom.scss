@@ -1,6 +1,6 @@
 .chat-container{
     margin-bottom: 5rem;
-    height: 55vh;
+    height: 60vh;
     overflow: scroll;
 }
 
@@ -14,20 +14,31 @@
     margin-top: 2rem;
 }
 
+.title{
+    display: inline-flex;
+}
+
 .message-container{
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 14rem; 
+    box-shadow: 1px 1px $light-white;
+    background-color: $baby-blue;
     .author{
         font-weight: bold;
     }
     p{
-        color: blue;
+        color: white;
+        font-weight: bold;
     }
 }
 
 #message_content{
-    width: 14rem;
+    width: 18rem;
 }
 
 #new_message{
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
+    margin-top: 2rem;
 }
