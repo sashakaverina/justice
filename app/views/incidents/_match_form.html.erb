@@ -12,9 +12,11 @@
         We will notify you once they approve your request.
 
       <div class="d-flex mt-2 justify-content-center">
+        <%= link_to chatroom_path(@chatroom) do %>
           <%= simple_form_for @chatroom do |f| %>
             <%= f.input :status, as: :hidden, input_html: { value: :pending} %>
             <%= f.submit 'Yes, please connect me', class: 'btn btn-primary m-3' %>
+          <% end %>
           <% end %>
 
       </div>
