@@ -22,7 +22,7 @@ class IncidentPolicy < ApplicationPolicy
   end
 
   def update?
-    return true
+    true
   end
 
   def edit?
