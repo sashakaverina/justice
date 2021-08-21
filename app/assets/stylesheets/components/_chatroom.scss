@@ -1,0 +1,48 @@
+.chat-container{
+    margin-bottom: 5rem;
+    height: 60vh;
+    overflow: scroll;
+}
+
+
+.chat-bubble{
+    line-height: 2rem;
+    margin-top: 2rem;
+}
+
+.title{
+    display: inline-flex;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    gap: 2rem;
+    i{
+        margin-top: 1rem;
+    }
+
+}
+
+.message-container{
+    margin-top: 2rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 14rem; 
+    box-shadow: 1px 1px $light-white;
+    background-color: $baby-blue;
+    .author{
+        font-weight: bold;
+    }
+    p{
+        color: white;
+        font-weight: bold;
+    }
+}
+
+#message_content{
+    width: 18rem;
+}
+
+#new_message{
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
