@@ -4,19 +4,14 @@ class IncidentsController < ApplicationController
   def show
     @user = User.new
     @match = Incident.where(antagonizer_id: @id).where.not(user: !current_user).take
-    if @match
-
+     if @match
       if Chatroom.between(current_user.id, @match.user.id).present?
-       @chatroom = Chatroom.between(current_user.id, @match.user.id).first
+        @chatroom = Chatroom.between(current_user.id, @match.user.id).first
       else
-       @chatroom = Chatroom.create!(sender_id: current_user.id, recipient_id: @match.user.id)
-       flash[:match_alert]
+        @chatroom = Chatroom.create!(sender_id: current_user.id, recipient_id: @match.user.id)
+        flash[:match_alert] = "Your antagonizer is in our database"
       end
-
-
-
     end
-
   end
 
   def new
@@ -35,17 +30,9 @@ class IncidentsController < ApplicationController
       if @incident.antagonizer
         @id = FacesFinding.new(@incident.antagonizer).call
         if @id
-          # @incident.antagonizer.delete
           @incident.antagonizer_id = @id
           @incident.save
-
-        #create an instance of Match (create model of Match) - check activerecode_advanced
-        #html
         end
-
-      # else
-      #   #ask for name
-      #   #create new antagonizer
       end
       redirect_to incident_path(@incident)
     else
