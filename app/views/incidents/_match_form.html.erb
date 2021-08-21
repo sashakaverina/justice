@@ -1,17 +1,26 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="matchModal" tabindex="-1" role="dialog" aria-labelledby="matchModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">You have been matched with <%= match.user.nickname %></h5>
+        <h5 class="modal-title" id="matchModalLabel">Your antagonizer's face has been found in our database</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Your antagonizer has been found in our database. Would you like to connect with <%= match.user.nickname %> and discuss it?
+        Another user has reported your antagonizer before. Would you like to connect for a private chat?
+        We will notify you once they approve your request.
 
+      <div class="d-flex mt-2 justify-content-center">
+          <%= simple_form_for @chatroom do |f| %>
+            <%= f.input :status, as: :hidden, input_html: { value: :pending} %>
+            <%= f.submit 'Yes, please connect me', class: 'btn btn-primary m-3' %>
+          <% end %>
 
-      <div class="btn btn-primary">Yes</div>
+      </div>
+      <!-- <div class="btn btn-primary m-2" data-dismiss="modal">Connect</div>
+
+      </div> -->
 <!--       <div class="modal-footer">
         <button type="button" class="button-small-white box-shadow" data-dismiss="modal">Close</button>
         <button type="button" class="button-small box-shadow">Share now</button>
