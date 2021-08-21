@@ -14,3 +14,13 @@
     </button>
   </div>
 <% end %>
+
+<% if match_alert %>
+  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+    <button data-toggle="modal" data-target="#matchModal">Your antagonizer has been found in our database</button>
+    <%= render '/incidents/match_form', match: @match, class: "button-small box-shadow w-100 mt-2" %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>

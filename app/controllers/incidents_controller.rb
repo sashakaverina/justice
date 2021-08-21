@@ -3,6 +3,20 @@ class IncidentsController < ApplicationController
 
   def show
     @user = User.new
+    @match = Incident.where(antagonizer_id: @id).where.not(user: !current_user).take
+    if @match
+
+      if Chatroom.between(current_user.id, @match.user.id).present?
+       @chatroom = Chatroom.between(current_user.id, @match.user.id).first
+      else
+       @chatroom = Chatroom.create!(sender_id: current_user.id, recipient_id: @match.user.id)
+       flash[:match_alert]
+      end
+
+
+
+    end
+
   end
 
   def new
@@ -24,10 +38,7 @@ class IncidentsController < ApplicationController
           # @incident.antagonizer.delete
           @incident.antagonizer_id = @id
           @incident.save
-          @match = Incident.where(antagonizer_id: @id).where.not(user: !current_user).take
-          if @match
-          flash[:alert] = "You have been matched with #{@match.user.nickname}"
-          end
+
         #create an instance of Match (create model of Match) - check activerecode_advanced
         #html
         end
