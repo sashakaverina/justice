@@ -30,6 +30,7 @@ import { tagsSearch } from '../components/tags';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { buttonPress } from '../components/button_press';
 import { initChatroomCable } from '../channels/chatroom_channel';
+import { initPinCode } from '../plugins/init_pin_code';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -37,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   tagsSearch();
   initChatroomCable();
+  initPinCode();
 });
