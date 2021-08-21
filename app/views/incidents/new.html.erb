@@ -1,2 +1,6 @@
-<h1>Create a new incident</h1>
-<%= render 'form', incident: @incident %>
+<%= render 'shared/new_banner', text: "Add a new incident" %>
+<div class="container mt-2 product-form">
+  <div style="align-self: center">
+    <%= render 'form', incident: @incident %>
+  </div>
+</div>

@@ -56,6 +56,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    acts-as-taggable-on (7.0.0)
+      activerecord (>= 5.0, < 6.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (10.2.5.0)
@@ -99,6 +101,7 @@ GEM
     ffi (1.15.3)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
+    geocoder (1.6.7)
     globalid (0.5.2)
       activesupport (>= 5.0)
     http-accept (1.7.0)
@@ -147,6 +150,8 @@ GEM
     public_suffix (4.0.6)
     puma (4.3.8)
       nio4r (~> 2.0)
+    pundit (2.1.0)
+      activesupport (>= 3.0.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-proxy (0.7.0)
@@ -253,6 +258,8 @@ GEM
     wicked_pdf (2.1.0)
       activesupport
     wkhtmltopdf-binary (0.12.6.5)
+    wkhtmltopdf-binary-edge (0.12.6.0)
+    wkhtmltopdf-heroku (2.12.6.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
@@ -263,6 +270,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  acts-as-taggable-on (~> 7.0)
   autoprefixer-rails (= 10.2.5)
   bootsnap (>= 1.4.2)
   byebug
@@ -271,6 +279,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass
+  geocoder
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.2)
@@ -278,6 +287,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma (~> 4.1)
+  pundit
   rails (~> 6.0.4)
   redis (~> 4.0)
   sass-rails (>= 6)
@@ -292,6 +302,8 @@ DEPENDENCIES
   webpacker (~> 4.0)
   wicked_pdf
   wkhtmltopdf-binary
+  wkhtmltopdf-binary-edge
+  wkhtmltopdf-heroku
 
 RUBY VERSION
    ruby 2.6.6p146

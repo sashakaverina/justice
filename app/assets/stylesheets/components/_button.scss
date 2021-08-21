@@ -1,3 +1,39 @@
+.button-add {
+  border-radius: 50%;
+  border: solid;
+  border-width: 3px;
+  height: 50px;
+  width: 50px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $purple;
+  padding: 10px;
+  position: fixed;
+  right: 20px;
+  bottom: 45%;
+  backdrop-filter: blur(2px);
+}
+
+.button-share {
+  border-radius: 50%;
+  border: solid;
+  border-width: 3px;
+  height: 50px;
+  width: 50px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $purple;
+  padding: 10px;
+  position: fixed;
+  right: 20px;
+  bottom: 35%;
+  backdrop-filter: blur(2px);
+}
+
 .button-large {
   display: inline-block;
   color: white;
@@ -7,7 +43,10 @@
   border: none;
   font-size: larger;
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 
   a {
     text-decoration: none;
@@ -18,32 +57,77 @@
 .button-small {
   display: inline-block;
   color: white;
+  height: 48px;
   background-color: $purple;
   border-radius: 5px;
-  padding: 8px 30px;
+  text-align: center;
+  padding: 10px;
   border: none;
-  font-size: smaller;
+  font-size: larger;
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   a {
     text-decoration: none;
     color: white;
   }
 }
 
-.button-white {
+.button-small-white {
   display: inline-block;
   color: $purple;
+  height: 48px;
   background-color: white;
   border-radius: 5px;
-  padding: 12px 80px;
+  text-align: center;
+  padding: 10px 20px;
   border: none;
   font-size: larger;
   text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
-  box-shadow: 0 3px 10px $purple;
+  a {
+    text-decoration: none;
+    color: $purple;
+  }
+}
+
+.button-white {
+  display: inline-block;
+  color: white;
+  background-color: #788b9d;
+  border-radius: 5px;
+  height: 48px;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  font-size: larger;
+  text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
+  // box-shadow: 0 3px 10px $purple;
   width: 85%;
   a {
     text-decoration: none;
     color: $purple;
+  }
+  :focus {
+    text-decoration: none;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.box-shadow-inset {
+  box-shadow: inset 2px 2px 20px #5759f2;
+  margin-top: 10px;
+}
+
+.chat-button{
+  border-radius: 5rem;
+  background-color: $baby-purple;
+  height: 35px;
+  width: 33px;
+  border: none;
+  box-shadow: 1px 1px $amethyst; 
+  i{
+    color: white;
+    font-weight: bold;
   }
 }

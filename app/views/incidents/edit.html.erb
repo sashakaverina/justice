@@ -1,0 +1,15 @@
+<%= render 'shared/new_banner', text: "Edit an incident" %>
+<div class="container mt-2 product-form">
+  <div style="align-self: center">
+    <%= simple_form_for @incident do |f| %>
+    <%= f.input :title %>
+    <%= f.input :attachment, as: :file, label: "Upload an attachment" %>
+    <%= f.input :date, as: :date, html5: true %>
+    <%= f.input :place %>
+    <%= f.input :description, label: "What happened", placeholder: "Yesterday I was at work..." %>
+    <%= f.input :tag_list, as: :hidden %>
+    <%= f.submit "Update", class: 'button-small box-shadow w-100 mt-3', id: 'show-bottom' %>
+<% end %>
+
+  </div>
+</div>

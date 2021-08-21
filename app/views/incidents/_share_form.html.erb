@@ -1,0 +1,11 @@
+<%= simple_form_for @user, url: share_path do |f| %>
+  <div class="mt-4 mb-2">
+    <%= f.input :email, label: "Email address:" %>
+  </div>
+  <div class="my-2">
+    <%= f.input :password, label: "Passcode:" %>
+  </div>
+  <div class="pt-4">
+    <%= f.submit "Share now", class: 'button-small box-shadow w-100', id: 'show-bottom' %>
+  </div>
+<% end %>

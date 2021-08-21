@@ -1,0 +1,15 @@
+.incident_show {
+  background-color: white;
+  padding: 24px;
+  width: 95%;
+  border: 2px solid #F8F9FA;
+  border-radius: 5px;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  .title {
+    color: $purple;
+    font-weight: bolder;
+  }
+}
+#show-bottom {
+  margin-bottom: 4em;
+}

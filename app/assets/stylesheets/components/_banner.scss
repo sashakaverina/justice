@@ -1,12 +1,36 @@
-.banner{
+.banner {
   transition: background-color 200ms linear;
   background-color: $purple;
-  height: 64px;
+  height: auto;
   color: white;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  font-size: 24px;
   font-weight: border;
-  justify-content: space-between;
-  padding-top: 14px;
+  padding: 18px 10px 4px 10px;
+  h4 {
+    font-size: 20px;
+  }
+
+  #back {
+    margin-top: 10px;
+    margin-left: 8px;
+    color: white;
+    .fas {
+      font-size: 22px;
+    }
+  }
+  #edit {
+    margin-top: 10px;
+    margin-right: 8px;
+    color: white;
+    .fas {
+      font-size: 20px;
+    }
+  }
+  #title {
+    margin-top: 10px;
+    text-align: center;
+  }
 }
+
+
+

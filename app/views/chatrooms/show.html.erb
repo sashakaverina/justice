@@ -1,0 +1,38 @@
+<%= render 'shared/index_banner', text: "Documentation", class: "d-flex justify-content-center" %>
+
+<div class="container">
+  <div class="title">
+    <%# <%= link_to url_for(:back), id: "back" do %>
+      <%# <i class="fas fa-arrow-alt-circle-left"></i> %>
+    <%# end %>
+    <h1 class="chat-title"><%= @chatroom.name %></h1>
+  </div>
+  <div class="chat-container mb-3">
+    <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+      <% @chatroom.messages.each do |message| %>
+      <div class="chat-bubble">
+        <div class="message-container" id="message-<%= message.id %>">
+          <% if message.user == current_user %>
+            <i class="author">
+              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+            </i>
+            <p><%= message.content %></p>
+          <% else %>
+           <i class="author">
+              <span><%= message.user.nickname %></span>
+              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+            </i>
+            <p><%= message.content %></p>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false %>
+    <%= button_tag(type: 'submit', class: "chat-button") do %>
+      <i class="far fa-paper-plane"></i>
+    <% end %>
+  <% end %>
+</div>
