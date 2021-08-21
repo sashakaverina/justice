@@ -12,20 +12,27 @@
       <% @chatroom.messages.each do |message| %>
       <div class="chat-bubble">
         <div class="message-container" id="message-<%= message.id %>">
-          <i class="author">
-            <span><%= message.user.nickname %></span>
-            <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-          </i>
-          <p><%= message.content %></p>
+          <% if message.user == current_user %>
+            <i class="author">
+              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+            </i>
+            <p><%= message.content %></p>
+          <% else %>
+           <i class="author">
+              <span><%= message.user.nickname %></span>
+              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+            </i>
+            <p><%= message.content %></p>
+          <% end %>
         </div>
       </div>
       <% end %>
     </div>
   </div>
-      <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-        <%= f.input :content, label: false %>
-        <%= button_tag(type: 'submit', class: "chat-button") do %>
-          <i class="far fa-paper-plane"></i>
-        <% end %>
-      <% end %>
+  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false %>
+    <%= button_tag(type: 'submit', class: "chat-button") do %>
+      <i class="far fa-paper-plane"></i>
+    <% end %>
+  <% end %>
 </div>
