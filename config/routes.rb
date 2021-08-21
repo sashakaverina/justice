@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :incidents
   resources :collections
   get '/index', to: "pages#index"
+  post '/index', to: "incidents#share_many", as: :share_many
+
 
   #pdf generating routes
   get '/incidents/:id/report', to: 'incidents#report', as: :report

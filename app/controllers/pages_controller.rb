@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
   def index
     @user = current_user
+    @new_user = User.new
     @incidents = Incident.where(user: @user)
   end
 end

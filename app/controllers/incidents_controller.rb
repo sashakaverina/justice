@@ -38,7 +38,8 @@ class IncidentsController < ApplicationController
     end
   end
 
-  #share_many
+  # def share_many
+  # 1.
 
   def report
     @jp = GoogleTranslate.translate(@incident)
@@ -73,6 +74,6 @@ class IncidentsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :urls)
   end
 end
