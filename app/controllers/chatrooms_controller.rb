@@ -2,6 +2,8 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    @messages = Message.unread_by(current_user)
+    @messages.mark_as_read! :all, for: current_user
     authorize @chatroom
   end
 

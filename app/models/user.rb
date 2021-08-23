@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :incidents, dependent: :destroy
   has_many :accesses, dependent: :destroy
+  acts_as_reader
 
   validates :nickname, presence: true
 end

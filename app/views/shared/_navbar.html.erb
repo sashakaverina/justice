@@ -2,9 +2,16 @@
   <%= link_to index_path, class: "nav-link active" do %>
     <i class="far fa-file-alt mx-3" aria-current="page"></i>
   <% end %>
+
   <%= link_to index_path do %>
     <a href="" class="nav-link"><i class="far fa-comment-alt mx-3" aria-current="page"></i></a>
+    <div class="mt-4" data-controller="counter">
+      <div class="counter">
+       <span data-counter-target="count"><%= Message.unread_by(current_user).count if Message.unread_by(current_user).count >= 1 %></span>
+      </div>
+    </div>
   <% end %>
+
   <%= link_to index_path do %>
     <a href="" class="nav-link"><i class="fas fa-bars mx-3" aria-current="page"></i></a>
     <!-- <i class="bi bi-gear"></i> -->
