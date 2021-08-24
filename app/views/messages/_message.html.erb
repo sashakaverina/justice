@@ -1,7 +1,14 @@
 <div class="message-container" id="message-<%= message.id %>">
-  <i class="author">
-    <span><%= message.user.nickname %></span>
-    <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-  </i>
-  <p><%= message.content %></p>
+  <% if message.user == current_user %>
+    <i class="author">
+      <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+    </i>
+    <p><%= message.content %></p>
+  <% else %>
+    <i class="author">
+      <span><%= message.user.nickname %></span>
+      <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+    </i>
+    <p><%= message.content %></p>
+  <% end %>
 </div>

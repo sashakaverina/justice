@@ -11,13 +11,19 @@
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
       <% @chatroom.messages.each do |message| %>
         <div class="chat-bubble">
-          <div class="message-container" id="message-<%= message.id %>">
-            <%# if message.user == current_user %>
-              <i class="author">
-                <span><%= message.user.nickname %></span>
-                <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-              </i>
-              <p><%= message.content %></p>
+          <div class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
+              <% if message.user == current_user %>
+                <i class="author">
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+              <% else %>
+                <i class="author">
+                  <span><%= message.user.nickname %></span>
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+              <% end %>
           </div>
       </div>
       <% end %>
