@@ -21,7 +21,9 @@ class FaceDetection
 
     response = http.request(request)
     json = JSON.parse(response.read_body)
-    json["data"]["resultMessage"]
+    if json && json["data"]
+      return json["data"]["resultMessage"]
+    end
   end
 
 end
