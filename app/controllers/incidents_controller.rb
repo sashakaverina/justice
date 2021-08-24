@@ -9,6 +9,7 @@ class IncidentsController < ApplicationController
         @chatroom = Chatroom.between(current_user.id, @match.user.id).first
       else
         @chatroom = Chatroom.create!(sender_id: current_user.id, recipient_id: @match.user.id)
+
       end
     end
   end
