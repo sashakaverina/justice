@@ -32,6 +32,7 @@ import { buttonPress } from '../components/button_press';
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { initPinCode } from '../plugins/init_pin_code';
 
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   buttonPress();

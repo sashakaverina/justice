@@ -12,15 +12,35 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = [ "count" ]
 
+  // visible() {
+  //   this.countTarget.innerText = 0;
+  // }
+
   connect() {
     setInterval(this.refresh, 5000);
   }
 
-  // refresh = () => {
-  //   fetch('/chatrooms/', { headers: { accept: "application/json" }})
-  //     .then(response => response.json())
-  //     .then((data) => {
-  //       this.countTarget.innerText = data.messages.length;
-  //     });
-  // }
+
+  refresh = () => {
+    fetch(`/notifications`, { headers: { accept: "application/json" }})
+      .then(response => response.json())
+      .then((data) => {
+        if (data >= 1) {
+          this.element.innerHTML = `<span class="notification">${data}</span>`;
+        }
+        else
+          this.element.innerHTML = "";
+      });
+  }
 }
+
+ // refresh() {
+ //    fetch('/notifica', { headers: { accept: 'application/json' } })
+ //      .then(response => response.json())
+ //      .then((data) => {
+ //        if (this.countTarget.innerText >= 1) {
+ //          console.log(data);
+ //          this.countTarget.innerText = data.innerText;
+ //        }
+ //      });
+ //  }

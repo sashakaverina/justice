@@ -2,8 +2,9 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
-    @messages = Message.unread_by(current_user)
-    @messages.mark_as_read! :all, for: current_user
+    # @messages = Message.unread_by(current_user)
+    # @messages.mark_as_read! :all, for: current_user
+    Notification.where(recipient_id: current_user).destroy_all
     authorize @chatroom
 
     respond_to do |format|

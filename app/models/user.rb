@@ -11,5 +11,5 @@ class User < ApplicationRecord
   acts_as_reader
 
   validates :nickname, presence: true
-  has_many :notifications, foreign_key: :recipient_id
+  has_many :notifications, as: :recipient
 end
