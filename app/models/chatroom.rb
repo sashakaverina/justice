@@ -12,4 +12,10 @@ class Chatroom < ApplicationRecord
     status == 'pending'
   end
 
+  def accepted?
+    if status = "accepted"
+      Message.create(content: "Your chat request has been accepted. Now you can send messages to each other")
+    end
+  end
+
 end

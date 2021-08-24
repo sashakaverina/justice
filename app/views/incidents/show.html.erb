@@ -2,6 +2,17 @@
 
 <div class="container my-2 incident_show">
   <div style="align-self: center">
+    <div>
+
+      <% if @match %>
+    <button type="button" class="btn btn-warning box-shadow w-100 mt-2" id="show-bottom" data-toggle="modal" data-target="#matchmodal">
+      Your antagonizer is in database
+      </button>
+      <%= render 'match_form', match: @match, class: "button-small box-shadow w-100", id: 'show-bottom' %>
+
+    <% end %>
+    </div>
+
     <div class="mb-3">
       <p class="title">Date</p>
       <p> <%= @incident.date.strftime('%a. %B %d, %Y') %> </p>
@@ -39,12 +50,6 @@
         Share
       </button>
       <%= render 'share_modal', user: @user, class: "button-small box-shadow w-100", id: 'show-bottom' %>
-      <% if @match %>
-      <button type="button" class="button-small box-shadow w-100 mt-2" id="show-bottom" data-toggle="modal" data-target="#matchModal">
-        Your antagonizer is in database
-      </button>
-        <%= render 'match_form', match: @match, class: "button-small box-shadow w-100 mt-2" %>
-    <% end %>
     </div>
   </div>
 </div>

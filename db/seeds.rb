@@ -4,6 +4,7 @@ puts "Destroying previous seeds"
 Access.destroy_all
 Incident.destroy_all
 User.destroy_all
+Antagonizer.destroy_all
 puts "Generating new seeds"
 
 
@@ -14,25 +15,25 @@ puts "Generating new seeds"
 nomin = User.create!(
     email: "nmn@gmail.com",
     password: "111111",
-    nickname: "Nomin",
+    nickname: "anon365",
 )
 
 aidan = User.create!(
   email: "aidan@gmail.com",
   password: "111111",
-  nickname: "Aidan",
+  nickname: "stranger_l",
 )
 
 sasha = User.create!(
   email: "sasha@gmail.com",
   password: "111111",
-  nickname: "Sasha",
+  nickname: "mononoke12",
 )
 
 shogo = User.create!(
   email: "shogo@gmail.com",
   password: "111111",
-  nickname: "Shogo",
+  nickname: "lb18sun",
 )
 
 ############################################

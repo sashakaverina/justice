@@ -30,17 +30,9 @@ class IncidentsController < ApplicationController
       if @incident.antagonizer
         @id = FacesFinding.new(@incident.antagonizer).call
         if @id
-          # @incident.antagonizer.delete
           @incident.antagonizer_id = @id
           @incident.save
-
-        #create an instance of Match (create model of Match) - check activerecode_advanced
-        #html
         end
-
-      # else
-      #   #ask for name
-      #   #create new antagonizer
       end
       redirect_to incident_path(@incident)
     else
