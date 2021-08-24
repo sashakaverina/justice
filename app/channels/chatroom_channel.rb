@@ -6,7 +6,7 @@ class ChatroomChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    stop_stream_from @chatroom
+
 
     # Any cleanup needed when channel is unsubscribed
   end

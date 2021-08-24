@@ -16,11 +16,11 @@ export default class extends Controller {
     setInterval(this.refresh, 5000);
   }
 
-  refresh = () => {
-    fetch('/chatrooms/:id', { headers: { accept: "application/json" }})
-      .then(response => response.json())
-      .then((data) => {
-        this.countTarget.innerText = data.messages.length;
-      });
-  }
+  // refresh = () => {
+  //   fetch('/chatrooms/', { headers: { accept: "application/json" }})
+  //     .then(response => response.json())
+  //     .then((data) => {
+  //       this.countTarget.innerText = data.messages.length;
+  //     });
+  // }
 }

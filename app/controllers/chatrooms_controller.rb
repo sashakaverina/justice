@@ -5,6 +5,11 @@ class ChatroomsController < ApplicationController
     @messages = Message.unread_by(current_user)
     @messages.mark_as_read! :all, for: current_user
     authorize @chatroom
+
+    respond_to do |format|
+      format.html
+      format.json { render json: { messages: @messages } }
+    end
   end
 
  def update

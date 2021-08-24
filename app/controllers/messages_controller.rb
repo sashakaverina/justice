@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+
   def new
     @message = Message.new
     authorize @message
@@ -10,14 +11,17 @@ class MessagesController < ApplicationController
     @message.chatroom = @chatroom
     @message.user = current_user
     if @message.save
+      Notification.create(recipient_id: current_user)
+      raise
       redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.id}")
-    else
-      render "chatrooms/show"
-    end
-    ChatroomChannel.broadcast_to(
+      ChatroomChannel.broadcast_to(
       @chatroom,
       render_to_string(partial: "message", locals: { message: @message })
     )
+    else
+      render "chatrooms/show"
+    end
+
   end
 
   private

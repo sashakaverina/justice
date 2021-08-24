@@ -3,13 +3,15 @@
     <i class="far fa-file-alt mx-3" aria-current="page"></i>
   <% end %>
 
-  <%= link_to index_path do %>
+  <%= link_to chatroom_path do %>
     <a href="" class="nav-link"><i class="far fa-comment-alt mx-3" aria-current="page"></i></a>
+    <% if Message.unread_by(current_user).count >= 1 %>
     <div class="mt-4" data-controller="counter">
       <div class="counter">
-       <span data-counter-target="count"><%= Message.unread_by(current_user).count if Message.unread_by(current_user).count >= 1 %></span>
+       <span class=" notification" data-counter-target="count"><%= Message.unread_by(current_user).count %></span>
       </div>
     </div>
+   <% end %>
   <% end %>
 
   <%= link_to index_path do %>
