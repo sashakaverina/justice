@@ -38,8 +38,31 @@ class IncidentsController < ApplicationController
     end
   end
 
-  # def share_many
-  # 1.
+  def share_many
+
+    @incident_ids = JSON.parse(params[:incident_ids])
+    @user = User.find_or_initialize_by(email: user_params[:email])
+    @user.password ||= user_params[:password]
+    @user.nickname = @user.email
+    @accesses = []
+
+    if @user.save
+      @incident_ids.each do |incident_id|
+        @incident = Incident.find(incident_id)
+        authorize @incident
+        @access = Access.new
+        @access.user = @user
+        @access.incident = @incident
+        @accesses << @access
+        @access.save!
+
+
+      end
+      redirect_to my_incidents_path
+      flash[:notice] = "Shared #{@accesses.count} incidents to #{@access.user.email}."
+    end
+  end
+
 
   def report
     @jp = GoogleTranslate.translate(@incident)

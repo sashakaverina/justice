@@ -1,20 +1,11 @@
-// Visit The Stimulus Handbook for more details
-// https://stimulusjs.org/handbook/introduction
-// 
-// This example controller works with specially annotated HTML like:
-//
-// <div data-controller="hello">
-//   <h1 data-target="hello.output"></h1>
-// </div>
-
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "tickbox", "share", "card", "sharebutton" ]
+  static targets = [ "tickbox", "share", "card", "sharebutton", "ids" ]
 
   connect() {
     console.log(this.tickboxTargets, this.shareTarget, this.cardTargets, this.sharebuttonTarget)
-    this.selection = []
+    this.incidentIds = []
     // this.outputTarget.textContent = 'Hello, Stimulus!'
   };
 
@@ -32,12 +23,26 @@ export default class extends Controller {
 
   select(event) {
     event.preventDefault();
-    console.log(event);
+    console.log(event.currentTarget.dataset.incidentId);
     event.currentTarget.classList.toggle("tick-box-select")
     this.sharebuttonTarget.classList.remove('fa-times');
     this.sharebuttonTarget.classList.add('fa-check');
     this.sharebuttonTarget.dataset.toggle = "modal";
     this.sharebuttonTarget.dataset.target = "#exampleModal";
+    const clickedId = event.currentTarget.dataset.incidentId
+    if (this.incidentIds.includes(clickedId)) {
+      function removeItemOnce(arr, value) {
+        var index = arr.indexOf(value);
+        if (index > -1) {
+          arr.splice(index, 1);
+        }
+        return arr;
+      }
+      removeItemOnce(this.incidentIds, clickedId)
+    } else {
+      this.incidentIds.push(clickedId);
+    }
+    this.idsTarget.value = JSON.stringify(this.incidentIds)
   };
 
  // ✅ 1. Tick box that are position:absolute (card relative), start display:none

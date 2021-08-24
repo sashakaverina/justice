@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :incidents
   resources :collections
-  get '/index', to: "pages#index"
-  post '/index', to: "incidents#share_many", as: :share_many
+  get '/my_incidents', to: "pages#my_incidents"
+  post '/share_many', to: "incidents#share_many", as: :share_many
 
 
   #pdf generating routes
