@@ -1,0 +1,36 @@
+<div class="chatrooms">
+  <% chatrooms.each do |chatroom| %>
+  <% if chatroom.accepted? %>
+    <%= link_to chatroom_path(chatroom), class: "incident-card-size" do %>
+
+      <div class="incident-card mx-3 mt-4 d-flex">
+
+          <div>
+              <div class="empty-thumbnail">
+                <i class="far fa-images"></i>
+              </div>
+          </div>
+
+          <div class="incident-title-date mx-3 d-flex flex-column justify-content-around">
+            <h3 class="title pt-2 pb-1">
+              <% if chatroom.sender == current_user %>
+                <%= chatroom.recipient.nickname %>
+              <% else %>
+               <%= chatroom.sender.nickname %>
+               <% end %>
+              </h3>
+            <div class="date d-flex pb-2">
+              <%# image_tag "calendar_today.svg", alt: "calendar icon", width: "18px", class: "mr-1" %>
+              <p> <%# incident.date.strftime('%a. %B %d, %Y') %> </p>
+            </div>
+          </div>
+
+  <!--         <p class=""> 1 attach. </p> -->
+
+      </div>
+    <% end %>
+    <% end %>
+
+  <% end %>
+
+</div>

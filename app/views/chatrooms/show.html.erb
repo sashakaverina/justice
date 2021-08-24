@@ -9,6 +9,7 @@
   </div>
   <div class="chat-container mb-3">
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+      <div class="border border-secondary">Your chat request has been approved. You can send your messages now.</div>
       <% @chatroom.messages.each do |message| %>
         <div class="chat-bubble">
         <div class="message-container" id="message-<%= message.id %>">
