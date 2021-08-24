@@ -5,11 +5,14 @@
 
       <div class="incident-card mx-3 mt-4 d-flex">
 
-          <div>
-              <div class="empty-thumbnail">
-                <i class="far fa-images"></i>
-              </div>
-          </div>
+             <img src="
+             <% if chatroom.sender == current_user %>
+                <%= chatroom.recipient.avatar %>
+              <% else %>
+               <%= chatroom.sender.avatar %>
+               <% end %>
+             " class= "incident-thumbnail">
+
 
           <div class="incident-title-date mx-3 d-flex flex-column justify-content-around">
             <h3 class="title pt-2 pb-1">
