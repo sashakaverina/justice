@@ -118,3 +118,16 @@
   box-shadow: inset 2px 2px 20px #5759f2;
   margin-top: 10px;
 }
+
+.chat-button{
+  border-radius: 5rem;
+  background-color: $baby-purple;
+  height: 35px;
+  width: 33px;
+  border: none;
+  box-shadow: 1px 1px $amethyst; 
+  i{
+    color: white;
+    font-weight: bold;
+  }
+}

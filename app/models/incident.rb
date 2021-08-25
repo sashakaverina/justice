@@ -12,5 +12,7 @@ class Incident < ApplicationRecord
   acts_as_taggable_on :tags
   geocoded_by :place
   after_validation :geocode, if: :will_save_change_to_place?
+  accepts_nested_attributes_for :antagonizer, :allow_destroy => true
+
 
 end

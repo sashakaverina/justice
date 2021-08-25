@@ -2,9 +2,13 @@
   <%= link_to my_incidents_path, class: "nav-link active" do %>
     <i class="far fa-file-alt mx-3" aria-current="page"></i>
   <% end %>
-  <%= link_to my_incidents_path do %>
-    <a href="" class="nav-link"><i class="far fa-comment-alt mx-3" aria-current="page"></i></a>
-  <% end %>
+
+  <a href="/chatrooms" class="nav-link"><i class="far fa-comment-alt mx-3" aria-current="page"></i></a>
+    <!-- <div class="mt-4" data-controller="counter"> -->
+      <% if Notification.where(recipient_id: current_user).count >= 1 %>
+        <span class="notification" data-counter-target="count"><%= Notification.where(recipient_id: current_user).count%></span>
+      <% end %>
+
   <%= link_to my_incidents_path do %>
     <a href="" class="nav-link"><i class="fas fa-bars mx-3" aria-current="page"></i></a>
     <!-- <i class="bi bi-gear"></i> -->

@@ -4,7 +4,7 @@ class IncidentPolicy < ApplicationPolicy
       scope.all
     end
   end
- 
+
   def create?
     return true
   end
@@ -23,5 +23,12 @@ class IncidentPolicy < ApplicationPolicy
 
   def share_many?
     report?
+
+  def update?
+    true
+  end
+
+  def edit?
+    update?
   end
 end

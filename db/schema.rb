@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_141159) do
+ActiveRecord::Schema.define(version: 2021_08_24_032154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 2021_08_12_141159) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "status"
+    t.integer "sender_id"
+    t.integer "recipient_id"
+  end
+
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -73,6 +82,27 @@ ActiveRecord::Schema.define(version: 2021_08_12_141159) do
     t.index ["antagonizer_id"], name: "index_incidents_on_antagonizer_id"
     t.index ["collection_id"], name: "index_incidents_on_collection_id"
     t.index ["user_id"], name: "index_incidents_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "read_marks", id: :serial, force: :cascade do |t|
+    t.string "readable_type", null: false
+    t.integer "readable_id"
+    t.string "reader_type", null: false
+    t.integer "reader_id"
+    t.datetime "timestamp"
+    t.index ["readable_type", "readable_id"], name: "index_read_marks_on_readable_type_and_readable_id"
+    t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", unique: true
+    t.index ["reader_type", "reader_id"], name: "index_read_marks_on_reader_type_and_reader_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -123,5 +153,7 @@ ActiveRecord::Schema.define(version: 2021_08_12_141159) do
   add_foreign_key "incidents", "antagonizers"
   add_foreign_key "incidents", "collections"
   add_foreign_key "incidents", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "taggings", "tags"
 end

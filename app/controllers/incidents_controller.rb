@@ -1,12 +1,22 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :share, :report]
+  before_action :set_incident, only: [:show, :share, :report, :edit, :update]
 
   def show
     @user = User.new
+    @match = Incident.where(antagonizer: @incident.antagonizer).where.not(user: current_user).take
+    if @match
+      if Chatroom.between(current_user.id, @match.user.id).present?
+        @chatroom = Chatroom.between(current_user.id, @match.user.id).first
+      else
+        @chatroom = Chatroom.create!(sender_id: current_user.id, recipient_id: @match.user.id)
+        flash[:match_alert]
+      end
+    end
   end
 
   def new
     @incident = Incident.new
+    @incident.build_antagonizer
     authorize @incident
   end
 
@@ -14,12 +24,47 @@ class IncidentsController < ApplicationController
     @incident = Incident.new(incident_params)
     @user = current_user
     @incident.user = @user
+
     authorize @incident
     if @incident.save
+      if @incident.antagonizer
+        @id = FacesFinding.new(@incident.antagonizer).call
+        if @id
+          @incident.antagonizer_id = @id
+          @incident.save
+        end
+      end
       redirect_to incident_path(@incident)
     else
       render 'new'
     end
+  end
+
+  def edit
+  end
+
+  def update
+    authorize @incident
+    # if incident does not have an antagonizer
+    if @incident.antagonizer.nil?
+      # check if antagonizer feature matches other antagonizer
+      @matching_id = FacesFinding.new(@incident.antagonizer).call
+      if @matching_id.nil?
+        # if does not match create an antagonizer
+        @antagonizer = Antagonizer.new(photos: params[:antagonizer_photos])
+        @antagonizer.save
+      else
+        @antagonizer = Antagonizer.find(@matching_id)
+      end
+      # add the antagonizer to the incident
+      @incident.antagonizer = @antagonizer
+      @incident.save
+    else
+      # if incident has an antagonizer
+      @incident.antagonizer.update(photos: params[:antagonizer_photos])
+    end
+    flash[:notice] = "This incident has been updated."
+    redirect_to incident_path(@incident)
   end
 
   def share
@@ -33,7 +78,7 @@ class IncidentsController < ApplicationController
       @access.user = @user
       @access.incident = @incident
       @access.save!
-      flash[:notice] = "Shared to #{@access.user.email}"
+      flash[:notice] = "Shared to #{@access.user.email}."
       redirect_to incident_path(@incident)
     end
   end
@@ -84,6 +129,7 @@ class IncidentsController < ApplicationController
       end
     end
   end
+
 
   private
 
