@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :incidents
   resources :collections
+
+  get '/my_incidents', to: "pages#my_incidents"
+  post '/share_many', to: "incidents#share_many", as: :share_many
+
+
   resources :chatrooms, only: [:show, :update, :index] do
     resources :messages, only: :create
   end
