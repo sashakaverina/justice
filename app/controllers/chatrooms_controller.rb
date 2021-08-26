@@ -1,4 +1,5 @@
 class ChatroomsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_chatroom, only: [:show, :update]
 
   def index
@@ -24,14 +25,13 @@ class ChatroomsController < ApplicationController
 
 private
 
- def chat_params
-  # TODO: check your model, might be different than mine
-  params.require(:chatroom).permit(:sender_id, :recipient_id, :status)
- end
+  def chat_params
+    # TODO: check your model, might be different than mine
+    params.require(:chatroom).permit(:sender_id, :recipient_id, :status)
+  end
 
  def set_chatroom
     @chatroom = Chatroom.find(params[:id])
     authorize @chatroom
   end
-
 end
