@@ -11,7 +11,6 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
-    authorize @chatroom
     if @message.save
       if @chatroom.sender == current_user
         MessageNotification.with(recipient_id: @chatroom.recipient).deliver(@chatroom.recipient)
@@ -19,8 +18,8 @@ class MessagesController < ApplicationController
         MessageNotification.with(recipient_id: @chatroom.sender).deliver(@chatroom.sender)
       end
       redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.id}")
-
-
+      
+      
     else
       render "chatrooms/show"
     end
@@ -28,7 +27,7 @@ class MessagesController < ApplicationController
       @chatroom,
       render_to_string(partial: "message", locals: { message: @message })
     )
-
+    authorize @message
   end
 
   private

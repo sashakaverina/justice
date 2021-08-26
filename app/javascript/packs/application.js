@@ -32,6 +32,7 @@ import { buttonPress } from '../components/button_press';
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { initPinCode } from '../plugins/init_pin_code';
 import { autoscroll } from '../components/chat_bottom';
+import { clearMsg } from '../components/chat_input';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -41,6 +42,7 @@ document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   initPinCode();
   autoscroll();
+  clearMsg();
 });
 
 import "controllers"
