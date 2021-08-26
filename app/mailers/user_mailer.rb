@@ -6,6 +6,6 @@ class UserMailer < ApplicationMailer
 
   def share(user)
     @user = user
-    mail (to: @user.email, subject: "A Report Has Been Shared With You")
+    mail( to: @user.email, subject: "A Report Has Been Shared With You")
   end
 end
