@@ -25,7 +25,7 @@
     margin-top: 2rem;
     border-radius: 1rem;
     padding: 1rem;
-    width: 20rem; 
+    width: 14rem; 
     box-shadow: 1px 1px $light-white;
     background-color: $baby-blue;
     .author{
@@ -48,6 +48,7 @@
 }
 
 
+
 // .chat-card-notification {
 
 //   position: relative;
@@ -55,4 +56,9 @@
 
 .chat-notification {
   position: relative;
+}
+
+#right-chat{
+    position: relative;
+    left: 7rem;
 }

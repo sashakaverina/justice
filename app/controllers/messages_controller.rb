@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def new
     @message = Message.new
@@ -18,8 +19,8 @@ class MessagesController < ApplicationController
         MessageNotification.with(recipient: @chatroom.sender, chatroom: @chatroom).deliver(@chatroom.sender)
       end
       redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.id}")
-
-
+      
+      
     else
       render "chatrooms/show"
     end
@@ -27,7 +28,7 @@ class MessagesController < ApplicationController
       @chatroom,
       render_to_string(partial: "message", locals: { message: @message })
     )
-
+    authorize @message
   end
 
   private
@@ -36,4 +37,3 @@ class MessagesController < ApplicationController
    params.require(:message).permit(:content)
   end
 end
-

@@ -39,10 +39,6 @@
       Share
     </button> -->
 
-    <%= link_to new_incident_path, "data-multiselect-target": "share", "data-action": "click->multiselect#share", "type": "button" do %>
-      <i class="fas fa-share-alt button-share" data-multiselect-target="sharebutton"></i>
-    <% end %>
 
-    <%= render 'share_modal_incidents', user: @new_user, id: 2, class: "button-small box-shadow w-100 mt-4", id: 'show-bottom' %>
 
 </div>

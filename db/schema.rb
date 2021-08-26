@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_08_26_105752) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,7 +80,9 @@ ActiveRecord::Schema.define(version: 2021_08_26_105752) do
     t.string "title"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "chatroom_id"
     t.index ["antagonizer_id"], name: "index_incidents_on_antagonizer_id"
+    t.index ["chatroom_id"], name: "index_incidents_on_chatroom_id"
     t.index ["collection_id"], name: "index_incidents_on_collection_id"
     t.index ["user_id"], name: "index_incidents_on_user_id"
   end
@@ -165,6 +168,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_105752) do
   add_foreign_key "accesses", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "incidents", "antagonizers"
+  add_foreign_key "incidents", "chatrooms"
   add_foreign_key "incidents", "collections"
   add_foreign_key "incidents", "users"
   add_foreign_key "messages", "chatrooms"
