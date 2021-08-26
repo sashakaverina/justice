@@ -78,6 +78,7 @@ class IncidentsController < ApplicationController
       @access.user = @user
       @access.incident = @incident
       @access.save!
+      UserMailer.share(@user).deliver
       flash[:notice] = "Shared to #{@access.user.email}."
       redirect_to incident_path(@incident)
     end
@@ -100,8 +101,7 @@ class IncidentsController < ApplicationController
         @access.incident = @incident
         @accesses << @access
         @access.save!
-
-
+        UserMailer.share(@user).deliver
       end
       redirect_to my_incidents_path
       flash[:notice] = "Shared #{@accesses.count} incidents to #{@access.user.email}."
