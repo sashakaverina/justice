@@ -61,5 +61,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.delivery_method = :smtp #:letter_opener
+  config.action_mailer.default_url_options = { host: ENV["ACTION_MAILER_HOST_URL"]  }
+  config.action_mailer.raise_delivery_errors = true
   config.hosts << /[a-z0-9]+\.ngrok\.io/
 end
