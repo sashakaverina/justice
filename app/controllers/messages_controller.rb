@@ -11,11 +11,12 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
+    authorize @message
     if @message.save
       if @chatroom.sender == current_user
-        MessageNotification.with(recipient_id: @chatroom.recipient).deliver(@chatroom.recipient)
+        MessageNotification.with(recipient: @chatroom.recipient, chatroom: @chatroom).deliver(@chatroom.recipient)
       else
-        MessageNotification.with(recipient_id: @chatroom.sender).deliver(@chatroom.sender)
+        MessageNotification.with(recipient: @chatroom.sender, chatroom: @chatroom).deliver(@chatroom.sender)
       end
       redirect_to chatroom_path(@chatroom, anchor: "message-#{@message.id}")
       
