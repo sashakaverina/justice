@@ -26,7 +26,7 @@ const initPinCode = function() {
           $("#fields .numberfield").addClass("right");
           $("#numbers").addClass("hide");
           $("#anleitung p").html("Amazing!<br>You entered the correct Code!");
-          window.location.pathname = '/index';
+          window.location.pathname = '/my_incidents';
 
         } else {
           // Wrong PIN!

@@ -3,11 +3,16 @@
     <i class="far fa-file-alt mx-3" aria-current="page"></i>
   <% end %>
 
-  <a href="/chatrooms" class="nav-link"><i class="far fa-comment-alt mx-3" aria-current="page"></i></a>
-    <!-- <div class="mt-4" data-controller="counter"> -->
+
+  <a href="/chatrooms" class="nav-link mx-3 ">
+    <i class="far fa-comment-alt chat-notification" aria-current="page">
       <% if Notification.where(recipient_id: current_user).count >= 1 %>
-        <span class="notification" data-counter-target="count"><%= Notification.where(recipient_id: current_user).count%></span>
+        <span class="notification" data-controller="counter" data-counter-target="count"><%= Notification.where(recipient_id: current_user).count%></span>
       <% end %>
+    </i>
+
+
+  </a>
 
   <%= link_to log_out_path, class: "nav-link" do %>
     <i class="far fa-user-circle mx-3" aria-current="page"></i></a>

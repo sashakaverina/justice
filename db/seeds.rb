@@ -1,6 +1,8 @@
 require 'open-uri'
 
 puts "Destroying previous seeds"
+Chatroom.destroy_all
+Notification.destroy_all
 Access.destroy_all
 Incident.destroy_all
 User.destroy_all
