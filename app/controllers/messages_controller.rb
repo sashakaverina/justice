@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def new
     @message = Message.new
@@ -10,6 +11,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
+    authorize @chatroom
     if @message.save
       if @chatroom.sender == current_user
         MessageNotification.with(recipient_id: @chatroom.recipient).deliver(@chatroom.recipient)

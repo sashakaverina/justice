@@ -39,6 +39,7 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   tagsSearch();
   initChatroomCable();
+  initPinCode();
   autoscroll();
 });
 

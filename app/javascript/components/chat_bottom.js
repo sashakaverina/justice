@@ -9,4 +9,4 @@ const autoscroll = () => {
     chat.scrollHeight = lastChat.scrollHeight;
 }
 
-export { autoscroll }
+export { autoscroll };
