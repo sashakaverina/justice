@@ -3,7 +3,7 @@ class ChatroomsController < ApplicationController
   before_action :set_chatroom, only: [:show, :update]
 
   def index
-    @chatrooms = policy_scope(Chatroom).where(sender_id: current_user).or(Chatroom.where(recipient_id: current_user))
+    @chatrooms = policy_scope(Chatroom).where(["sender_id = ? or recipient_id = ?", current_user, current_user])
   end
 
   def show

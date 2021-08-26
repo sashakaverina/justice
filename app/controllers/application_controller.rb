@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  after_action :verify_authorized, except: [:my_incidents,:auth], unless: :skip_pundit?
-  after_action :verify_policy_scoped, only: :my_incidents, unless: :skip_pundit?
+  after_action :verify_authorized, except: [:my_incidents,:index, :auth], unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: [:index, :my_incidents], unless: :skip_pundit?
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
