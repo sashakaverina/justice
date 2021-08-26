@@ -4,4 +4,6 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.welcome(User.last)
   end
 
+  def share
+    UserMailer.share(User.last)
 end
