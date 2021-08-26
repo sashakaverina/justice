@@ -18,6 +18,7 @@ export default class extends Controller {
 
   connect() {
     setInterval(this.refresh, 5000);
+
   }
 
 
@@ -27,20 +28,10 @@ export default class extends Controller {
       .then((data) => {
         if (data >= 1) {
           this.element.innerHTML = `<span class="notification">${data}</span>`;
+          console.log(this);
         }
         else
           this.element.innerHTML = "";
       });
   }
 }
-
- // refresh() {
- //    fetch('/notifica', { headers: { accept: 'application/json' } })
- //      .then(response => response.json())
- //      .then((data) => {
- //        if (this.countTarget.innerText >= 1) {
- //          console.log(data);
- //          this.countTarget.innerText = data.innerText;
- //        }
- //      });
- //  }

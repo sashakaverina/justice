@@ -42,4 +42,4 @@ document.addEventListener('turbolinks:load', () => {
   initPinCode();
 });
 
-import "controllers"
+import "controllers";
