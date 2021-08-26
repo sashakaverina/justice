@@ -23,6 +23,7 @@ class IncidentPolicy < ApplicationPolicy
 
   def share_many?
     report?
+  end
 
   def update?
     true
