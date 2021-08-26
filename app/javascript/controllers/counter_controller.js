@@ -18,7 +18,6 @@ export default class extends Controller {
 
   connect() {
     setInterval(this.refresh, 5000);
-    console.log(this);
   }
 
 
@@ -28,7 +27,7 @@ export default class extends Controller {
       .then((data) => {
         if (data >= 1) {
           this.element.innerText = data;
-          console.log(this);
+          console.log(this.element.innerText);
         }
         else
           this.element.innerHTML = "";
