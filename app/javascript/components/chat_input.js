@@ -4,8 +4,8 @@ const chatBtn = document.querySelector('.chat-button');
 
 const clearMsg = () => {
     chatBtn.addEventListener('click', (event) => {
-        chatInput.innerHTML = ' '; 
-    });    
+        chatInput.innerHTML = ' ';
+    });
 }
 
 export { clearMsg };
