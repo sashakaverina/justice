@@ -6,7 +6,6 @@ class Incident < ApplicationRecord
   belongs_to :user
 
   validates :description, presence: true
-  validates :date, presence: true
 
   has_one_attached :attachment
 
@@ -14,6 +13,4 @@ class Incident < ApplicationRecord
   geocoded_by :place
   after_validation :geocode, if: :will_save_change_to_place?
   accepts_nested_attributes_for :antagonizer, :allow_destroy => true
-
-
 end
