@@ -22,6 +22,8 @@ gem 'redis', '~> 4.0'
 gem 'cloudinary', '~> 1.16.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'letter_opener', group: :development
+
 gem 'wkhtmltopdf-binary-edge'
 gem 'pundit'
 gem 'acts-as-taggable-on', '~> 7.0'

@@ -36,7 +36,7 @@ sasha = User.create!(
 )
 
 shogo = User.create!(
-  email: "shogo@gmail.com",
+  email: "shogomiyagi94@gmail.com",
   password: "111111",
   nickname: "lb18sun",
   avatar: "https://res.cloudinary.com/dnxpai5uo/image/upload/v1629809291/shogo_monkws.png"
