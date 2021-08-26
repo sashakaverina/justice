@@ -9,4 +9,8 @@ class PagesController < ApplicationController
     @new_user = User.new
     @incidents = Incident.where(user: @user)
   end
+
+  def log_out
+    @user = current_user
+  end
 end
