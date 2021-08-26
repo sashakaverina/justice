@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  after_action :verify_authorized, except: [:index,:auth], unless: :skip_pundit?
-  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+  after_action :verify_authorized, except: [:my_incidents,:auth], unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: :my_incidents, unless: :skip_pundit?
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    index_path
+    my_incidents_path
   end
 
   def after_sign_out_path_for(resource_or_scope)
