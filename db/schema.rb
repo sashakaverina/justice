@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_20_132846) do
+ActiveRecord::Schema.define(version: 2021_08_24_032337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,7 +79,9 @@ ActiveRecord::Schema.define(version: 2021_08_20_132846) do
     t.string "title"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "chatroom_id"
     t.index ["antagonizer_id"], name: "index_incidents_on_antagonizer_id"
+    t.index ["chatroom_id"], name: "index_incidents_on_chatroom_id"
     t.index ["collection_id"], name: "index_incidents_on_collection_id"
     t.index ["user_id"], name: "index_incidents_on_user_id"
   end
@@ -92,6 +94,29 @@ ActiveRecord::Schema.define(version: 2021_08_20_132846) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
+  end
+
+  create_table "read_marks", id: :serial, force: :cascade do |t|
+    t.string "readable_type", null: false
+    t.integer "readable_id"
+    t.string "reader_type", null: false
+    t.integer "reader_id"
+    t.datetime "timestamp"
+    t.index ["readable_type", "readable_id"], name: "index_read_marks_on_readable_type_and_readable_id"
+    t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", unique: true
+    t.index ["reader_type", "reader_id"], name: "index_read_marks_on_reader_type_and_reader_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -140,6 +165,7 @@ ActiveRecord::Schema.define(version: 2021_08_20_132846) do
   add_foreign_key "accesses", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "incidents", "antagonizers"
+  add_foreign_key "incidents", "chatrooms"
   add_foreign_key "incidents", "collections"
   add_foreign_key "incidents", "users"
   add_foreign_key "messages", "chatrooms"

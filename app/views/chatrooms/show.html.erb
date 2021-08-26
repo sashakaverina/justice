@@ -1,4 +1,4 @@
-<%= render 'shared/index_banner', text: "Documentation", class: "d-flex justify-content-center" %>
+<%= render 'shared/index_banner', text: "Chat", class: "d-flex justify-content-center" %>
 
 <div class="container">
   <div class="title">
@@ -9,22 +9,25 @@
   </div>
   <div class="chat-container mb-3">
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+      <div class="border border-secondary">Your chat request has been approved. You can send your messages now.</div>
       <% @chatroom.messages.each do |message| %>
-      <div class="chat-bubble">
-        <div class="message-container" id="message-<%= message.id %>">
+        <div class="chat-bubble">
           <% if message.user == current_user %>
-            <i class="author">
-              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-            </i>
-            <p><%= message.content %></p>
-          <% else %>
-           <i class="author">
-              <span><%= message.user.nickname %></span>
-              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-            </i>
-            <p><%= message.content %></p>
-          <% end %>
-        </div>
+            <div id="right-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
+                <i class="author">
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+            </div>
+            <% else %>
+            <div id="left-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
+                <i class="author">
+                  <span><%= message.user.nickname %></span>
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+            </div>
+            <% end %>
       </div>
       <% end %>
     </div>
