@@ -9,8 +9,8 @@
         <span class="notification" data-counter-target="count"><%= Notification.where(recipient_id: current_user).count%></span>
       <% end %>
 
-  <%= link_to my_incidents_path do %>
-    <a href="" class="nav-link"><i class="fas fa-bars mx-3" aria-current="page"></i></a>
+  <%= link_to log_out_path, class: "nav-link" do %>
+    <i class="far fa-user-circle mx-3" aria-current="page"></i></a>
     <!-- <i class="bi bi-gear"></i> -->
   <% end %>
 </div>

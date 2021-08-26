@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :collections
 
   get '/my_incidents', to: "pages#my_incidents"
+  get '/log_out', to: "pages#log_out"
   post '/share_many', to: "incidents#share_many", as: :share_many
 
 
