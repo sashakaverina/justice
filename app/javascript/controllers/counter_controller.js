@@ -1,6 +1,6 @@
-// Visit The Stimulus Handbook for more details 
+// Visit The Stimulus Handbook for more details
 // https://stimulusjs.org/handbook/introduction
-// 
+//
 // This example controller works with specially annotated HTML like:
 //
 // <div data-controller="hello">
@@ -18,7 +18,7 @@ export default class extends Controller {
 
   connect() {
     setInterval(this.refresh, 5000);
-
+    console.log(this);
   }
 
 
@@ -27,7 +27,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         if (data >= 1) {
-          this.element.innerHTML = `<span class="notification">${data}</span>`;
+          this.element.innerText = data;
           console.log(this);
         }
         else

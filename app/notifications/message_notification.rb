@@ -13,8 +13,7 @@ class MessageNotification < Noticed::Base
 
   # Add required params
   #
-  param :recipient_id
-
+  param :recipient, :chatroom
   # Define helper methods to make rendering easier.
   #
   # def message
