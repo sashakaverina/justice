@@ -45,4 +45,4 @@ document.addEventListener('turbolinks:load', () => {
   clearMsg();
 });
 
-import "controllers"
+import "controllers";

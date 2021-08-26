@@ -6,10 +6,10 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def new?
-    record.user == user
+    return true
   end
 
   def create?
-    record.user == user
+    return true
   end
 end
