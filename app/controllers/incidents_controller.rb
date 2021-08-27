@@ -47,6 +47,7 @@ class IncidentsController < ApplicationController
   end
 
   def update
+    @incidnet = Incident.find(params[:id])
     authorize @incident
     # if incident does not have an antagonizer
     if @incident.antagonizer.nil?
@@ -66,8 +67,13 @@ class IncidentsController < ApplicationController
       # if incident has an antagonizer
       @incident.antagonizer.update(photos: params[:antagonizer_photos])
     end
-    flash[:notice] = "This incident has been updated."
-    redirect_to incident_path(@incident)
+    if @incident.update(incident_params)
+      redirect_to incident_path(@incident)
+      flash[:notice] = "This incident has been updated."
+    else
+      render "new"
+      flash[:notice] = "This incident could not be updated."
+    end
   end
 
   def share
