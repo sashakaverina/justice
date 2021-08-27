@@ -1,11 +1,15 @@
-const chatInput = document.getElementById('message_content');
-console.log(chatInput);
-const chatBtn = document.querySelector('.chat-button');
-
 const clearMsg = () => {
-    chatBtn.addEventListener('click', (event) => {
-        chatInput.innerHTML = ' ';
-    });
+    const inputField = () => {
+        const chatInput = document.querySelector('.message-content');
+        const chatBtn = document.querySelector('.chat-button');
+        if(chatInput){
+            if(chatBtn){
+                chatBtn.addEventListener('click', (event) => {
+                    chatInput.innerHTML = ' ';
+                });
+            }
+        }
+    }
 }
 
 export { clearMsg };

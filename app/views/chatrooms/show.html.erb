@@ -33,7 +33,7 @@
     </div>
   </div>
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false %>
+    <%= f.input :content, label: false, class: "message-content" %>
     <%= button_tag(type: 'submit', class: "chat-button") do %>
       <i class="far fa-paper-plane"></i>
     <% end %>
