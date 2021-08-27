@@ -1,3 +1,6 @@
+const approveMsg = document.querySelector('#approve-msg');
+console.log(approveMsg);
+
 const clearMsg = () => {
     const inputField = () => {
         const chatInput = document.querySelector('.message-content');
@@ -8,7 +11,7 @@ const clearMsg = () => {
                 if(chatBtn){
                     chatBtn.addEventListener('click', (event) => {
                         chatInput.innerHTML = ' ';
-                        approveMsg.innerHHTML = ' ';
+                        approveMsg.innerText = ' ';
                     });
                 }
             }
