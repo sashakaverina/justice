@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   has_many :incidents, dependent: :destroy
   has_many :accesses, dependent: :destroy
-  has_many :chatrooms, through: :sender_id
-  has_many :chatrooms, through: :recipient_id
+  has_many :chatrooms_as_sender, through: :sender_id, source: :chatrooms
+  has_many :chatrooms_as_recipient, through: :recipient_id, source: :chatrooms
   acts_as_reader
 
   validates :nickname, presence: true

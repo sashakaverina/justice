@@ -3,13 +3,16 @@ class IncidentsController < ApplicationController
 
   def show
     @user = User.new
-    @match = Incident.where(antagonizer: @incident.antagonizer).where.not(user: current_user).take
-    if @match
-      if Chatroom.between(current_user.id, @match.user.id).present?
-        @chatroom = Chatroom.between(current_user.id, @match.user.id).first
-      else
-        @chatroom = Chatroom.create!(sender_id: current_user.id, recipient_id: @match.user.id)
-        flash[:match_alert]
+    unless @incident.antagonizer.nil?
+      @match = Incident.where(antagonizer: @incident.antagonizer).where.not(user: current_user).take
+
+      if @match
+        if Chatroom.between(current_user.id, @match.user.id).present?
+          @chatroom = Chatroom.between(current_user.id, @match.user.id).first
+        else
+          @chatroom = Chatroom.create!(sender_id: current_user.id, recipient_id: @match.user.id)
+          flash[:match_alert]
+        end
       end
     end
   end

@@ -1,6 +1,7 @@
 class Chatroom < ApplicationRecord
 
-  enum status: [:accepted, :pending, :rejected]
+  enum status: [:created, :pending, :accepted, :rejected]
+
   has_noticed_notifications
   belongs_to :sender, foreign_key: :sender_id, class_name: 'User'
   belongs_to :recipient, foreign_key: :recipient_id, class_name: 'User'
@@ -9,14 +10,13 @@ class Chatroom < ApplicationRecord
   scope :between, -> (sender_id, recipient_id) do
     where("(chatrooms.sender_id = ? AND chatrooms.recipient_id =?) OR (chatrooms.sender_id = ? AND chatrooms.recipient_id =?)", sender_id, recipient_id, recipient_id, sender_id)
   end
+
   def pending?
     status == 'pending'
   end
 
-  def accepted?
-    if status == "accepted"
-      Message.create(content: "Your chat request has been accepted. Now you can send messages to each other")
-    end
+  def mark_as_accepted!
+    status = "accepted"
   end
 
 end
