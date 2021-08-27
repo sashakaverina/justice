@@ -1,6 +1,6 @@
 class ChatroomsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_chatroom, only: [:show, :update]
+  before_action :set_chatroom, only: [:show, :edit, :update]
 
   def index
     @chatrooms = policy_scope(Chatroom).where(["sender_id = ? or recipient_id = ?", current_user, current_user])
@@ -19,8 +19,17 @@ class ChatroomsController < ApplicationController
     end
   end
 
- def update
-  @chatroom.update(chat_params)
+  def
+
+  def edit
+  end
+
+  def update
+  if @chatroom.update(chat_params)
+     redirect_to my_incidents_path
+    else
+     render "new"
+    end
  end
 
 private

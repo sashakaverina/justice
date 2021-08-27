@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post '/share_many', to: "incidents#share_many", as: :share_many
 
 
-  resources :chatrooms, only: [:show, :update, :index] do
+  resources :chatrooms, only: [:show, :edit, :update, :index] do
     resources :messages, only: :create
   end
 
