@@ -27,7 +27,6 @@
     padding: 1rem;
     width: 14rem; 
     box-shadow: 1px 1px $light-white;
-    background-color: $baby-blue;
     .author{
         font-weight: bold;
     }
@@ -61,4 +60,9 @@
 #right-chat{
     position: relative;
     left: 7rem;
+    background-color: $baby-blue;
+}
+
+#left-chat{
+    background-color:$msg-grey;
 }
