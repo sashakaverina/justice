@@ -27,23 +27,18 @@ class IncidentsController < ApplicationController
     @incident = Incident.new(incident_params)
     @user = current_user
     @incident.user = @user
+    @match_id = face_check if incident_params[:antagonizer_attributes][:photos].present?
 
     authorize @incident
     if @incident.save
-       if @incident.antagonizer.nil?
-      # check if antagonizer feature matches other antagonizer
-         @matching_id = FacesFinding.new(@incident.antagonizer).call
-           if @matching_id.nil? || @matching_id.empty?
-        # if does not match create an antagonizer
-            @antagonizer = Antagonizer.create!(photos: params[:antagonizer_photos])
-           else
-            @antagonizer = Antagonizer.find(@matching_id.first.id)
-           end
+      if @match_id.present?
+        # check if antagonizer feature matches other antagonizer
+        @antagonizer = @match_id.first
+      else
+        @antagonizer = Antagonizer.new(photos: incident_params[:antagonizer_attributes][:photos])
+      end
       # add the antagonizer to the incident
-      @incident.antagonizer = @antagonizer
-      @incident.save
-    end
-
+      @incident.update(antagonizer: @antagonizer)
       redirect_to incident_path(@incident)
     else
       render 'new'
@@ -60,28 +55,25 @@ class IncidentsController < ApplicationController
   end
 
   def update
-    @incidnet = Incident.find(params[:id])
+    @user = current_user
+    @incident.user = @user
+    @match_id = face_check_update if params[:antagonizer_photos].present?
     authorize @incident
-    # if incident does not have an antagonizer
-    if @incident.antagonizer.nil?
-      # check if antagonizer feature matches other antagonizer
-      @matching_id = FacesFinding.new(@incident.antagonizer).call
-      if @matching_id.nil?
-        # if does not match create an antagonizer
-        @antagonizer = Antagonizer.new(photos: params[:antagonizer_photos])
-        @antagonizer.save
+    if @incident.save
+      if @match_id.present?
+        # check if antagonizer feature matches other antagonizer
+        @antagonizer = @match_id.first
       else
-        @antagonizer = Antagonizer.find(@matching_id)
+        @antagonizer = Antagonizer.new(photos: params[:antagonizer_photos])
       end
       # add the antagonizer to the incident
-      @incident.antagonizer = @antagonizer
-      @incident.save
+      @incident.update(antagonizer: @antagonizer)
+      @incident.update(incident_params)
+      flash[:notice] = "This incident has been updated."
+      redirect_to incident_path(@incident)
     else
-      # if incident has an antagonizer
-      @incident.antagonizer.update(photos: params[:antagonizer_photos])
+      render 'edit'
     end
-    flash[:notice] = "This incident has been updated."
-    redirect_to incident_path(@incident)
   end
 
   def share
@@ -149,13 +141,23 @@ class IncidentsController < ApplicationController
 
   private
 
+  def face_check
+    @photo = Cloudinary::Uploader.upload(incident_params[:antagonizer_attributes][:photos])
+    FacesFinding.new(@photo["url"]).call
+  end
+
+  def face_check_update
+    @photo = Cloudinary::Uploader.upload(params[:antagonizer_photos])
+    FacesFinding.new(@photo["url"]).call
+  end
+
   def set_incident
     @incident = Incident.find(params[:id])
     authorize @incident
   end
 
   def incident_params
-    params.require(:incident).permit(:title, :description, :attachment, :date, :place, :tag_list)
+    params.require(:incident).permit(:title, :description, :attachment, :date, :place, :tag_list, antagonizer_attributes:[:photos])
   end
 
   def user_params
