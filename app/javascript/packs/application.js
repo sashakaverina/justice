@@ -24,6 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import "animate.css";
 
 // Internal imports, e.g:
 import { tagsSearch } from '../components/tags';
