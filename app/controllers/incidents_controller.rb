@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :share, :report, :edit, :update]
+  before_action :set_incident, only: [:show, :share, :report, :edit, :update, :destroy]
 
   def show
     @user = User.new
@@ -44,6 +44,12 @@ class IncidentsController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+    @incident.destroy
+    flash[:notice] = "The incident has been deleted from the database."
+    redirect_to my_incidents_path
   end
 
   def update
