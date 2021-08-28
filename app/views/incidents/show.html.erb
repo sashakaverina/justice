@@ -5,11 +5,15 @@
     <div style="align-self: center">
       <div>
       <% if @match %>
-    <button type="button" class="btn btn-warning box-shadow w-100 mt-2" id="show-bottom" data-toggle="modal" data-target="#matchmodal">
-      Your antagonizer is in database
-      </button>
-      <%= render 'match_form', chatroom: @chatroom, class: "button-small box-shadow w-100", id: 'show-bottom' %>
 
+
+    <!-- <button type="button" class="btn btn-warning box-shadow w-100 mt-2" id="show-bottom" data-toggle="modal" data-target="#matchmodal">
+      Your antagonizer is in database
+      </button> -->
+      <%= render 'match_form', chatroom: @chatroom, class: "button-small box-shadow w-100", id: 'show-bottom' %>
+      <div>
+        <i class="fas fa-user-check pt-3"></i>
+      </div>
       <% end %>
       </div>
 

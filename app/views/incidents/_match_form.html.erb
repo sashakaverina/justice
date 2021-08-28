@@ -1,17 +1,45 @@
 <div class="modal fade matchmodal" id="matchmodal" tabindex="-1" role="dialog" aria-labelledby="matchmodalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="matchmodalLabel">Your antagonizer's face has been found in our database</h5>
+      <div class="modal-header d-flex justify-content-around">
+        <div>
+          <i class="fas fa-user-check pt-1"></i>
+        </div>
+        <div>
+          <p class="modal-title ml-2" id="matchmodalLabel">We found a match in our database.</p>
+        </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        Another user has reported your antagonizer before. Would you like to connect for a private chat?
-        We will notify you once they approve your request.
+      <div class="modal-body mb-2">
+        <div>
 
-      <div class="d-flex mt-2 justify-content-center">
+
+        </div>
+
+        <div>
+          Another user has reported your antagonizer before. Would you like to connect for a private chat?
+          We will notify you once they approve your request.
+        </div>
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <%= link_to incident_path(@incident) do %>
+          <% chatroom.update(status: :accepted) %>
+          <div class="button-small-wide" data-dismiss="modal">Yes, please connect me</div>
+        <% end %>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <!--    <div class="mt-2">
         <%= link_to incident_path(@incident) do %>
           <%# simple_form_for chatroom, :method => :post do |f| %>
             <%# f.input :status, as: :hidden, input_html: { value: "pending"} %>
@@ -19,20 +47,13 @@
             <%# f.submit 'Yes, please connect me', class: 'btn btn-primary m-3' %>
             <% chatroom.update(status: :accepted) %>
 
-          <div class="btn btn btn-primary m-3">Yes, please connect me</div>
+          <div class="button-large">Yes, please connect me</div>
 
-          <% end %>
+        <% end %> -->
 
 
-      </div>
-      <!-- <div class="btn btn-primary m-2" data-dismiss="modal">Connect</div>
-
-      </div> -->
-<!--       <div class="modal-footer">
-        <button type="button" class="button-small-white box-shadow" data-dismiss="modal">Close</button>
-        <button type="button" class="button-small box-shadow">Share now</button>
-      </div> -->
-    </div>
-  </div>
-</div>
-</div>
+  <!--     </div>
+      <%= link_to incident_path(@incident) do %>
+        <% chatroom.update(status: :accepted) %>
+        <div class="button-small mx-3 px-2" data-dismiss="modal">Yes, please connect me</div>
+      <% end %> -->
