@@ -47,7 +47,7 @@ shogo = User.create!(
 ############################################
 
 incident1 = Incident.new(
-  title: "Boss said vicious things to me",
+  title: "Incident at the office",
   date: Date.parse('10/8/2021'),
   description: "We had our KPI meeting and while the meeting was going well, I asked my boss a simple question of 'What did I do not too great?' 
   As he was informing me, I felt they were unjust as they were not true. As I rebuttal, my boss
@@ -61,7 +61,7 @@ incident1.save!
 
 
 incident2 = Incident.new(
-  title: "I was touched on the train",
+  title: "Incident in the train",
   date: Date.parse('25/3/2020'),
   description: "I was taking the Yamanote line to get back home (Yoyogi station) at 9pm after finishing work.
   The car I got on was pretty crowded but living in Tokyo, this was the norm. As the train was going, I felt a hand near my bottom. Suddently, it grabbed my 
@@ -75,7 +75,7 @@ incident2.save!
 
 
 incident3 = Incident.new(
-  title: "He punched me",
+  title: "Incident at home",
   date: Date.parse('3/5/2021'),
   description: "My husband hit me as we were having an argument in our home",
   place: "491-1186, Akasaka Akasakaakuhiruzu.akumoribiru(1-kai), Minato-ku, Tokyo"
@@ -89,7 +89,7 @@ incident3.save!
 ############################################
 
 incident4 = Incident.new(
-  title: "Boss said vicious things to me",
+  title: "Incident at the office",
   date: Date.parse('10/8/2021'),
   description: "We had our KPI meeting and while the meeting was going well, I asked my boss a simple question of 'What did I do not too great?' 
   As he was informing me, I felt they were unjust as they were not true. As I rebuttal, my boss
@@ -103,7 +103,7 @@ incident4.save!
 
 
 incident5 = Incident.new(
-  title: "I was touched on the train",
+  title: "Incident in the train",
   date: Date.parse('25/3/2020'),
   description: "I was taking the Yamanote line to get back home (Yoyogi station) at 9pm after finishing work.
   The car I got on was pretty crowded but living in Tokyo, this was the norm. As the train was going, I felt a hand near my bottom. Suddently, it grabbed my 
@@ -117,7 +117,7 @@ incident5.save!
 
 
 incident6 = Incident.new(
-  title: "He punched me",
+  title: "Incident at home",
   date: Date.parse('3/5/2021'),
   description: "My husband hit me as we were having an argument in our home",
   place: "491-1186, Akasaka Akasakaakuhiruzu.akumoribiru(1-kai), Minato-ku, Tokyo"
@@ -135,7 +135,7 @@ swollen_lips = URI.open('https://static.wixstatic.com/media/c72fb9_05948554de824
 yamanote = URI.open('https://c4.wallpaperflare.com/wallpaper/231/881/296/train-station-railroad-tokyo-japan-hd-wallpaper-preview.jpg')
 
 incident7 = Incident.new(
-  title: "Boss said vicious things to me",
+  title: "Incident at the office",
   date: Date.parse('10/8/2021'),
   description: "We had our KPI meeting and while the meeting was going well, I asked my boss a simple question of 'What did I do not too great?' 
   As he was informing me, I felt they were unjust as they were not true. As I rebuttal, my boss
@@ -150,7 +150,7 @@ incident7.save!
 
 
 incident8 = Incident.new(
-  title: "I was touched on the train",
+  title: "Incident in the train",
   date: Date.parse('25/3/2020'),
   description: "I was taking the Yamanote line to get back home (Yoyogi station) at 9pm after finishing work.
   The car I got on was pretty crowded but living in Tokyo, this was the norm. As the train was going, I felt a hand near my bottom. Suddently, it grabbed my 
@@ -165,7 +165,7 @@ incident8.save!
 
 
 incident9 = Incident.new(
-  title: "He punched me",
+  title: "Incident at home",
   date: Date.parse('3/5/2021'),
   description: "My husband hit me as we were having an argument in our home. Not only did the fight result in me having physical pain but also it hurt me deeply.",
   place: "491-1186, Akasaka Akasakaakuhiruzu.akumoribiru(1-kai), Minato-ku, Tokyo"
@@ -180,7 +180,7 @@ incident9.save!
 ############################################
 
 incident10 = Incident.new(
-  title: "Boss said vicious things to me",
+  title: "Incident at the office",
   date: Date.parse('10/8/2021'),
   description: "We had our KPI meeting and while the meeting was going well, I asked my boss a simple question of 'What did I do not too great?' 
   As he was informing me, I felt they were unjust as they were not true. As I rebuttal, my boss
@@ -194,7 +194,7 @@ incident10.save!
 
 
 incident11 = Incident.new(
-  title: "I was touched on the train",
+  title: "Incident in the train",
   date: Date.parse('25/3/2020'),
   description: "I was taking the Yamanote line to get back home (Yoyogi station) at 9pm after finishing work.
   The car I got on was pretty crowded but living in Tokyo, this was the norm. As the train was going, I felt a hand near my bottom. Suddently, it grabbed my 
@@ -208,7 +208,7 @@ incident11.save!
 
 
 incident12 = Incident.new(
-  title: "He punched me",
+  title: "Incident at home",
   date: Date.parse('3/5/2021'),
   description: "My husband hit me as we were having an argument in our home",
   place: "491-1186, Akasaka Akasakaakuhiruzu.akumoribiru(1-kai), Minato-ku, Tokyo"
