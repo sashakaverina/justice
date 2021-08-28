@@ -5,7 +5,6 @@ class IncidentsController < ApplicationController
     @user = User.new
     unless @incident.antagonizer.nil?
       @match = Incident.where(antagonizer: @incident.antagonizer).where.not(user: current_user).take
-
       if @match
         if Chatroom.between(current_user.id, @match.user.id).present?
           @chatroom = Chatroom.between(current_user.id, @match.user.id).first
@@ -123,17 +122,17 @@ class IncidentsController < ApplicationController
       format.html
       format.pdf do
         render pdf: "Incident No. #{@incident.id}",
-        page_size: "A4",
-        encoding: 'UTF-8',
-        :disable_smart_shrinking => true,
-        template: "incidents/report.html.erb",
-        layout: "pdf.html",
-        orientation: 'Portrait',
-        lowquality: true,
-        print_media_type: true,
-        dpi: 75,
-        viewport_size: '1280x1024',
-        disposition: 'attachment'
+          page_size: "A4",
+          encoding: 'UTF-8',
+          :disable_smart_shrinking => true,
+          template: "incidents/report.html.erb",
+          layout: "pdf.html",
+          orientation: 'Portrait',
+          lowquality: true,
+          print_media_type: true,
+          dpi: 75,
+          viewport_size: '1280x1024',
+          disposition: 'attachment'
       end
     end
   end
@@ -158,6 +157,10 @@ class IncidentsController < ApplicationController
 
   def incident_params
     params.require(:incident).permit(:title, :description, :attachment, :date, :place, :tag_list, antagonizer_attributes:[:photos])
+  end
+
+  def photo_params
+    params.require(:incident).permit(antagonizer_attributes: [:photos])
   end
 
   def user_params

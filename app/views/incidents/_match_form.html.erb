@@ -14,8 +14,9 @@
       </div>
       <div class="modal-body mb-2">
         <div>
-
-
+          <% @incident.antagonizer.photos.each do |photo| %>
+          <%= cl_image_tag photo.key %>
+          <% end %>
         </div>
 
         <div>
