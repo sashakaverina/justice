@@ -47,6 +47,7 @@ class IncidentsController < ApplicationController
   end
 
   def update
+    @incidnet = Incident.find(params[:id])
     authorize @incident
     # if incident does not have an antagonizer
     if @incident.antagonizer.nil?
