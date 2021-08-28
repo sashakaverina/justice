@@ -1,59 +1,57 @@
-<%= render 'shared/show_banner', text: @incident.title %>
+<div class="incident-show">
+  <%= render 'shared/show_banner', text: @incident.title %>
 
-<div class="container my-2 incident_show">
-  <div style="align-self: center">
-    <div>
-
+  <div class="container my-2 incident_show">
+    <div style="align-self: center">
+      <div>
       <% if @match %>
     <button type="button" class="btn btn-warning box-shadow w-100 mt-2" id="show-bottom" data-toggle="modal" data-target="#matchmodal">
       Your antagonizer is in database
       </button>
       <%= render 'match_form', chatroom: @chatroom, class: "button-small box-shadow w-100", id: 'show-bottom' %>
 
-    <% end %>
-    </div>
-
-    <div class="mb-3">
-      <p class="title">Date</p>
-      <p> <%= @incident.date.strftime('%a. %B %d, %Y') %> </p>
-    </div>
-
-    <div class="my-3">
-      <p class="title">Location</p>
-      <%= @incident.place %>
-    </div>
-
-    <div class="my-3">
-      <!-- <p class="title">Antagonizer</p>
-      <%# @incident.antagonizer %> -->
-    </div>
-
-    <div class="mt-3 mb-1">
-      <p class="title">What happened</p>
-      <%= @incident.description %>
-    </div>
-
-    <% @incident.tag_list.each do |tag| %>
-      <li id="incident_tag_list"> <%= tag %></li>
-    <% end %>
-
-    <div class="mt-2 mb-4">
-      <% if @incident.attachment.attached?%>
-        <%= cl_image_tag @incident.attachment.key, style: "height: 100%; width: 100%; object-fit: contain; margin-top: 16px;" %>
       <% end %>
-    </div>
+      </div>
+
+      <div class="mb-3">
+        <p class="title">Date</p>
+        <p> <%= @incident.date.strftime('%a. %B %d, %Y') %> </p>
+      </div>
+
+      <div class="my-3">
+        <p class="title">Location</p>
+        <%= @incident.place %>
+      </div>
+
+      <div class="my-3">
+        <!-- <p class="title">Antagonizer</p>
+        <%# @incident.antagonizer %> -->
+      </div>
+
+      <div class="mt-3 mb-1">
+        <p class="title">What happened</p>
+        <%= @incident.description %>
+      </div>
+
+      <% @incident.tag_list.each do |tag| %>
+        <li id="incident_tag_list"> <%= tag %></li>
+      <% end %>
+
+      <div class="mt-2 mb-4">
+        <% if @incident.attachment.attached?%>
+          <%= cl_image_tag @incident.attachment.key, style: "height: 100%; width: 100%; object-fit: contain; margin-top: 16px;" %>
+        <% end %>
+      </div>
 
 
-    <div class="mt-2">
-      <%= link_to "Generate report", report_path(format: :pdf), class: "button-white box-shadow w-100 mb-2" %>
-      <button type="button" class="button-small box-shadow w-100 mt-2" id="show-bottom" data-toggle="modal" data-target="#exampleModal">
-        Share
-      </button>
-      <%= render 'share_modal', user: @user, class: "button-small box-shadow w-100", id: 'show-bottom' %>
+      <div class="mt-2">
+        <%= link_to "Generate report", report_path(format: :pdf), class: "button-white box-shadow w-100 mb-2" %>
+        <button type="button" class="button-small box-shadow w-100 mt-2" id="show-bottom" data-toggle="modal" data-target="#exampleModal">
+          Share
+        </button>
+        <%= render 'share_modal', user: @user, class: "button-small box-shadow w-100", id: 'show-bottom' %>
+      </div>
     </div>
   </div>
 </div>
-
-
-
 
