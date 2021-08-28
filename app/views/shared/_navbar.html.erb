@@ -3,7 +3,7 @@
   <%= link_to my_incidents_path, class: "nav-link" do %>
     <i
     <% if content_for(:current_page) == 'my_incidents' %>
-      class="far fa-file-alt mx-3 active animate__animated animate__pulse"
+      class="far fa-file-alt mx-3 active animate__animated animate__big-pulse"
     <% else %>
       class="far fa-file-alt mx-3"
     <% end %>
@@ -14,7 +14,7 @@
   <a href="/chatrooms" class="nav-link mx-3 ">
     <i
       <% if content_for(:current_page) == 'chatrooms' %>
-        class="far fa-comment-alt chat-notification mx-3 active animate__animated animate__pulse"
+        class="far fa-comment-alt chat-notification mx-3 active animate__animated animate__big-pulse"
       <% else %>
         class="far fa-comment-alt chat-notification mx-3"
       <% end %>
@@ -28,7 +28,7 @@
   <%= link_to log_out_path, class: "nav-link" do %>
     <i
     <% if content_for(:current_page) == 'log_out' %>
-        class="far fa-user-circle mx-3 active animate__animated animate__pulse"
+        class="far fa-user-circle mx-3 active animate__animated animate__big-pulse"
       <% else %>
         class="far fa-user-circle mx-3"
       <% end %>

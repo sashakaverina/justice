@@ -135,3 +135,23 @@
 #bottom {
   margin-top: 450px;
 }
+
+.animate__big-pulse {
+  animation-name: big-pulse;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes big-pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.5, 1.5, 1.5);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
