@@ -2,8 +2,11 @@
   <%= link_to url_for(:back), id: "back" do %>
     <i class="fas fa-arrow-alt-circle-left"></i>
   <% end %>
-  <h4 id="title"><%= text.truncate(21) %></h4>
+  <h4 id="title"><%= text.truncate(23) %></h4>
     <%= link_to edit_incident_path,id: "edit" do %>
       <i class="fas fa-pen"></i>
+    <% end %>
+    <%= link_to incident_path(@incident),id: "delete",method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="fas fa-trash"></i>
     <% end %>
 </div>
