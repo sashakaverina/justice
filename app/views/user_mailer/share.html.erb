@@ -6,7 +6,7 @@
 
     <p>A user from Justice has shared a report with you!</p>
 
-    <p>To check it, please access this link: <%= link_to "Report", report_url(@user.incidents) %></p>
+    <p>To check it, please access this link: <%= link_to "Report", report_url(@user.incidents), only_path: true%></p>
 </div>
 <footer>
     <p>© 2021 Justice</p>
