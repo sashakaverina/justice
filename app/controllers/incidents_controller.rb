@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  before_action :set_incident, only: [:show, :share, :report, :edit, :update]
+  before_action :set_incident, only: [:show, :share, :report, :edit, :update, :destroy]
 
   def show
     @user = User.new
@@ -30,13 +30,20 @@ class IncidentsController < ApplicationController
 
     authorize @incident
     if @incident.save
-      if @incident.antagonizer
-        @id = FacesFinding.new(@incident.antagonizer).call
-        if @id
-          @incident.antagonizer_id = @id
-          @incident.save
-        end
-      end
+       if @incident.antagonizer.nil?
+      # check if antagonizer feature matches other antagonizer
+         @matching_id = FacesFinding.new(@incident.antagonizer).call
+           if @matching_id.nil? || @matching_id.empty?
+        # if does not match create an antagonizer
+            @antagonizer = Antagonizer.create!(photos: params[:antagonizer_photos])
+           else
+            @antagonizer = Antagonizer.find(@matching_id.first.id)
+           end
+      # add the antagonizer to the incident
+      @incident.antagonizer = @antagonizer
+      @incident.save
+    end
+
       redirect_to incident_path(@incident)
     else
       render 'new'
@@ -44,6 +51,12 @@ class IncidentsController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+    @incident.destroy
+    flash[:notice] = "The incident has been deleted from the database."
+    redirect_to my_incidents_path
   end
 
   def update
