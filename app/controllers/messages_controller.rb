@@ -26,7 +26,10 @@ class MessagesController < ApplicationController
     end
     ChatroomChannel.broadcast_to(
       @chatroom,
-      render_to_string(partial: "message", locals: { message: @message })
+      {
+        mine: render_to_string(partial: "message_mine", locals: { message: @message }),
+        their: render_to_string(partial: "message_their", locals: { message: @message })
+      }
     )
     authorize @message
   end
