@@ -12,16 +12,8 @@
 
 
   <a href="/chatrooms" class="nav-link mx-3 ">
-    <i
-      <% if content_for(:current_page) == 'chatrooms' %>
-        class="far fa-comment-alt chat-notification mx-3 active animate__animated animate__big-pulse"
-      <% else %>
-        class="far fa-comment-alt chat-notification mx-3"
-      <% end %>
-      aria-current="page">
-      <% if Notification.where(recipient_id: current_user).count >= 1 %>
-        <span class="notification" data-controller="counter" data-counter-target="count"><%= Notification.where(recipient_id: current_user).count%></span>
-      <% end %>
+    <i class="far fa-comment-alt chat-notification mx-3 <%= content_for(:current_page) == 'chatrooms' ? 'active animate__animated animate__big-pulse' : '' %>" aria-current="page" >
+      <span style="<%= Notification.where(recipient: current_user).any? ? '' : 'opacity: 0' %>" class="notification" data-controller="counter" data-counter-target="count"><%= Notification.where(recipient_id: current_user).count %></span>
     </i>
   </a>
 

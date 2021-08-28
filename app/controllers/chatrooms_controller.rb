@@ -26,7 +26,7 @@ class ChatroomsController < ApplicationController
 
   def update
   if @chatroom.update(chat_params)
-     redirect_to my_incidents_path
+     redirect_to chatroom_path(@chatroom)
     else
      render "new"
     end

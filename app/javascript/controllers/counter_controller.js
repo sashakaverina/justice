@@ -26,11 +26,14 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         if (data >= 1) {
+          this.element.style.opacity = 1;
           this.element.innerText = data;
-          console.log(this.element.innerText);
+
         }
-        else
+        else {
+          this.element.style.opacity = 0;
           this.element.innerHTML = "";
+        }
       });
   }
 }

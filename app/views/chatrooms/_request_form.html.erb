@@ -1,4 +1,4 @@
-<div class="modal fade matchmodal" id="matchmodal" tabindex="-1" role="dialog" aria-labelledby="matchmodalLabel" aria-hidden="true">
+<div class="modal fade requestmodal" id="requestmodal" tabindex="-1" role="dialog" aria-labelledby="requestmodalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-around">
@@ -6,7 +6,7 @@
           <i class="fas fa-user-check pt-1"></i>
         </div>
         <div>
-          <p class="modal-title ml-2" id="matchmodalLabel">We found a match in our database.</p>
+          <p class="modal-title ml-2" id="requestmodalLabel">We found a match in our database.</p>
         </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -20,15 +20,16 @@
 
         <div>
           Another user has reported your antagonizer before. Would you like to connect for a private chat?
-          We will notify you once they approve your request.
         </div>
 
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <%= link_to incident_path(@incident) do %>
-          <% chatroom.update(status: :pending) %>
-          <div class="button-small-wide" data-dismiss="modal">Yes, please connect me</div>
+        <%= simple_form_for chatroom do |f| %>
+          <%= f.input :status, as: :hidden, input_html: { value: :accepted} %>
+          <%= f.button :button do %>
+            <div class="button-small-wide">Yes, please connect me</div>
+          <% end %>
         <% end %>
       </div>
 

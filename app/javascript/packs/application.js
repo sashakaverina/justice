@@ -37,6 +37,7 @@ import { initLoading } from '../plugins/init_loading';
 import { chatScroll } from '../components/chat_bottom';
 import { clearMsg } from '../components/chat_input';
 import shareModalPopup from '../components/share_modal_popup';
+import requestModalPopup from '../components/request_modal_popup';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -52,6 +53,7 @@ document.addEventListener('turbolinks:load', () => {
   chatScroll();
   clearMsg();
   shareModalPopup();
+  requestModalPopup();
 });
 
 import "controllers";
