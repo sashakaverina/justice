@@ -1,0 +1,6 @@
+<div data-controller="multiselect">
+  <%= render 'shared/index_banner', text: "Documentation", class: "d-flex justify-content-center" %>
+  <%= render 'share_modal_incidents', user: @new_user, id: 2, class: "button-small box-shadow w-100 mt-4", id: 'show-bottom' %>
+
+  <%= render 'incident-card', incidents: @incidents %>
+</div>

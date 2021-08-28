@@ -4,7 +4,13 @@ class PagesController < ApplicationController
   def home
   end
 
-  def index
-    @incidents = policy_scope(Incident)
+  def my_incidents
+    @user = current_user
+    @new_user = User.new
+    @incidents = Incident.where(user: @user)
+  end
+
+  def log_out
+    @user = current_user
   end
 end

@@ -3,13 +3,16 @@ class IncidentsController < ApplicationController
 
   def show
     @user = User.new
-    @match = Incident.where(antagonizer: @incident.antagonizer).where.not(user: current_user).take
-     if @match
-      if Chatroom.between(current_user.id, @match.user.id).present?
-        @chatroom = Chatroom.between(current_user.id, @match.user.id).first
-      else
-        @chatroom = Chatroom.create!(sender_id: current_user.id, recipient_id: @match.user.id)
+    unless @incident.antagonizer.nil?
+      @match = Incident.where(antagonizer: @incident.antagonizer).where.not(user: current_user).take
 
+      if @match
+        if Chatroom.between(current_user.id, @match.user.id).present?
+          @chatroom = Chatroom.between(current_user.id, @match.user.id).first
+        else
+          @chatroom = Chatroom.create!(sender_id: current_user.id, recipient_id: @match.user.id)
+          flash[:match_alert]
+        end
       end
     end
   end
@@ -44,13 +47,28 @@ class IncidentsController < ApplicationController
   end
 
   def update
+    @incidnet = Incident.find(params[:id])
     authorize @incident
-    if @incident.update(incident_params)
-      flash[:notice] = "This incident has been updated."
-      redirect_to incident_path(@incident)
+    # if incident does not have an antagonizer
+    if @incident.antagonizer.nil?
+      # check if antagonizer feature matches other antagonizer
+      @matching_id = FacesFinding.new(@incident.antagonizer).call
+      if @matching_id.nil?
+        # if does not match create an antagonizer
+        @antagonizer = Antagonizer.new(photos: params[:antagonizer_photos])
+        @antagonizer.save
+      else
+        @antagonizer = Antagonizer.find(@matching_id)
+      end
+      # add the antagonizer to the incident
+      @incident.antagonizer = @antagonizer
+      @incident.save
     else
-      render "new"
+      # if incident has an antagonizer
+      @incident.antagonizer.update(photos: params[:antagonizer_photos])
     end
+    flash[:notice] = "This incident has been updated."
+    redirect_to incident_path(@incident)
   end
 
   def share
@@ -64,12 +82,35 @@ class IncidentsController < ApplicationController
       @access.user = @user
       @access.incident = @incident
       @access.save!
+      UserMailer.share(@user).deliver
       flash[:notice] = "Shared to #{@access.user.email}."
       redirect_to incident_path(@incident)
     end
   end
 
-  #share_many
+  def share_many
+
+    @incident_ids = JSON.parse(params[:incident_ids])
+    @user = User.find_or_initialize_by(email: user_params[:email])
+    @user.password ||= user_params[:password]
+    @user.nickname = @user.email
+    @accesses = []
+
+    if @user.save
+      @incident_ids.each do |incident_id|
+        @incident = Incident.find(incident_id)
+        authorize @incident
+        @access = Access.new
+        @access.user = @user
+        @access.incident = @incident
+        @accesses << @access
+        @access.save!
+        UserMailer.share(@user).deliver
+      end
+      redirect_to my_incidents_path
+      flash[:notice] = "Shared #{@accesses.count} incidents to #{@access.user.email}."
+    end
+  end
 
   def report
     @jp = GoogleTranslate.translate(@incident)
@@ -101,10 +142,10 @@ class IncidentsController < ApplicationController
   end
 
   def incident_params
-    params.require(:incident).permit(:title, :description, :attachment, :date, :place, :tag_list, antagonizer_attributes: [:photos])
+    params.require(:incident).permit(:title, :description, :attachment, :date, :place, :tag_list)
   end
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :urls)
   end
 end

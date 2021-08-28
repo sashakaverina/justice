@@ -1,9 +1,12 @@
 <div class="chatrooms">
   <% chatrooms.each do |chatroom| %>
-  <% if chatroom.accepted? %>
-    <%= link_to chatroom_path(chatroom), class: "incident-card-size" do %>
+     <% if chatroom.accepted? %>
+   <%= link_to chatroom_path(chatroom), class: "incident-card-size" do %>
+      <div class="incident-card mx-3 mt-4 d-flex justify-content-between">
 
-      <div class="incident-card mx-3 mt-4 d-flex">
+           <% if chatroom.notifications_as_chatroom.count >= 1 %>
+            <span class="notification" data-counter-target="count" data-controller="counter"><%= chatroom.notifications_as_chatroom.count %></span>
+           <% end %>
 
              <img src="
              <% if chatroom.sender == current_user %>
@@ -14,7 +17,7 @@
              " class= "incident-thumbnail">
 
 
-          <div class="incident-title-date mx-3 d-flex flex-column justify-content-around">
+          <div class="incident-title-date mx-3 d-flex flex-column flex-grow-1 justify-content-around">
             <h3 class="title pt-2 pb-1">
               <% if chatroom.sender == current_user %>
                 <%= chatroom.recipient.nickname %>
@@ -23,17 +26,11 @@
                <% end %>
               </h3>
             <div class="date d-flex pb-2">
-              <%# image_tag "calendar_today.svg", alt: "calendar icon", width: "18px", class: "mr-1" %>
-              <p> <%# incident.date.strftime('%a. %B %d, %Y') %> </p>
+              <p> <%= chatroom.messages.last&.created_at&.strftime('%R') %> </p>
             </div>
-          </div>
-
-  <!--         <p class=""> 1 attach. </p> -->
-
+         </div>
       </div>
     <% end %>
     <% end %>
-
   <% end %>
-
 </div>

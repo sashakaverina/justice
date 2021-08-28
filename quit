@@ -1,0 +1,16 @@
+=> [32m#<Incident:0x00007f111c4da5b0[0m
+ id: [1;34m13[0m,
+ date: [1;36mnil[0m,
+ description: [31m[1;31m"[0m[31mtokyo is where you want to be[1;31m"[0m[31m[0m,
+ media: [1;36mnil[0m,
+ place: [31m[1;31m"[0m[31mTokyo, Japan[1;31m"[0m[31m[0m,
+ antagonizer_id: [1;36mnil[0m,
+ collection_id: [1;36mnil[0m,
+ user_id: [1;34m4[0m,
+ created_at: [1;34;4mThu[0m, [1;34m26[0m [1;34;4mAug[0m [1;34m2021[0m [1;34m13[0m:[1;34m20[0m:[1;34m02[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ updated_at: [1;34;4mThu[0m, [1;34m26[0m [1;34;4mAug[0m [1;34m2021[0m [1;34m13[0m:[1;34m20[0m:[1;34m02[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ title: [31m[1;31m"[0m[31mtest[1;31m"[0m[31m[0m,
+ latitude: [1;35m35.6828387[0m,
+ longitude: [1;35m139.7594549[0m,
+ chatroom_id: [1;36mnil[0m,
+ tag_list: [1;36mnil[0m[32m>[0m

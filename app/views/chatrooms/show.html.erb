@@ -9,30 +9,31 @@
   </div>
   <div class="chat-container mb-3">
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-      <div class="border border-secondary">Your chat request has been approved. You can send your messages now.</div>
+      <div id="approve-msg">Your chat request has been approved and messages can be sent now.</div>
       <% @chatroom.messages.each do |message| %>
         <div class="chat-bubble">
-        <div class="message-container" id="message-<%= message.id %>">
-          <%# if message.user == current_user %>
-            <i class="author">
-              <span><%= message.user.nickname %></span>
-              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-            </i>
-            <p><%= message.content %></p>
-          <%# <% else %>
-            <%# <i class="author"> %>
-              <span><%#= message.user.nickname %></span>
-              <small><%#= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-            </i>
-            <p><%#= message.content %></p>
-          <%# end %> 
-        </div>
+          <% if message.user == current_user %>
+            <div id="right-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
+                <i class="author">
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+            </div>
+            <% else %>
+            <div id="left-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
+                <i class="author">
+                  <span><%= message.user.nickname %></span>
+                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+                <p><%= message.content %></p>
+            </div>
+            <% end %>
       </div>
       <% end %>
     </div>
   </div>
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false %>
+    <%= f.input :content, label: false, class: "message-content" %>
     <%= button_tag(type: 'submit', class: "chat-button") do %>
       <i class="far fa-paper-plane"></i>
     <% end %>

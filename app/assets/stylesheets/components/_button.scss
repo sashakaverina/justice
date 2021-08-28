@@ -2,9 +2,9 @@
   border-radius: 50%;
   border: solid;
   border-width: 3px;
-  height: 50px;
-  width: 50px;
-  font-size: 24px;
+  height: 60px;
+  width: 60px;
+  font-size: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,26 +12,26 @@
   padding: 10px;
   position: fixed;
   right: 20px;
-  bottom: 45%;
+  bottom: 10%;
   backdrop-filter: blur(2px);
 }
 
 .button-share {
-  border-radius: 50%;
-  border: solid;
-  border-width: 3px;
-  height: 50px;
-  width: 50px;
-  font-size: 24px;
+  // border-radius: 50%;
+  // border: solid;
+  // border-width: 2px;
+  // height: 35px;
+  // width: 35px;
+  font-size: 20px;
+  font-weight: thin;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $purple;
-  padding: 10px;
+  color: $blue;
+  // padding: 10px;
   position: fixed;
   right: 20px;
-  bottom: 35%;
-  backdrop-filter: blur(2px);
+  top: 2.5%;
 }
 
 .button-large {
@@ -125,9 +125,13 @@
   height: 35px;
   width: 33px;
   border: none;
-  box-shadow: 1px 1px $amethyst; 
+  box-shadow: 1px 1px $amethyst;
   i{
     color: white;
     font-weight: bold;
   }
+}
+
+#bottom {
+  margin-top: 450px;
 }

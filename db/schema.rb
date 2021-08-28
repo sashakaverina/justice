@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_24_032337) do
+ActiveRecord::Schema.define(version: 2021_08_27_112456) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,9 +56,9 @@ ActiveRecord::Schema.define(version: 2021_08_24_032337) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "status"
     t.integer "sender_id"
     t.integer "recipient_id"
+    t.integer "status", default: 0
   end
 
   create_table "collections", force: :cascade do |t|
@@ -79,7 +80,9 @@ ActiveRecord::Schema.define(version: 2021_08_24_032337) do
     t.string "title"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "chatroom_id"
     t.index ["antagonizer_id"], name: "index_incidents_on_antagonizer_id"
+    t.index ["chatroom_id"], name: "index_incidents_on_chatroom_id"
     t.index ["collection_id"], name: "index_incidents_on_collection_id"
     t.index ["user_id"], name: "index_incidents_on_user_id"
   end
@@ -102,6 +105,8 @@ ActiveRecord::Schema.define(version: 2021_08_24_032337) do
     t.datetime "read_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "chatroom_id"
+    t.index ["chatroom_id"], name: "index_notifications_on_chatroom_id"
     t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
   end
@@ -163,9 +168,11 @@ ActiveRecord::Schema.define(version: 2021_08_24_032337) do
   add_foreign_key "accesses", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "incidents", "antagonizers"
+  add_foreign_key "incidents", "chatrooms"
   add_foreign_key "incidents", "collections"
   add_foreign_key "incidents", "users"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "chatrooms"
   add_foreign_key "taggings", "tags"
 end

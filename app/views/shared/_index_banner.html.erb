@@ -1,3 +1,8 @@
-<div class="banner sticky-top">
-  <h4 id="title"><%= text.truncate(21) %></h4>
+<div class="banner sticky-top d-flex">
+  <h4 id="title" style="margin-left: 92px"><%= text.truncate(21) %></h4>
+  <%= link_to new_incident_path, "data-multiselect-target": "share", "data-action": "click->multiselect#share", "type": "button" do %>
+    <i id="share" class="fas fa-share-alt button-share" data-multiselect-target="sharebutton"></i>
+  <% end %>
+
+
 </div>
