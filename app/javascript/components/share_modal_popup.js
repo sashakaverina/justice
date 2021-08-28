@@ -3,8 +3,8 @@
 // })
 const shareModalPopup = () => {
   const matchModal = document.querySelector("#matchmodal");
-  console.log(matchModal)
-if (matchmodal) {
+
+if (matchModal) {
   $(document).ready(function(){
     $("#matchmodal").modal('show');
   });

@@ -4,6 +4,13 @@
 
 <%= render 'chat_card', chatrooms: @chatrooms %>
 
+<% @chatrooms.each do |chatroom| %>
+  <% if chatroom.pending? && chatroom.recipient == current_user %>
+      <%= render 'request_form', chatroom: chatroom, class: "button-small box-shadow w-100", id: 'show-bottom' %>
+  <% end %>
+<% end %>
+
+
 
 
 
