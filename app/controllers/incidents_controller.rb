@@ -112,7 +112,6 @@ class IncidentsController < ApplicationController
     end
   end
 
-
   def report
     @jp = GoogleTranslate.translate(@incident)
     respond_to do |format|
