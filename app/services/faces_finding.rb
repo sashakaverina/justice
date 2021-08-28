@@ -17,7 +17,7 @@ class FacesFinding
         end
       end
     end
-    return nil
+
 
   end
 

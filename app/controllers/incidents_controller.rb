@@ -30,13 +30,20 @@ class IncidentsController < ApplicationController
 
     authorize @incident
     if @incident.save
-      if @incident.antagonizer
-        @id = FacesFinding.new(@incident.antagonizer).call
-        if @id
-          @incident.antagonizer_id = @id
-          @incident.save
-        end
-      end
+       if @incident.antagonizer.nil?
+      # check if antagonizer feature matches other antagonizer
+         @matching_id = FacesFinding.new(@incident.antagonizer).call
+           if @matching_id.nil? || @matching_id.empty?
+        # if does not match create an antagonizer
+            @antagonizer = Antagonizer.create!(photos: params[:antagonizer_photos])
+           else
+            @antagonizer = Antagonizer.find(@matching_id.first.id)
+           end
+      # add the antagonizer to the incident
+      @incident.antagonizer = @antagonizer
+      @incident.save
+    end
+
       redirect_to incident_path(@incident)
     else
       render 'new'
