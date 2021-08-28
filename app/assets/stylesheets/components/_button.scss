@@ -71,6 +71,23 @@
   }
 }
 
+.button-small-wide {
+  display: inline-block;
+  color: white;
+  height: 48px;
+  background-color: $purple;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 25px;
+  border: none;
+  font-size: larger;
+  text-shadow: 1px 1px 3px rgba(175, 171, 171, 0.43);
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
 .button-small-white {
   display: inline-block;
   color: $purple;
