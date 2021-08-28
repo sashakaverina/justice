@@ -50,23 +50,7 @@ class IncidentsController < ApplicationController
     @incidnet = Incident.find(params[:id])
     authorize @incident
     # if incident does not have an antagonizer
-    if @incident.antagonizer.nil?
-      # check if antagonizer feature matches other antagonizer
-      @matching_id = FacesFinding.new(@incident.antagonizer).call
-      if @matching_id.nil?
-        # if does not match create an antagonizer
-        @antagonizer = Antagonizer.new(photos: params[:antagonizer_photos])
-        @antagonizer.save
-      else
-        @antagonizer = Antagonizer.find(@matching_id)
-      end
-      # add the antagonizer to the incident
-      @incident.antagonizer = @antagonizer
-      @incident.save
-    else
-      # if incident has an antagonizer
-      @incident.antagonizer.update(photos: params[:antagonizer_photos])
-    end
+    check_antagonizer
     if @incident.update(incident_params)
       redirect_to incident_path(@incident)
       flash[:notice] = "This incident has been updated."
@@ -94,7 +78,6 @@ class IncidentsController < ApplicationController
   end
 
   def share_many
-
     @incident_ids = JSON.parse(params[:incident_ids])
     @user = User.find_or_initialize_by(email: user_params[:email])
     @user.password ||= user_params[:password]
@@ -117,7 +100,6 @@ class IncidentsController < ApplicationController
     end
   end
 
-
   def report
     @jp = GoogleTranslate.translate(@incident)
     respond_to do |format|
@@ -139,7 +121,6 @@ class IncidentsController < ApplicationController
     end
   end
 
-
   private
 
   def set_incident
@@ -153,5 +134,29 @@ class IncidentsController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :urls)
+  end
+
+  def check_antagonizer
+    if @incident.antagonizer.nil?
+      # check if antagonizer feature matches other antagonizer
+      @matching_id = FacesFinding.new(@incident.antagonizer).call
+      check_matching_id_is_nil_or_not
+      # add the antagonizer to the incident
+      @incident.antagonizer = @antagonizer
+      @incident.save
+    else
+      # if incident has an antagonizer
+      @incident.antagonizer.update(photos: params[:antagonizer_photos])
+    end
+  end
+
+  def check_matching_id_is_nil_or_not
+    if @matching_id.nil?
+      # if does not match create an antagonizer
+      @antagonizer = Antagonizer.new(photos: params[:antagonizer_photos])
+      @antagonizer.save
+    else
+      @antagonizer = Antagonizer.find(@matching_id)
+    end
   end
 end
