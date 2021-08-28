@@ -31,6 +31,7 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import { buttonPress } from '../components/button_press';
 import { initChatroomCable } from '../channels/chatroom_channel';
 import { initPinCode } from '../plugins/init_pin_code';
+import { initLoading } from '../plugins/init_loading';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -40,6 +41,7 @@ document.addEventListener('turbolinks:load', () => {
   tagsSearch();
   initChatroomCable();
   initPinCode();
+  initLoading();
 });
 
 import "controllers"

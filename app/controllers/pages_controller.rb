@@ -5,7 +5,6 @@ class PagesController < ApplicationController
   end
 
   def index
-    @user = current_user
-    @incidents = Incident.where(user: @user)
+    @incidents = policy_scope(Incident)
   end
 end

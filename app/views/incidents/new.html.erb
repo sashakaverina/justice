@@ -1,6 +1,18 @@
-<%= render 'shared/new_banner', text: "Add a new incident" %>
-<div class="container mt-2 product-form">
-  <div style="align-self: center">
-    <%= render 'form', incident: @incident %>
+<div class="before-loading">
+  <%= render 'shared/new_banner', text: "Add a new incident" %>
+  <div class="container mt-2 product-form">
+    <div style="align-self: center">
+      <%= render 'form', incident: @incident %>
+    </div>
+  </div>
+</div>
+<div id="while-loading">
+  <div class="loader">
+<!--     <div class="loader__bar"></div>
+    <div class="loader__bar"></div>
+    <div class="loader__bar"></div>
+    <div class="loader__bar"></div>
+    <div class="loader__bar"></div>
+    <div class="loader__ball"></div> -->
   </div>
 </div>
