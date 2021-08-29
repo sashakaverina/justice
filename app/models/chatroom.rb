@@ -8,7 +8,7 @@ class Chatroom < ApplicationRecord
   has_many :messages, dependent: :destroy
   validates_uniqueness_of :sender_id, scope: :recipient_id
   scope :between, -> (sender_id, recipient_id) do
-    where("(chatroom.sender_id = ? AND chatroom.recipient_id =?) OR (chatroom.sender_id = ? AND chatroom.recipient_id =?)", sender_id, recipient_id, recipient_id, sender_id)
+    where("(chatrooms.sender_id = ? AND chatrooms.recipient_id =?) OR (chatrooms.sender_id = ? AND chatrooms.recipient_id =?)", sender_id, recipient_id, recipient_id, sender_id)
   end
 
   def pending?
