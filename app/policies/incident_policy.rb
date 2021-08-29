@@ -6,11 +6,11 @@ class IncidentPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    record.user == user
   end
 
   def show?
-    return true
+    record.user == user
   end
 
   def report?
@@ -26,11 +26,11 @@ class IncidentPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.user == user
   end
 
   def edit?
-    update?
+    record.user == user
   end
 
   def destroy?
