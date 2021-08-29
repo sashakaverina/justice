@@ -7,7 +7,9 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+
     @message = Message.new
+
     # @messages = Message.unread_by(current_user)
     # @messages.mark_as_read! :all, for: current_user
     Notification.where(recipient_id: current_user).destroy_all
@@ -19,7 +21,6 @@ class ChatroomsController < ApplicationController
     end
   end
 
-  def
 
   def edit
   end
