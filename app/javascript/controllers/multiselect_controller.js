@@ -16,6 +16,11 @@ export default class extends Controller {
       // tickbox.parentElement.style.pointerEvents = "none";
       tickbox.style.display = "block";
     });
+
+    // this.cardTargets.forEach((card) => {
+    //   card.classList.remove("fa-images");
+    // });
+
     console.log(this.shareTarget)
     this.sharebuttonTarget.classList.add('fa-times');
     this.sharebuttonTarget.classList.toggle('fa-share-alt');
