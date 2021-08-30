@@ -34,7 +34,7 @@ class IncidentsController < ApplicationController
         # check if antagonizer feature matches other antagonizer
         @antagonizer = @match_id.first
       else
-        @antagonizer = Antagonizer.new(photos: incident_params[:antagonizer_attributes][:photos])
+        @antagonizer = Antagonizer.create(photos: incident_params[:antagonizer_attributes][:photos])
       end
       # add the antagonizer to the incident
       @incident.update(antagonizer: @antagonizer)
@@ -63,7 +63,7 @@ class IncidentsController < ApplicationController
         # check if antagonizer feature matches other antagonizer
         @antagonizer = @match_id.first
       else
-        @antagonizer = Antagonizer.new(photos: params[:antagonizer_photos])
+        @antagonizer = Antagonizer.create(photos: params[:antagonizer_photos])
       end
       # add the antagonizer to the incident
       @incident.update(antagonizer: @antagonizer)
