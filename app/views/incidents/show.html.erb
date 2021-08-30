@@ -11,8 +11,9 @@
       Your antagonizer is in database
       </button> -->
       <%= render 'match_form', chatroom: @chatroom, class: "button-small box-shadow w-100", id: 'show-bottom' %>
-      <div>
-        <i class="fas fa-user-check pt-3"></i>
+      <div class="d-flex pb-3" data-toggle="modal" data-target="#matchmodal">
+        <i class="fas fa-user-check pr-3 pt-2"></i>
+        <p>There is a match to your antagonizer in our database.</p>
       </div>
       <% end %>
       </div>
