@@ -19,7 +19,7 @@
             <%= cl_image_tag photo.key, crop: :scale, width: 120 %>
             <% end %>
           </div>
-          <div><i class="fas fa-circle-notch fa-spin"></i></div>
+          <div><i class="fas fa-check animate__animated animate__check-bounce"></i></div>
           <div class="match-pictures">
             <%= cl_image_tag @match.antagonizer.photos[0].key, crop: :scale, width: 120 %>
           </div>
