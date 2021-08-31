@@ -17,19 +17,22 @@
         </div>
       <% end %>
       <% @chatroom.messages.each do |message| %>
+        <small><%= message.created_at.strftime("%a %b %e") %></small>
         <div class="chat-bubble">
           <% if message.user == current_user %>
             <div id="right-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
                 <i class="author">
-                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                  <img src="<%= message.user.avatar %>" style="width: 20px; border-radius: 5px;" >
+                  <small><%= message.created_at.strftime("%l:%M%p") %></small>
                 </i>
                 <p><%= message.content %></p>
             </div>
             <% else %>
             <div id="left-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
                 <i class="author">
+                  <img src="<%= message.user.avatar %>" style="width: 20px; border-radius: 5px;" >
                   <span><%= message.user.nickname %></span>
-                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                  <small><%= message.created_at.strftime("%l:%M%p") %></small>
                 </i>
                 <p><%= message.content %></p>
             </div>
