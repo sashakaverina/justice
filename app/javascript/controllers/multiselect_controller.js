@@ -1,10 +1,10 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "tickbox", "share", "card", "sharebutton", "ids" ]
+  static targets = [ "tickbox", "share", "card", "sharebutton", "ids", "addbutton", "tickboxIcon" ]
 
   connect() {
-    console.log(this.tickboxTargets, this.shareTarget, this.cardTargets, this.sharebuttonTarget)
+    console.log(this.tickboxTargets, this.shareTarget, this.cardTargets, this.sharebuttonTarget, this.addbuttonTarget, this.tickboxIconTargets)
     this.incidentIds = []
     // this.outputTarget.textContent = 'Hello, Stimulus!'
   };
@@ -15,8 +15,19 @@ export default class extends Controller {
     this.tickboxTargets.forEach((tickbox) => {
       // tickbox.parentElement.style.pointerEvents = "none";
       tickbox.style.display = "block";
+      // tickbox.insertAdjacentHTML('beforeend', '<i class="far fa-square"></i>');
+      // tickbox.insertAdjacentHTML('beforeend', '<i class="far fa-check-square"></i>');
     });
-    console.log(this.shareTarget)
+    this.tickboxIconTargets.forEach((tickboxIcon) => {
+      tickboxIcon.style.display = "block";
+    });
+
+    this.cardTargets.forEach((card) => {
+      card.querySelector("i").classList.remove("fa-images");
+      card.style.boxShadow = 'none';
+    });
+
+    this.addbuttonTarget.style.display = "none";
     this.sharebuttonTarget.classList.add('fa-times');
     this.sharebuttonTarget.classList.toggle('fa-share-alt');
   };
@@ -24,11 +35,13 @@ export default class extends Controller {
   select(event) {
     event.preventDefault();
     console.log(event.currentTarget.dataset.incidentId);
-    event.currentTarget.classList.toggle("tick-box-select")
+    event.currentTarget.classList.toggle("tick-box-select");
+
     this.sharebuttonTarget.classList.remove('fa-times');
     this.sharebuttonTarget.classList.add('fa-check');
     this.sharebuttonTarget.dataset.toggle = "modal";
     this.sharebuttonTarget.dataset.target = "#exampleModal";
+
     const clickedId = event.currentTarget.dataset.incidentId
     if (this.incidentIds.includes(clickedId)) {
       function removeItemOnce(arr, value) {
