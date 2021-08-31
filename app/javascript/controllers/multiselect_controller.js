@@ -1,10 +1,10 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "tickbox", "share", "card", "sharebutton", "ids", "addbutton" ]
+  static targets = [ "tickbox", "share", "card", "sharebutton", "ids", "addbutton", "tickboxIcon" ]
 
   connect() {
-    console.log(this.tickboxTargets, this.shareTarget, this.cardTargets, this.sharebuttonTarget, this.addbuttonTarget)
+    console.log(this.tickboxTargets, this.shareTarget, this.cardTargets, this.sharebuttonTarget, this.addbuttonTarget, this.tickboxIconTargets)
     this.incidentIds = []
     // this.outputTarget.textContent = 'Hello, Stimulus!'
   };
@@ -15,8 +15,11 @@ export default class extends Controller {
     this.tickboxTargets.forEach((tickbox) => {
       // tickbox.parentElement.style.pointerEvents = "none";
       tickbox.style.display = "block";
-      tickbox.insertAdjacentHTML('beforeend', '<i class="far fa-square"></i>');
-      tickbox.insertAdjacentHTML('beforeend', '<i class="far fa-check-square"></i>');
+      // tickbox.insertAdjacentHTML('beforeend', '<i class="far fa-square"></i>');
+      // tickbox.insertAdjacentHTML('beforeend', '<i class="far fa-check-square"></i>');
+    });
+    this.tickboxIconTargets.forEach((tickboxIcon) => {
+      tickboxIcon.style.display = "block";
     });
 
     this.cardTargets.forEach((card) => {

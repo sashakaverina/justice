@@ -1,7 +1,13 @@
 <div class="incidents p-3">
   <% incidents.each do |incident| %>
     <%= link_to incident_path(incident), class: "incident-card-size mb-4" do %>
-      <div class="tick-box" data-incident-id="<%= incident.id %>" data-multiselect-target="tickbox" data-action="click->multiselect#select"></div>
+      <div class="tick-box"
+        data-incident-id="<%= incident.id %>"
+        data-multiselect-target="tickbox"
+        data-action="click->multiselect#select">
+        <i class="far fa-square" data-multiselect-target="tickboxIcon"></i>
+        <i class="far fa-check-square"></i>
+      </div>
       <div class="incident-card d-flex" data-multiselect-target="card">
 
           <div>
