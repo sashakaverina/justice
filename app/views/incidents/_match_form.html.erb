@@ -6,20 +6,27 @@
           <i class="fas fa-user-check pt-1"></i>
         </div>
         <div>
-          <p class="modal-title ml-2" id="matchmodalLabel">We found a match in our database.</p>
+          <p class="modal-title ml-1" id="matchmodalLabel">We found a match in our database.</p>
         </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body mb-2">
-        <div>
-
-
+        <div class ="d-flex justify-content-around align-items-center py-4">
+          <div class="match-pictures">
+            <% @incident.antagonizer.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, crop: :scale, width: 120 %>
+            <% end %>
+          </div>
+          <div><i class="fas fa-circle-notch fa-spin"></i></div>
+          <div class="match-pictures">
+            <%= cl_image_tag @match.antagonizer.photos[0].key, crop: :scale, width: 120 %>
+          </div>
         </div>
 
         <div>
-          Another user has reported your antagonizer before. Would you like to connect for a private chat?
+          If this match is correct, it means another user has reported your antagonizer before. Would you like to connect for a private chat?
           We will notify you once they approve your request.
         </div>
 
