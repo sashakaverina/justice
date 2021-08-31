@@ -5,6 +5,10 @@ class IncidentPolicy < ApplicationPolicy
     end
   end
 
+  def new?
+    return true
+  end
+
   def create?
     record.user == user
   end

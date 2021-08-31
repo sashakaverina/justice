@@ -26,7 +26,7 @@ class IncidentsController < ApplicationController
     @incident = Incident.new(incident_params)
     @user = current_user
     @incident.user = @user
-    @match_id = face_check if incident_params[:antagonizer_attributes][:photos].present?
+    @match_id = face_check if incident_params[:antagonizer_attributes].present? && incident_params[:antagonizer_attributes][:photos].present?
 
     authorize @incident
     if @incident.save
@@ -34,7 +34,7 @@ class IncidentsController < ApplicationController
         # check if antagonizer feature matches other antagonizer
         @antagonizer = @match_id.first
       else
-        @antagonizer = Antagonizer.create(photos: incident_params[:antagonizer_attributes][:photos])
+        @antagonizer = Antagonizer.new(photos: incident_params[:antagonizer_attributes][:photos])
       end
       # add the antagonizer to the incident
       @incident.update(antagonizer: @antagonizer)
@@ -63,7 +63,7 @@ class IncidentsController < ApplicationController
         # check if antagonizer feature matches other antagonizer
         @antagonizer = @match_id.first
       else
-        @antagonizer = Antagonizer.create(photos: params[:antagonizer_photos])
+        @antagonizer = Antagonizer.new(photos: params[:antagonizer_photos])
       end
       # add the antagonizer to the incident
       @incident.update(antagonizer: @antagonizer)
