@@ -71,7 +71,7 @@ class IncidentsController < ApplicationController
       flash[:notice] = "This incident has been updated."
       redirect_to incident_path(@incident)
     else
-      render 'edit'
+      render 'new'
     end
   end
 
