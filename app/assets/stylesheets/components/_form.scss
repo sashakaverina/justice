@@ -35,18 +35,34 @@
     border-radius: 5px;
     z-index: 4;
   }
-  .fa-circle-notch {
-    color: $purple;
-    font-size: 90px;
+  .fa-check {
+    color: rgb(138, 237, 68);
+    font-size: 100px;
     position: absolute;
-    z-index: 2;
-    left: 37.5%;
-    top: 16%;
+    z-index: 6;
+    left: 39.5%;
+    top: 19%;
   }
-  .fa-spin {
-    // animation-duration: 4s;
-    animation-iteration-count: 1;
-  }
+  // .fa-spin {
+  //   // animation-duration: 4s;
+  //   animation-iteration-count: 1;
+  // }
 }
 
+.animate__check-bounce {
+  animation: aidan;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 2;
+}
 
+@keyframes aidan {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.5, 1.5, 1.5);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
