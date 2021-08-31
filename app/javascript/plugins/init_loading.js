@@ -4,7 +4,7 @@ const initLoading = function() {
     const updateButton = document.querySelector("#show-bottom")
     updateButton.addEventListener("click",() => {
       document.querySelector("#while-loading").style.display = "block";
-      document.querySelector(".before-loading").style.display = "none";
+      document.querySelector(".before-loading").style.filter= "blur(8px)";
     })
   };
 };
