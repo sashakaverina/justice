@@ -19,21 +19,25 @@
       <% @chatroom.messages.each do |message| %>
         <div class="chat-bubble">
           <% if message.user == current_user %>
-            <small><%= message.created_at.strftime("%l:%M%p") %></small>
-            <div id="right-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
+            <div class="d-flex">
+              <div id="right-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
                 <p><%= message.content %></p>
                 <i class="author">
-                  <img src="<%= message.user.avatar %>" style="width: 20px; border-radius: 5px;" >
                 </i>
+              </div>
+              <img src="<%= message.user.avatar %>" style="margin-left: 7rem;width: 20px; border-radius: 5px;" >
             </div>
-            <% else %>
-            <div id="left-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
+          <% else %>
+            <div class="d-flex">
+              <img src="<%= message.user.avatar %>" style="width: 20px; border-radius: 5px;" >
+              <div id="left-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
                 <i class="author">
-                  <img src="<%= message.user.avatar %>" style="width: 20px; border-radius: 5px;" >
                 </i>
                 <p><%= message.content %></p>
+              </div>
             </div>
-            <% end %>
+            
+          <% end %>
       </div>
       <% end %>
     </div>

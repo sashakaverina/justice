@@ -27,9 +27,8 @@
         }
         
         .message-container{
-            margin-top: 2rem;
             border-radius: 1rem;
-            padding: 1rem;
+            padding: 3px;
             width: 14rem; 
             box-shadow: 1px 1px $light-white;
             display: flex;
@@ -60,12 +59,10 @@
             position: relative;
             left: 7rem;
             background-color: $baby-blue;
-            gap: 9rem;
         }
         
         #left-chat{
             background-color: $msg-grey;
-            gap: 8rem;
         }
     }
 
