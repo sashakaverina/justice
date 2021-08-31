@@ -26,7 +26,7 @@ class IncidentsController < ApplicationController
     @incident = Incident.new(incident_params)
     @user = current_user
     @incident.user = @user
-    @match_id = face_check if incident_params[:antagonizer_attributes][:photos].present?
+    @match_id = face_check if incident_params[:antagonizer_attributes].present? && incident_params[:antagonizer_attributes][:photos].present?
 
     authorize @incident
     if @incident.save
