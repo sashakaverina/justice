@@ -2,8 +2,12 @@
   <%= f.input :title %>
   <%= f.input :attachment, as: :file, label: "Upload an attachment" %>
   <%= f.input :date, as: :date, html5: true %>
-  <%= label_tag "Upload an antagonizer's photo" %>
-  <%= file_field_tag :photos %>
+  <div class="my-3">
+    <%= label_tag "Upload an antagonizer's photo" %>
+    <div class="photo-form-box">
+      <%= file_field_tag :photos %>
+    </div>
+  </div>
   <%= f.input :place %>
   <%= f.input :description, label: "What happened", placeholder: "Yesterday I was at work..." %>
   <%= f.input :tag_list, as: :hidden %>

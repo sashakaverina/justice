@@ -1,6 +1,19 @@
 const buttonPress = () => {
   const buttonSmall = document.querySelector(".button-small");
   const buttonLarge = document.querySelector(".button-large");
+  const buttonSmallWide = document.querySelector(".button-small-wide");
+
+  if (buttonSmallWide) {
+    buttonSmallWide.addEventListener("touchstart", (event) => {
+      buttonSmallWide.classList.remove("box-shadow");
+      buttonSmallWide.classList.add("box-shadow-inset");
+    });
+
+    buttonSmallWide.addEventListener("touchend", (event) => {
+      buttonSmallWide.classList.remove("box-shadow-inset");
+      buttonSmallWide.classList.add("box-shadow");
+    });
+  };
 
   if (buttonSmall) {
     buttonSmall.addEventListener("touchstart", (event) => {
