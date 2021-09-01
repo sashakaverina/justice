@@ -15,13 +15,14 @@
       <div class="modal-body mb-2">
         <div class ="d-flex justify-content-around align-items-center py-4">
           <div class="match-pictures">
-            <% @incident.antagonizer.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, crop: :scale, width: 120 %>
-            <% end %>
+
+            <%= cl_image_tag @incident.antagonizer.photos.first.key, crop: :scale, width: 120 %>
+
+
           </div>
           <div><i class="fas fa-check animate__animated animate__check-bounce"></i></div>
           <div class="match-pictures">
-            <%= cl_image_tag @match.antagonizer.photos[0].key, crop: :scale, width: 120 %>
+            <%= cl_image_tag @incident.antagonizer.photos.last.key, crop: :scale, width: 120 %>
           </div>
         </div>
 

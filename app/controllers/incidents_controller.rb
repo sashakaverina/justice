@@ -18,26 +18,36 @@ class IncidentsController < ApplicationController
 
   def new
     @incident = Incident.new
-    @incident.build_antagonizer
+    # @incident.build_antagonizer
     authorize @incident
   end
 
   def create
+
     @incident = Incident.new(incident_params)
+    # @incident.antagonizer.destroy
     @user = current_user
     @incident.user = @user
-    @match_id = face_check if incident_params[:antagonizer_attributes].present? && incident_params[:antagonizer_attributes][:photos].present?
-
+    @photo = params[:photos]
+    @match_id = face_check if @photo.present?
     authorize @incident
+
     if @incident.save
+
       if @match_id.present?
         # check if antagonizer feature matches other antagonizer
         @antagonizer = @match_id.first
+        @antagonizer.update(photos: [params[:photos]])
+        @incident.update(antagonizer: @antagonizer)
       else
-        @antagonizer = Antagonizer.new(photos: incident_params[:antagonizer_attributes][:photos])
+
+        @incident.antagonizer = Antagonizer.create(photos: [params[:photos]])
+        @incident.save
       end
       # add the antagonizer to the incident
-      @incident.update(antagonizer: @antagonizer)
+
+      # @incident.update(antagonizer: @antagonizer)
+
       redirect_to incident_path(@incident)
     else
       render 'new'
@@ -57,6 +67,7 @@ class IncidentsController < ApplicationController
     @user = current_user
     @incident.user = @user
     @match_id = face_check_update if params[:antagonizer_photos].present?
+
     authorize @incident
     if @incident.save
       if @match_id.present?
@@ -141,7 +152,7 @@ class IncidentsController < ApplicationController
   private
 
   def face_check
-    @photo = Cloudinary::Uploader.upload(incident_params[:antagonizer_attributes][:photos])
+    @photo = Cloudinary::Uploader.upload(params[:photos])
     FacesFinding.new(@photo["url"]).call
   end
 
@@ -156,11 +167,11 @@ class IncidentsController < ApplicationController
   end
 
   def incident_params
-    params.require(:incident).permit(:title, :description, :attachment, :date, :place, :tag_list, antagonizer_attributes:[:photos])
+    params.require(:incident).permit(:title, :description, :attachment, :date, :place, :tag_list, photos:[])
   end
 
   def photo_params
-    params.require(:incident).permit(antagonizer_attributes: [:photos])
+    params.require(:incident).permit(photos:[])
   end
 
   def user_params
