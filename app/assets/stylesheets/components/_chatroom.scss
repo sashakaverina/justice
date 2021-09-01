@@ -5,7 +5,7 @@
     and (-webkit-device-pixel-ratio : 3) { 
         .chat-container{
             margin-bottom: 5rem;
-            height: 67vh;
+            height: 74vh;
             overflow: scroll;
         }
         
@@ -48,7 +48,6 @@
         #new_message{
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
         }
         
         .chat-notification {
