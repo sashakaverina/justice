@@ -15,13 +15,16 @@
     margin-top: 10px;
     margin-left: 8px;
     color: white;
-    .fas {
-      font-size: 22px;
+    .far {
+      font-size: 25px;
     }
   }
   #edit {
     margin-top: 10px;
     color: white;
+    position: absolute;
+    right: 5%;
+    // margin-left: 60px;
     .fas {
       font-size: 20px;
     }
@@ -42,6 +45,10 @@
     margin-top: 10px;
     margin-right: 8px;
     color: white;
+    font-size: 20px;
+    font-weight: thin;
+    position: absolute;
+    right: 5%;
   }
 }
 

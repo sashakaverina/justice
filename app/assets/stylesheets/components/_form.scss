@@ -20,6 +20,13 @@
   }
 }
 
+.photo-form-box {
+  padding:10px;
+  border: 0.5px solid $purple;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius: 5px;
+}
+
 #matchmodal {
   .fa-user-check {
    font-size: 48px;
