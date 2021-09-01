@@ -2,4 +2,4 @@ meta_product_name: "Justice"
 meta_title: "Justice - Don't suffer in silence, fight with evidence"
 meta_description: "Secure way for abuse victims to document and share evidence to the authorities and trusted people.
 "
-meta_image: "welcome.jpg" # should exist in `app/assets/images/
+meta_image: "cover.png" # should exist in `app/assets/images/
