@@ -28,3 +28,16 @@
 #chat-avatar-right{
   margin-left: 7rem;
 }
+
+@media screen and (min-width: 1200px) {
+  .chat-avatar{
+    width: 40px; 
+    border-radius: 5px;
+    height: 40px;
+    margin-top: 3rem;
+  }
+  
+  #chat-avatar-right{
+    margin-left: 7rem;
+  } 
+}
