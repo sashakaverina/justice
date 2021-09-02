@@ -14,7 +14,7 @@
         <div class="chat-bubble">
           <% if message.user == current_user %>
             <div class="d-flex">
-            <small><%= message.created_at.strftime("%l:%M%p") %></small>
+            <small id="right-time"><%= message.created_at.strftime("%l:%M%p") %></small>
               <div id="right-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
                 <p><%= message.content %></p>
                 <i class="author">
@@ -30,7 +30,7 @@
                 </i>
                 <p><%= message.content %></p>
               </div>
-              <small><%= message.created_at.strftime("%l:%M%p") %></small>
+              <small id="left-time"><%= message.created_at.strftime("%l:%M%p") %></small>
             </div>
           <% end %>
       </div>
