@@ -1,29 +1,35 @@
-<div class="navbar-bottom shadow-lg">
+<% if user_signed_in? %>
 
-  <%= link_to my_incidents_path, class: "nav-link" do %>
-    <i
-    <% if content_for(:current_page) == 'my_incidents' %>
-      class="far fa-file-alt mx-3 active animate__animated animate__big-pulse"
-    <% else %>
-      class="far fa-file-alt mx-3"
-    <% end %>
-    aria-current="page"></i>
-  <% end %>
+  <div class="navbar-bottom shadow-lg">
 
-
-  <a href="/chatrooms" class="nav-link mx-3 ">
-    <i class="far fa-comment-alt chat-notification mx-3 <%= content_for(:current_page) == 'chatrooms' ? 'active animate__animated animate__big-pulse' : '' %>" aria-current="page" >
-      <span style="<%= Notification.where(recipient: current_user).any? ? '' : 'opacity: 0' %>" class="notification" data-controller="counter" data-counter-target="count"><%= Notification.where(recipient_id: current_user).count %></span>
-    </i>
-  </a>
-
-  <%= link_to log_out_path, class: "nav-link" do %>
-    <i
-    <% if content_for(:current_page) == 'log_out' %>
-        class="far fa-user-circle mx-3 active animate__animated animate__big-pulse"
+    <%= link_to my_incidents_path, class: "nav-link" do %>
+      <i
+      <% if content_for(:current_page) == 'my_incidents' %>
+        class="far fa-file-alt mx-3 active animate__animated animate__big-pulse"
       <% else %>
-        class="far fa-user-circle mx-3"
+        class="far fa-file-alt mx-3"
       <% end %>
-      aria-current="page"></i></a>
-  <% end %>
-</div>
+      aria-current="page"></i>
+    <% end %>
+
+
+    <a href="/chatrooms" class="nav-link mx-3 ">
+      <i class="far fa-comment-alt chat-notification mx-3 <%= content_for(:current_page) == 'chatrooms' ? 'active animate__animated animate__big-pulse' : '' %>" aria-current="page" >
+        <span style="<%= Notification.where(recipient: current_user).any? ? '' : 'opacity: 0' %>" class="notification" data-controller="counter" data-counter-target="count"><%= Notification.where(recipient_id: current_user).count %></span>
+      </i>
+    </a>
+
+    <%= link_to log_out_path, class: "nav-link" do %>
+      <i
+      <% if content_for(:current_page) == 'log_out' %>
+          class="far fa-user-circle mx-3 active animate__animated animate__big-pulse"
+        <% else %>
+          class="far fa-user-circle mx-3"
+        <% end %>
+        aria-current="page"></i></a>
+    <% end %>
+  </div>
+
+<% else %>
+
+<% end %>
