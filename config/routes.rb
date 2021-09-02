@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   resources :chatrooms, only: [:show, :edit, :update, :index] do
     resources :messages, only: :create
+    member do
+      get :chatroom_pending
+    end
   end
+
 
 
   #pdf generating routes
