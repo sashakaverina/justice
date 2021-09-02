@@ -65,4 +65,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: ENV["ACTION_MAILER_HOST_URL"]  }
   config.action_mailer.raise_delivery_errors = true
   config.hosts << /[a-z0-9]+\.ngrok\.io/
+  config.active_record.default_timezone 
+  config.time_zone = 'Tokyo' 
 end
