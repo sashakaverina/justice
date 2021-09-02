@@ -31,12 +31,17 @@
           We will notify you once they approve your request.
         </div>
 
+        <div class="mt-2 d-flex align-items-center">
+          <input type="checkbox" id="confirmation" name="confirmation" class="match-checkbox">
+          <label class="mt-2 pl-2" for="confirmation">I have read and agree to the conditions.</label>
+        </div>
+
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <%= link_to incident_path(@incident) do %>
           <% chatroom.update(status: :pending) %>
-          <div class="button-small-wide box-shadow" data-dismiss="modal">Yes, please connect me</div>
+          <div disabled class="match-confirmation button-small-wide box-shadow disabled-button" data-dismiss="modal">Yes, please connect me</div>
         <% end %>
       </div>
 

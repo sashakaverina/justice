@@ -28,8 +28,8 @@ export default class extends Controller {
     });
 
     this.addbuttonTarget.style.display = "none";
-    this.sharebuttonTarget.classList.add('fa-times');
-    this.sharebuttonTarget.classList.toggle('fa-share-alt');
+    this.sharebuttonTarget.className ='fas fa-times';
+    // this.sharebuttonTarget.classList.remove('fa-share-square');
   };
 
   select(event) {
