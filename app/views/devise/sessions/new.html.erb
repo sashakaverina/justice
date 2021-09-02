@@ -1,6 +1,7 @@
-<div class="container">
+<%= render 'shared/new_incident_banner', text: "Login" %>
+
+<div class="container mt-4 product-form">
   <div class="login">
-    <h1 class="login-title">Log in</h1>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
@@ -15,7 +16,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Log in"  %>
+        <%= f.button :submit, "Log in", class: "button-sign up box-shadow w-100"  %>
       </div>
     <% end %>
 
