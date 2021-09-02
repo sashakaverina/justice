@@ -3,7 +3,7 @@ $bar-color: #fff;
 $ball-color: #fff;
 $bg-color: #7879F1;
 
-#while-loading {
+.loader {
   background: $bg-color;
   display: flex;
   background-image: asset-url('justice.gif');
@@ -25,6 +25,19 @@ $bg-color: #7879F1;
   margin-top: 0;
 }
 
+#while-loading {
+  display: flex;
+  margin: auto;
+  background-color: #FAFAFA;
+  border-radius: 50%;
+  height: 220px;
+  width: 220px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
 // .loader {
 
 //   position: relative;
