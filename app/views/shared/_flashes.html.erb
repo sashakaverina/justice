@@ -15,6 +15,19 @@
   </div>
 <% end %>
 
+<% if show_page_share %>
+  <div class="show-page-btn alert-warning alert-dismissible fade show m-1" role="alert">
+    <%= show_page_share %>
+  </div>
+<% end %>
+
+<% if show_page_report %>
+  <div class="show-page-report-btn alert-warning alert-dismissible fade show m-1" role="alert">
+    <%= show_page_report %>
+  </div>
+<% end %>
+
+
 <%# if match_alert %>
 <!--   <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
      <%# render 'incidents/match_form', match: match_alert, id: 'show-bottom' %>

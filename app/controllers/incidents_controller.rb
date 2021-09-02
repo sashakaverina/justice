@@ -2,6 +2,8 @@ class IncidentsController < ApplicationController
   before_action :set_incident, only: [:show, :share, :report, :edit, :update, :destroy]
 
   def show
+    flash[:show_page_share] = "Share"
+    flash[:show_page_report] = "Generate report"
     @user = User.new
     unless @incident.antagonizer.nil?
       @match = Incident.where(antagonizer: @incident.antagonizer).where.not(user: current_user).take
