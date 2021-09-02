@@ -67,9 +67,17 @@
   a {
     text-decoration: none;
     color: white;
+    a:hover {
+    text-decoration: none;
+    color: white;
+    }
   }
 }
 
+.button-small-grey:hover {
+  text-decoration: none;
+  color: white;
+}
 .button-small-wide {
   display: inline-block;
   color: white;
