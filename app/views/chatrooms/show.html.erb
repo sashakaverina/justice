@@ -16,7 +16,7 @@
             <div class="d-flex">
             <small id="right-time"><%= message.created_at.strftime("%H:%M") %></small>
               <div id="right-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
-                <p><%= message.content %></p>
+                <p class="ml-auto"><%= message.content %></p>
                 <i class="author">
                 </i>
               </div>
