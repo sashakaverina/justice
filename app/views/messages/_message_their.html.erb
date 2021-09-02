@@ -1,8 +1,9 @@
-
-<div id="left-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
-  <i class="author">
-      <span><%= message.user.nickname %></span>
-      <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+<div class="d-flex">
+  <img src="<%= message.user.avatar %>" class="chat-avatar" id="chat-avatar-left">
+  <div id="left-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
+    <i class="author">
     </i>
     <p><%= message.content %></p>
+  </div>
+  <small id="left-time"><%= message.created_at.strftime("%H:%M") %></small>
 </div>
