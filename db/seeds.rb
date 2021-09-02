@@ -1,6 +1,7 @@
 require 'open-uri'
 
 puts "Destroying previous seeds"
+Access.destroy_all
 Chatroom.destroy_all
 Notification.destroy_all
 Access.destroy_all
@@ -130,9 +131,7 @@ incident6.save!
 ############ Aidan's incidents #############
 ############################################
 
-bruise = URI.open('https://i.pinimg.com/originals/d2/cc/20/d2cc202fabeea4b92371ebe404e2d69c.jpg')
-swollen_lips = URI.open('https://static.wixstatic.com/media/c72fb9_05948554de824c9ab44c4f1706997963.jpg')
-yamanote = URI.open('https://c4.wallpaperflare.com/wallpaper/231/881/296/train-station-railroad-tokyo-japan-hd-wallpaper-preview.jpg')
+
 
 incident7 = Incident.new(
   title: "Incident at the office",
@@ -143,7 +142,6 @@ incident7 = Incident.new(
   statements really hurt me.",
   place: "Takeda HQ"
 )
-incident7.attachment.attach(io: bruise, filename: 'bruise.png', content_type: 'image/png')
 incident7.user = aidan
 incident7.tag_list.add("work", "boss", "hurt")
 incident7.save!
@@ -158,7 +156,6 @@ incident8 = Incident.new(
   As I walked home, I felt nothing but shame.",
   place: "Yamanote line"
 )
-incident8.attachment.attach(io: yamanote, filename: 'yamanote', content_type: 'image/png')
 incident8.user = aidan
 incident8.tag_list.add("home", "shame", "train")
 incident8.save!
@@ -170,7 +167,6 @@ incident9 = Incident.new(
   description: "My husband hit me as we were having an argument in our home. Not only did the fight result in me having physical pain but also it hurt me deeply.",
   place: "491-1186, Akasaka Akasakaakuhiruzu.akumoribiru(1-kai), Minato-ku, Tokyo"
 )
-incident9.attachment.attach(io: swollen_lips, filename: 'swollen_lips.png', content_type: 'image/png')
 incident9.user = aidan
 incident9.tag_list.add("fight", "home", "hurt")
 incident9.save!
@@ -178,6 +174,11 @@ incident9.save!
 ############################################
 ############ Sasha's incidents #############
 ############################################
+
+bruise = URI.open('https://i.pinimg.com/originals/d2/cc/20/d2cc202fabeea4b92371ebe404e2d69c.jpg')
+swollen_lips = URI.open('https://static.wixstatic.com/media/c72fb9_05948554de824c9ab44c4f1706997963.jpg')
+yamanote = URI.open('https://c4.wallpaperflare.com/wallpaper/231/881/296/train-station-railroad-tokyo-japan-hd-wallpaper-preview.jpg')
+
 
 incident10 = Incident.new(
   title: "Incident at the office",
@@ -188,6 +189,8 @@ incident10 = Incident.new(
   statements really hurt me.",
   place: "Takeda HQ"
 )
+
+incident10.attachment.attach(io: bruise, filename: 'bruise.png', content_type: 'image/png')
 incident10.user = sasha
 incident10.tag_list.add("work", "boss", "hurt")
 incident10.save!
@@ -202,6 +205,7 @@ incident11 = Incident.new(
   As I walked home, I felt nothing but shame.",
   place: "Yamanote line"
 )
+incident11.attachment.attach(io: yamanote, filename: 'yamanote', content_type: 'image/png')
 incident11.user = sasha
 incident11.tag_list.add("home", "shame", "train")
 incident11.save!
@@ -213,6 +217,7 @@ incident12 = Incident.new(
   description: "My husband hit me as we were having an argument in our home",
   place: "491-1186, Akasaka Akasakaakuhiruzu.akumoribiru(1-kai), Minato-ku, Tokyo"
 )
+incident12.attachment.attach(io: swollen_lips, filename: 'swollen_lips.png', content_type: 'image/png')
 incident12.user = sasha
 incident12.tag_list.add("fight", "home", "hurt")
 incident12.save!
