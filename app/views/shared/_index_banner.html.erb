@@ -2,6 +2,14 @@
   <h4 id="title" style="margin-left: 2%"><%= text.truncate(21) %></h4>
   <%= link_to new_incident_path, "data-multiselect-target": "share", "data-action": "click->multiselect#share", "type": "button" do %>
     <i id="share" class="far fa-share-square" data-multiselect-target="sharebutton"></i>
-
   <% end %>
 </div>
+
+<div class="share-instructions sticky-top d-flex" data-multiselect-target="shareInstruction">
+  <h4>Tap to select the incidents you'd like to share.</h4>
+</div>
+
+<div class="share-ready sticky-top d-flex" data-multiselect-target="shareReady">
+  <h4>Ready?</h4>
+</div>
+
