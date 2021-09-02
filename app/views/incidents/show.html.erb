@@ -1,8 +1,11 @@
 <div class="incident-show">
   <%= render 'shared/show_banner', text: @incident.title %>
 
-  <div class="container my-2 incident_show">
+  <div class="container mt-2 mb-5 incident_show">
     <div style="align-self: center">
+
+    <div class=d-flex>
+     <div class="show-top">   
       <div>
         <% if @chatroom.present? && @chatroom.created? %>
           <%= render 'match_form', chatroom: @chatroom, class: "button-small box-shadow w-100", id: 'show-bottom' %>
@@ -11,11 +14,21 @@
             <p>There is a match to your antagonizer in our database.</p>
           </div>
         <% end %>
-      </div>
 
-      <div class="mb-3">
-        <p class="title">Date</p>
-        <p> <%= @incident.date.strftime('%a. %B %d, %Y') %> </p>
+          <div>
+            <p class="title">Date</p>
+            <p> <%= @incident.date.strftime('%a. %B %d, %Y') %> </p>
+          </div>
+        </div>
+
+        <div data-toggle="modal" data-target="#exampleModal">
+          <i class="far fa-share-square share-btn"></i>
+        </div>
+        <%= render 'share_modal', user: @user, class: "button-small box-shadow w-100", id: 'show-bottom' %>
+        <%= link_to report_path(format: :pdf) do %>
+          <i class="far fa-file-pdf report-btn"></i>
+        <% end %>
+
       </div>
 
       <div class="my-3">
@@ -45,11 +58,8 @@
 
 
       <div class="mt-2">
-        <%= link_to "Generate report", report_path(format: :pdf), class: "button-small-grey box-shadow w-100 mb-2" %>
-        <button type="button" class="button-small box-shadow w-100 mt-2" id="show-bottom" data-toggle="modal" data-target="#exampleModal">
-          Share
-        </button>
-        <%= render 'share_modal', user: @user, class: "button-small box-shadow w-100", id: 'show-bottom' %>
+        <%#= link_to "Generate report", report_path(format: :pdf), class: "button-small-grey box-shadow w-100 mb-2" %>
+
       </div>
     </div>
   </div>

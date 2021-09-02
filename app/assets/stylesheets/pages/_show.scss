@@ -1,6 +1,6 @@
 .incident_show {
   background-color: white;
-  padding: 24px;
+  padding: 14px 24px;
   width: 95%;
   border: 2px solid #F8F9FA;
   border-radius: 5px;
@@ -16,4 +16,28 @@
 }
 #show-bottom {
   margin-bottom: 4em;
+}
+
+.show-top {
+  margin-right: 30px;
+}
+
+.share-btn {
+  margin-right: 20px;
+  color: $purple;
+  font-size: 24px;
+  font-weight: thin;
+  position: absolute;
+  right: 1%;
+  // top: 12%;
+}
+
+.report-btn {
+  margin-right: 20px;
+  color: $purple;
+  font-size: 26px;
+  font-weight: thin;
+  position: absolute;
+  right: 2.6%;
+  top: 16%;
 }
