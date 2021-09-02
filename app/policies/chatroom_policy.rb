@@ -12,4 +12,8 @@ class ChatroomPolicy < ApplicationPolicy
   def update?
     record.sender == user || record.recipient == user
   end
+
+  def chatroom_pending?
+    return true
+  end
 end

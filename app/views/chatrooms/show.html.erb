@@ -1,12 +1,6 @@
-<%= render 'shared/index_banner', text: "Chat", class: "d-flex justify-content-center" %>
+<%= render 'shared/new_banner', text: "Chat", class: "d-flex justify-content-center" %>
 
 <div class="container">
-  <div class="title">
-    <%# <%= link_to url_for(:back), id: "back" do %>
-      <%# <i class="fas fa-arrow-alt-circle-left"></i> %>
-    <%# end %>
-    <h1 class="chat-title"><%= @chatroom.name %></h1>
-  </div>
   <div class="chat-container mb-3">
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
       <% if @chatroom.messages.empty? %>
@@ -19,21 +13,26 @@
       <% @chatroom.messages.each do |message| %>
         <div class="chat-bubble">
           <% if message.user == current_user %>
-            <div id="right-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
+            <div class="d-flex">
+            <small id="right-time"><%= message.created_at.strftime("%H:%M") %></small>
+              <div id="right-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
+                <p class="ml-auto"><%= message.content %></p>
                 <i class="author">
-                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                </i>
+              </div>
+              <img src="<%= message.user.avatar %>" class="chat-avatar" id="chat-avatar-right">
+            </div>
+          <% else %>
+            <div class="d-flex">
+              <img src="<%= message.user.avatar %>" class="chat-avatar" id="chat-avatar-left">
+              <div id="left-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
+                <i class="author">
                 </i>
                 <p><%= message.content %></p>
+              </div>
+              <small id="left-time"><%= message.created_at.strftime("%H:%M") %></small>
             </div>
-            <% else %>
-            <div id="left-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
-                <i class="author">
-                  <span><%= message.user.nickname %></span>
-                  <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-                </i>
-                <p><%= message.content %></p>
-            </div>
-            <% end %>
+          <% end %>
       </div>
       <% end %>
     </div>

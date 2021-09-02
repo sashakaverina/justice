@@ -1,6 +1,6 @@
 class ChatroomsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_chatroom, only: [:show, :edit, :update]
+  before_action :set_chatroom, only: [:show, :edit, :update, :chatroom_pending]
 
   def index
     @chatrooms = policy_scope(Chatroom).where(["sender_id = ? or recipient_id = ?", current_user, current_user])
@@ -19,6 +19,11 @@ class ChatroomsController < ApplicationController
       format.html
       format.json { render json: { messages: @messages } }
     end
+  end
+
+  def chatroom_pending
+    @chatroom.update(status: :pending)
+    redirect_back(fallback_location: root_path)
   end
 
 
