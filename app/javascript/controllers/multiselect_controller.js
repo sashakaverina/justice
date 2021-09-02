@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "tickbox", "share", "card", "sharebutton", "ids", "addbutton", "tickboxIcon" ]
+  static targets = [ "tickbox", "share", "card", "sharebutton", "ids", "addbutton", "tickboxIcon", "shareInstruction", "shareReady" ]
 
   connect() {
     console.log(this.tickboxTargets, this.shareTarget, this.cardTargets, this.sharebuttonTarget, this.addbuttonTarget, this.tickboxIconTargets)
@@ -27,13 +27,17 @@ export default class extends Controller {
       card.style.boxShadow = 'none';
     });
 
+    console.log(this.shareInstructionTarget)
+    this.shareInstructionTarget.setAttribute('style', 'display: block !important');
+
     this.addbuttonTarget.style.display = "none";
-    this.sharebuttonTarget.classList.add('fa-times');
-    this.sharebuttonTarget.classList.toggle('fa-share-alt');
+    this.sharebuttonTarget.className ='fas fa-times';
+    // this.sharebuttonTarget.classList.remove('fa-share-square');
   };
 
   select(event) {
     event.preventDefault();
+    this.shareReadyTarget.setAttribute('style', 'display: block !important');
     console.log(event.currentTarget.dataset.incidentId);
     event.currentTarget.classList.toggle("tick-box-select");
 

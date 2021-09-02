@@ -137,7 +137,7 @@
 
 .chat-button{
   border-radius: 5rem;
-  background-color: $baby-purple;
+  background-color: $purple;
   height: 35px;
   width: 33px;
   border: none;
@@ -150,6 +150,11 @@
 
 #bottom {
   margin-top: 450px;
+}
+
+.disabled-button {
+  background-color: rgb(147, 149, 234)!important;
+  box-shadow: none!important;
 }
 
 .animate__big-pulse {

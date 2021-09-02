@@ -5,7 +5,7 @@
     and (-webkit-device-pixel-ratio : 3) { 
         .chat-container{
             margin-bottom: 5rem;
-            height: 67vh;
+            height: 74vh;
             overflow: scroll;
         }
         
@@ -13,6 +13,13 @@
         .chat-bubble{
             line-height: 2rem;
             margin-top: 2rem;
+        }
+
+        #right-time{
+            position: relative;
+            left: 6.5rem;
+            top: 7px;
+            font-size: 60%;
         }
         
         .chat-title{
@@ -27,11 +34,11 @@
         }
         
         .message-container{
-            margin-top: 2rem;
-            border-radius: 1rem;
-            padding: 1rem;
+            border-radius: 10px;
+            padding: 5px;
             width: 14rem; 
             box-shadow: 1px 1px $light-white;
+            display: flex;
             .author{
                 font-weight: bold;
             }
@@ -48,7 +55,6 @@
         #new_message{
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
         }
         
         .chat-notification {
@@ -59,10 +65,19 @@
             position: relative;
             left: 7rem;
             background-color: $baby-blue;
+            text-align: right;
         }
         
         #left-chat{
             background-color: $msg-grey;
+            margin-left: 5px;
+            width: 10rem;
+        }
+        #left-time{
+            position: relative;
+            left: 0.5rem;
+            top: 7px;
+            font-size: 60%;
         }
     }
 

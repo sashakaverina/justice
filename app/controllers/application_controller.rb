@@ -34,4 +34,6 @@ class ApplicationController < ActionController::Base
   end
 
   add_flash_types :match_alert
+  add_flash_types :show_page_share
+  add_flash_types :show_page_report
 end
