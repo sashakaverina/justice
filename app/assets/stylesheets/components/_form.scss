@@ -114,3 +114,50 @@
     transform: scale3d(1, 1, 1);
   }
 }
+
+
+div#create-button, div#incident-intro, div#incident-title, div#incident-pic, div#incident-date, div#incident-place, div#incident-description, div#antagonizer-pic {
+  // width: 300px;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: center;
+  animation: fadein 2s 1;
+
+
+  a {
+  display: inline-block;
+  text-decoration: none;
+  }
+  a:focus {
+    text-decoration: none;
+  }
+}
+
+.incident-font {
+  font-size: 22px;
+}
+
+.smooth {
+  width: 66px;
+  text-decoration: none;
+  color: white;
+
+}
+
+.smooth:focus {
+  text-decoration: none;
+  color: white;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  50%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

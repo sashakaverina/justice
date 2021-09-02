@@ -11,9 +11,11 @@ const initChatroomCable = () => {
         messagesContainer.insertAdjacentHTML('beforeend',
         `
         <div class="chat-bubble">
-        ${data.their}
+          ${data.their}
+        </div>
         `
         );
+      document.getElementById('messages').scrollIntoView(0, document.getElementById('messages').scrollHeight);
       },
     });
   }

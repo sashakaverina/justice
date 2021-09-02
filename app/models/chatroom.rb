@@ -15,6 +15,10 @@ class Chatroom < ApplicationRecord
     status == 'pending'
   end
 
+  def created?
+    status == "created"
+  end
+
   def mark_as_accepted!
     status = "accepted"
   end
