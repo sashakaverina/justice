@@ -19,6 +19,7 @@
             position: relative;
             left: 6.5rem;
             top: 7px;
+            font-size: 60%;
         }
         
         .chat-title{
@@ -68,11 +69,14 @@
         
         #left-chat{
             background-color: $msg-grey;
+            margin-left: 5px;
+            width: 10rem;
         }
         #left-time{
             position: relative;
             left: 0.5rem;
             top: 7px;
+            font-size: 60%;
         }
     }
 
