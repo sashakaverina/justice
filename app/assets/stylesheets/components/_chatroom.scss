@@ -35,10 +35,12 @@
         
         .message-container{
             border-radius: 10px;
-            padding: 5px;
-            width: 14rem; 
+            padding: 10px;
+            width: 10rem; 
             box-shadow: 1px 1px $light-white;
             display: flex;
+            line-height: 20px;
+            padding-left: 15px;
             .author{
                 font-weight: bold;
             }
@@ -65,7 +67,7 @@
             position: relative;
             left: 7rem;
             background-color: $baby-blue;
-            text-align: right;
+            text-align: left;
         }
         
         #left-chat{
