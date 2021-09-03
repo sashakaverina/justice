@@ -1,0 +1,67 @@
+<%= simple_form_for incident do |f| %>
+<div id="incident-intro">
+  <div class="incident-font">
+    You are updating the incident.<br>
+    The previous details will be deleted.
+  </div>
+  <a class="button-small box-shadow smooth mt-3" href="#incident-date">Go</a>
+</div>
+
+<div id="incident-date">
+  <div class="incident-font">
+  <%= f.input :date, as: :date, html5: true, label: "When did it happen?" %>
+  </div>
+  <a class="button-small box-shadow smooth" href="#incident-place">Next</a>
+</div>
+
+
+<div id="incident-place">
+  <div class="incident-font">
+    <%= f.input :place, label: "Where did it happen?" %>
+  </div>
+  <a class="button-small box-shadow smooth" href="#incident-description">Next</a>
+</div>
+
+<div id="incident-description">
+  <div class="incident-font">
+    <%= f.input :description, label: "Please, describe what happened in details.", placeholder: "Yesterday I was at work..." %>
+    <%= f.input :tag_list, as: :hidden %>
+  </div>
+  <a class="button-small box-shadow smooth" href="#incident-pic">Next</a>
+</div>
+
+<div id="incident-pic">
+  <div class="incident-font">
+  <%= label_tag "Do you have any evidence left?" %>
+  </div>
+  <%= f.input :attachment, as: :file, label: false %>
+  <a class="button-small box-shadow smooth" href="#antagonizer-pic">Next</a>
+</div>
+
+<div class="my-3" id="antagonizer-pic">
+  <div class="incident-font">
+    <%= label_tag "Do you have an abuser's photo?" %>
+  </div>
+    <div class="photo-form-box">
+      <%= file_field_tag :photos %>
+    </div>
+   <a class="button-small box-shadow smooth mt-3" href="#incident-title">Next</a>
+</div>
+
+
+<div id="incident-title">
+   <div class="incident-font">
+  <%= f.input :title, label: "We are almost done. Do you want to update the title as well?" %>
+   </div>
+  <a class="button-small box-shadow smooth" href="#create-button">Next</a>
+</div>
+
+<div id="create-button">
+  <div class="incident-font">
+   You did great today. Thank you for being brave!
+  </div>
+    <%= f.submit "Update this change", class: 'button-small box-shadow w-100 mt-3', id: 'show-bottom' %>
+</div>
+
+<% end %>
+

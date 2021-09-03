@@ -1,21 +1,22 @@
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="before-loading">
   <%= render 'shared/new_banner', text: "Edit an incident" %>
   <div class="container mt-2 product-form">
     <div style="align-self: center">
-      <%= simple_form_for @incident do |f| %>
-      <%= f.input :title %>
-      <%= f.input :attachment, as: :file, label: "Upload an attachment" %>
-      <%= f.input :date, as: :date, html5: true %>
-      <div class="form-group file optional incident_attachment form-group-valid">
-        <%= label_tag "Upload an antagonizer's photo" %>
-        <%= file_field_tag "antagonizer_photos", class: 'form-control-file is-valid file optional' %>
-      </div>
-      <%= f.input :place %>
-      <%= f.input :description, label: "What happened", placeholder: "Yesterday I was at work..." %>
-      <%= f.input :tag_list, as: :hidden %>
-      <%= f.submit "Update", class: 'button-small box-shadow w-100 mt-3', id: 'show-bottom' %>
-  <% end %>
+      <%= render 'edit_form', incident: @incident %>
+<!--       <%= simple_form_for @incident do |f| %>
+        <%= f.input :title %>
+        <%= f.input :attachment, as: :file, label: "Upload an attachment" %>
+        <%= f.input :date, as: :date, html5: true %>
+        <div class="form-group file optional incident_attachment form-group-valid">
+          <%= label_tag "Upload an antagonizer's photo" %>
+          <%= file_field_tag "antagonizer_photos", class: 'form-control-file is-valid file optional' %>
+        </div>
+        <%= f.input :place %>
+        <%= f.input :description, label: "What happened", placeholder: "Yesterday I was at work..." %>
+        <%= f.input :tag_list, as: :hidden %>
+        <%= f.submit "Update", class: 'button-small box-shadow w-100 mt-3', id: 'show-bottom' %>
+      <% end %> -->
 
     </div>
   </div>
