@@ -16,7 +16,7 @@
             <div class="d-flex">
             <small id="right-time"><%= message.created_at.strftime("%H:%M") %></small>
               <div id="right-chat" class="message-container" data-author="<%= message.user == current_user %>" id="message-<%= message.id %>">
-                <p class="ml-auto"><%= message.content %></p>
+                <p><%= message.content %></p>
                 <i class="author">
                 </i>
               </div>
@@ -40,7 +40,7 @@
   <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
     <%= f.input :content, label: false, class: "message-content" %>
     <%= button_tag(type: 'submit', class: "chat-button") do %>
-      <i class="far fa-paper-plane"></i>
+      <i id="paper-plane" class="far fa-paper-plane"></i>
     <% end %>
   <% end %>
 </div>
