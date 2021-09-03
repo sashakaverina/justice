@@ -26,7 +26,7 @@
 
 <div id="incident-description">
   <div class="incident-font">
-    <%= f.input :description, label: "Please, describe what happened in details.", placeholder: "Yesterday I was at work..." %>
+    <%= f.input :description, label: "Please, describe what happened in detail.", placeholder: "Yesterday I was at work..." %>
     <%= f.input :tag_list, as: :hidden %>
   </div>
   <a class="button-small box-shadow smooth" href="#incident-pic">Next</a>
@@ -34,7 +34,7 @@
 
 <div id="incident-pic">
   <div class="incident-font">
-  <%= label_tag "Do you have any evidence left?" %>
+  <%= label_tag "Do you have any evidence?" %>
   </div>
   <%= f.input :attachment, as: :file, label: false %>
   <a class="button-small box-shadow smooth" href="#antagonizer-pic">Next</a>
